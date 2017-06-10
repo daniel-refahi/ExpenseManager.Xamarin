@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/AppDelegate.cs">
+    <Files>
+      <File FileName="ExpenseManager.ios/AppDelegate.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
+</Properties>
