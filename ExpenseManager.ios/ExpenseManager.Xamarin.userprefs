@@ -4,7 +4,7 @@
       <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="16" Column="37" />
       <File FileName="ExpenseManager.Repository/Repository/Category.cs" Line="46" Column="10" />
       <File FileName="ExpenseManager.Repository.Test/UnitTests/RepositoryCoreTests.cs" Line="19" Column="38" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/CategoryTests.cs" Line="30" Column="14" />
+      <File FileName="ExpenseManager.Repository.Test/UnitTests/CategoryTests.cs" Line="39" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

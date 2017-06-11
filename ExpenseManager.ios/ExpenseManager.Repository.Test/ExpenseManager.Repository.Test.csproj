@@ -9,6 +9,7 @@
     <RootNamespace>ExpenseManager.Repository.Test</RootNamespace>
     <AssemblyName>ExpenseManager.Repository.Test</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects> 
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,15 +84,6 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="MonoTouch.NUnitLite" />
-    <Reference Include="System.Reflection.Emit.ILGeneration">
-      <HintPath>..\packages\System.Reflection.Emit.ILGeneration.4.0.1\lib\netstandard1.3\System.Reflection.Emit.ILGeneration.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reflection.Emit">
-      <HintPath>..\packages\System.Reflection.Emit.4.0.1\lib\netstandard1.3\System.Reflection.Emit.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reflection.Emit.Lightweight">
-      <HintPath>..\packages\System.Reflection.Emit.Lightweight.4.0.1\lib\netstandard1.3\System.Reflection.Emit.Lightweight.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core.4.0.0\lib\netstandard1.3\Castle.Core.dll</HintPath>
     </Reference>

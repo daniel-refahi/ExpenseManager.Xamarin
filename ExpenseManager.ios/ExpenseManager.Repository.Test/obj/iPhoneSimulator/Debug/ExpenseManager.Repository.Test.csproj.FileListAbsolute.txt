@@ -5,9 +5,6 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/Moq.dll
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/SQLite.Net.dll
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/SQLite.Net.Platform.XamarinIOS.Unified.dll
-/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/System.Reflection.Emit.dll
-/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/System.Reflection.Emit.ILGeneration.dll
-/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/System.Reflection.Emit.Lightweight.dll
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/ExpenseManager.Repository.pdb
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/Castle.Core.xml
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/Moq.xml
@@ -19,3 +16,5 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/obj/iPhoneSimulator/Debug/ExpenseManager.Repository.Test.csproj.CoreCompileInputs.cache
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/obj/iPhoneSimulator/Debug/ExpenseManager.Repository.Test.exe
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/obj/iPhoneSimulator/Debug/ExpenseManager.Repository.Test.pdb
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/ExpenseManager.Repository.Test.exe.config
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/obj/iPhoneSimulator/Debug/ExpenseManager.Repository.Test.csproj.ExpenseManager.Repository.Test.exe.config

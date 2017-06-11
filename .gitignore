@@ -3,3 +3,8 @@
 ExpenseManager.ios/ExpenseManager.ios/bin/
 ExpenseManager.ios/ExpenseManager.Repository.Test/bin/
 ExpenseManager.ios/packages/
+*.nupkg
+ExpenseManager.ios/ExpenseManager.Repository/packages/
+ExpenseManager.ios/packages/
+ExpenseManager.ios/ExpenseManager.ios/obj/
+ExpenseManager.ios/ExpenseManager.Repository.Test/obj/
