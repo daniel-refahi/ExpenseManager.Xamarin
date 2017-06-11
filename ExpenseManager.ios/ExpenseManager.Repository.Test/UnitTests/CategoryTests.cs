@@ -29,7 +29,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
             var category = new Category()
             {
                 Name = "some name",
-                Plan = -10
+                Plan = -20
             };
             category.Create(_db);
 		}
