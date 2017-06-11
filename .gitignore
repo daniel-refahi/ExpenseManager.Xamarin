@@ -1,3 +1,5 @@
 
 *.dll
-ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/device-builds/iphone7.2-10.3.1/ExpenseManager.ios.app/ExpenseManager.ios
+ExpenseManager.ios/ExpenseManager.ios/bin/
+ExpenseManager.ios/ExpenseManager.Repository.Test/bin/
+ExpenseManager.ios/packages/
