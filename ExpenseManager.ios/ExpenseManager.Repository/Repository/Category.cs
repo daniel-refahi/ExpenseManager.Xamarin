@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using ExpenseManager.Repository.Repository;
 using SQLite.Net;
 using SQLite.Net.Attributes;
 
@@ -14,42 +16,57 @@ namespace ExpenseManager.Repository
         public string Name { get; set; }
         public double Plan { get; set; }
 
-        List<Expense> _Expenses;
-        public List<Expense> GetExpenses (SQLiteConnection db)
-        { 
-            if(_Expenses == null)
+        public List<Expense> GetExpenses ()
+        {
+            using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
             {
-                _Expenses = new List<Expense>();
+                var expenses = db.Table<Expense>().Where(e => e.CategoryId == Id);
+
+                return expenses == null ? new List<Expense>() : expenses.ToList();
             }
-            return _Expenses;
         }
 
-        public void Create(SQLiteConnection db)
+        public void Create()
         {
-            if (Plan < 0)
-                throw new InvalidOperationException("Plan can't be negative.");
-            if (string.IsNullOrWhiteSpace(Name))
-                throw new InvalidOperationException("Category name can't be empty.");
-            if (Name.Length > 100)
-                throw new InvalidOperationException("Category name can't be more than 100 character.");
-            if (db.Table<Category>().Where(c => c.Name == Name).FirstOrDefault() != null)
-                throw new InvalidOperationException("Category name already exists.");
-            db.Insert(this);
-        }
-
-        public void Update(SQLiteConnection db)
-        {
-            db.Update(this);
-        }
-
-        public void Delete(SQLiteConnection db)
-        {
-            foreach (var expense in GetExpenses(db))
+            using(var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
             {
-                expense.Delete();
+				Validate(db);
+				db.Insert(this);    
             }
+        }
 
-            db.Delete(this);
+        public void Update()
+        {
+            using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+            {
+                Validate(db);
+                db.Update(this);
+            }
+        }
+
+        public void Delete()
+		{
+            using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+            {
+                foreach (var expense in GetExpenses())
+                {
+                    expense.Delete();
+                }
+
+                db.Delete(this);
+            }
+        }
+
+        void Validate(SQLiteConnection db)
+        {
+			if (Plan < 0)
+				throw new InvalidOperationException("Plan can't be negative.");
+			if (string.IsNullOrWhiteSpace(Name))
+				throw new InvalidOperationException("Category name can't be empty.");
+			if (Name.Length > 100)
+				throw new InvalidOperationException("Category name can't be more than 100 character.");
+			if (db.Table<Category>().Where(c => c.Name == Name).FirstOrDefault() != null)
+				throw new InvalidOperationException("Category name already exists.");
         }
     }
 }

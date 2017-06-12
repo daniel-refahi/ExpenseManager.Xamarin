@@ -4,12 +4,22 @@ using SQLite.Net.Interop;
 
 namespace ExpenseManager.Repository.Repository
 {
+    public static class DBConnectionString
+    {
+        public static string DBPATH { get; set; }
+        public static ISQLitePlatform PLATFORM { get; set; }
+    }
+
     public class RepositoryCore
     {
         public SQLiteConnection CreateDataBase(string dbPath, ISQLitePlatform sqlitePlatform)
         {
+            DBConnectionString.DBPATH = dbPath;
+            DBConnectionString.PLATFORM = sqlitePlatform;
+
             var db = new SQLiteConnection(sqlitePlatform, dbPath);
             db.CreateTable<Category>();
+            db.CreateTable<Expense>();
 
             var insurances = new Category()
             {
@@ -20,10 +30,10 @@ namespace ExpenseManager.Repository.Repository
             return db;
         }
 
-        public SQLiteConnection GetDataBase(string dbPath, ISQLitePlatform sqlitePlatform)
+        public void SetUpDataBaseConnection(string dbPath, ISQLitePlatform sqlitePlatform)
         {
-            var db = new SQLiteConnection(sqlitePlatform, dbPath);
-            return db;
+			DBConnectionString.DBPATH = dbPath;
+			DBConnectionString.PLATFORM = sqlitePlatform;
         }
     }
 }
