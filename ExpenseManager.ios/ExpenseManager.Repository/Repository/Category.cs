@@ -16,6 +16,19 @@ namespace ExpenseManager.Repository
         public string Name { get; set; }
         public double Plan { get; set; }
 
+        public Category(){}
+
+        public Category(int id)
+        {
+			using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+			{
+				var category = db.Find<Category>(id);
+				Id = category.Id;
+				Name = category.Name;
+				Plan = category.Plan;
+			}
+        }
+
         public List<Expense> GetExpenses ()
         {
             using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))

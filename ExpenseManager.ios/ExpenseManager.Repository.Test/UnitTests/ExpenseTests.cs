@@ -119,6 +119,24 @@ namespace ExpenseManager.Repository.Test.UnitTests
 		}
 
 		[Test]
+		public void Ctor_Valid()
+		{
+			DbSetup();
+			var expense = new Expense()
+			{
+				CategoryId = _categoryId,
+				Description = "old description",
+				Value = 10
+			};
+			expense.Create();
+
+            var loadedExpense = new Expense(expense.Id);
+            Assert.AreEqual(expense.CategoryId, loadedExpense.CategoryId);
+            Assert.AreEqual(expense.Description, loadedExpense.Description);
+            Assert.AreEqual(expense.Value, loadedExpense.Value);
+		}
+
+		[Test]
 		public void Delete_Valid()
 		{
 			DbSetup();

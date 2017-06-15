@@ -17,6 +17,23 @@ namespace ExpenseManager.Repository
         public double Latitude { get; set; }
         public int CategoryId { get; set; }
 
+        public Expense(){}
+
+        public Expense(int id)
+        {
+			using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+			{
+				var expense = db.Find<Expense>(id);
+				Id = expense.Id;
+				Description = expense.Description;
+				Value = expense.Value;
+				ReceiptImage = expense.ReceiptImage;
+				Longitude = expense.Longitude;
+				Latitude = expense.Latitude;
+				CategoryId = expense.CategoryId;
+			}
+        }
+
         public Category GetCategory()
         {
             using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))

@@ -240,6 +240,22 @@ namespace ExpenseManager.Repository.Test.UnitTests
 		}
 
 		[Test]
+		public void Ctor_Valid()
+		{
+			DbSetup();
+			var category = new Category()
+			{
+				Name = "some name",
+				Plan = 10
+			};
+			category.Create();
+
+            var loadedCategory = new Category(category.Id);
+            Assert.AreEqual(category.Name, loadedCategory.Name);
+            Assert.AreEqual(category.Plan, loadedCategory.Plan);
+		}
+
+		[Test]
 		public void GetExpenses_Valid()
 		{
 			DbSetup();
