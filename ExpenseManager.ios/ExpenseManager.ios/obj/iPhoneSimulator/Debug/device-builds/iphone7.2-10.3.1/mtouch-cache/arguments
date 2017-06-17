@@ -27,6 +27,10 @@
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
 	-r \
+	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/packages/SQLite.Net.Core-PCL.3.1.1/lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll \
+	-r \
+	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/packages/SQLite.Net-PCL.3.1.1/lib/Xamarin.iOS10/SQLite.Net.Platform.XamarinIOS.Unified.dll \
+	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.dll \
@@ -305,7 +309,9 @@
 	-r \
 	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/bin/Debug/ExpenseManager.Repository.dll \
 	-r \
-	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/bin/Debug/SQLite.Net.dll \
+	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/packages/SQLite.Net.Core-PCL.3.1.1/lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll \
+	-r \
+	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/packages/SQLite.Net-PCL.3.1.1/lib/Xamarin.iOS10/SQLite.Net.Platform.XamarinIOS.Unified.dll \
 	--target-framework \
 	"Xamarin.iOS,v1.0" \
 	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/ExpenseManager.ios.exe \

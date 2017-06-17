@@ -1,5 +1,9 @@
-﻿using ExpenseManager.ios.Controllers;
+﻿using System;
+using System.IO;
+using ExpenseManager.ios.Controllers;
+using ExpenseManager.Repository.Repository;
 using Foundation;
+using SQLite.Net.Platform.XamarinIOS;
 using UIKit;
 
 namespace ExpenseManager.ios
@@ -27,7 +31,12 @@ namespace ExpenseManager.ios
 			Xamarin.Calabash.Start();
             #endif
 
-            //Window.RootViewController = new TabBarMenuController();
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+            var repositoryCore = new RepositoryCore();
+            if (File.Exists(dbPath))
+                repositoryCore.SetUpDataBaseConnection(dbPath, new SQLitePlatformIOS());
+            else 
+                repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
 
             return true;
         }
