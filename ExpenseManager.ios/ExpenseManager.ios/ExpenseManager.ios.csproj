@@ -97,6 +97,7 @@
     <Folder Include="ListSources\" />
     <Folder Include="Utilities\" />
     <Folder Include="Core\" />
+    <Folder Include="Assets\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Core\LaunchScreen.storyboard" />
@@ -108,19 +109,34 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ViewController.cs" />
-    <Compile Include="Controllers\ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Core\AppDelegate.cs" />
     <Compile Include="Core\Main.cs" />
     <Compile Include="Utilities\StaticValues.cs" />
+    <Compile Include="Controllers\TabBarMenuController.cs" />
+    <Compile Include="Controllers\ExpensesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="ExpensesController.cs" />
+    <Compile Include="ExpensesController.designer.cs">
+      <DependentUpon>ExpensesController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriesController.cs" />
+    <Compile Include="CategoriesController.designer.cs">
+      <DependentUpon>CategoriesController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">
       <Project>{0F02C4F7-3C0B-4D29-A2AF-ECC70EC8B905}</Project>
       <Name>ExpenseManager.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Assets\CategoryIcon.png" />
+    <BundleResource Include="Assets\ExpenseIcon.png" />
+    <BundleResource Include="Assets\category_selected.png" />
+    <BundleResource Include="Assets\category_unselected.png" />
+    <BundleResource Include="Assets\expense_selected.png" />
+    <BundleResource Include="Assets\expense_unselected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

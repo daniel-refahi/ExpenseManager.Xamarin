@@ -7,14 +7,12 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace ExpenseManager.ios
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("CategoriesController")]
+    partial class CategoriesController
     {
-        void ReleaseDesignerOutlets ()
-        {
-        }
     }
 }

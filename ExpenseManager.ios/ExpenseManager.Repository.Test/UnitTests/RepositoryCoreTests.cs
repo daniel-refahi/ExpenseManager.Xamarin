@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using ExpenseManager.Repository.Repository;
 using NUnit.Framework;
 using SQLite.Net;
@@ -38,5 +39,22 @@ namespace ExpenseManager.Repository.Test.UnitTests
 
             Assert.IsTrue(categories.Count() > 0, "Category table hasn't been created.");
 		}
+
+        [Test]
+        public void GetExpenses_WhenExpensesExist()
+        {
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+			if (File.Exists(dbPath))
+				File.Delete(dbPath);
+
+			var repositoryCore = new RepositoryCore();
+			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+            var category = db.Table<Category>().First();
+            db.Insert(new Expense(){ CategoryId = category.Id, Value = 230, Description="for unit test"});
+
+            var expeneses = repositoryCore.GetExpenses();
+            Assert.IsNotNull(expeneses);
+            Assert.AreEqual(230, expeneses.Where(e => e.Description == "for unit test").First().Value);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using ExpenseManager.ios.Controllers;
+using Foundation;
 using UIKit;
 
 namespace ExpenseManager.ios
@@ -22,9 +23,11 @@ namespace ExpenseManager.ios
             // If not required for your application you can safely delete this method
 
             // Code to start the Xamarin Test Cloud Agent
-#if ENABLE_TEST_CLOUD
+            #if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
-#endif
+            #endif
+
+            //Window.RootViewController = new TabBarMenuController();
 
             return true;
         }

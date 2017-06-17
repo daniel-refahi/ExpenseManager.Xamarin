@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/ExpensesController.cs">
     <Files>
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs" Line="139" Column="15" />
-      <File FileName="ExpenseManager.Repository/Repository/Category.cs" Line="18" Column="9" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/CategoryTests.cs" Line="253" Column="46" />
+      <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
+      <File FileName="ExpenseManager.ios/Controllers/CategoriesController.cs" Line="19" Column="11" />
+      <File FileName="ExpenseManager.ios/Controllers/ExpensesController.cs" Line="14" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
