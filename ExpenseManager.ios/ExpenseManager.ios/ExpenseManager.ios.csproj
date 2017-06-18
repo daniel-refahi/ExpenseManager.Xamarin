@@ -126,6 +126,10 @@
     <Compile Include="Controllers\ExpensesController.designer.cs">
       <DependentUpon>ExpensesController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\MainTabBarController.cs" />
+    <Compile Include="Controllers\MainTabBarController.designer.cs">
+      <DependentUpon>MainTabBarController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">

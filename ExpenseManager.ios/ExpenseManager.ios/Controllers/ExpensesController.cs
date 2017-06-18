@@ -21,8 +21,9 @@ namespace ExpenseManager.ios
 			var expenses = repository.GetExpenses();
 			var listSource = new ExpenseListSource(expenses, this);
 			TableView.Source = listSource;
-            TableView.SeparatorInset.InsetRect(new CGRect(0, 0, 150, 3));
 			NavigationItem.Title = "Expenses List";
+            ParentViewController.Title = "Expenses";
+
 		}
 
 		public void EditEmployeeClicked(int employeeId, UITableViewCell sender)
