@@ -9,10 +9,10 @@ namespace ExpenseManager.ios.ListCells
 	{
         UILabel valueLable;
         UILabel descriptionLable;
-		UIImageView Avatar;
+		//UIImageView Avatar;
 		UIButton EditBtn;
         ExpensesController Parent;
-		int EmployeeId;
+		//int EmployeeId;
         public ExpenseListCell(string cellId, ExpensesController parent): base (UITableViewCellStyle.Default, cellId)
         {
 			SelectionStyle = UITableViewCellSelectionStyle.Default;
@@ -20,11 +20,11 @@ namespace ExpenseManager.ios.ListCells
 
 			// setting background color of each cell 
 			//ContentView.BackgroundColor = UIColor.FromRGB(0, 114, 253);
-			Avatar = new UIImageView();
+			//Avatar = new UIImageView();
 			valueLable = new UILabel()
-			{
-				Font = UIFont.FromName("Cochin-BoldItalic", 18f),
-				TextColor = UIColor.Black,
+            {
+                Font = UIFont.FromName("Cochin-BoldItalic", 18f),
+                TextColor = UIColor.Black,
 				BackgroundColor = UIColor.Clear
 			};
 
@@ -43,7 +43,7 @@ namespace ExpenseManager.ios.ListCells
 
 			ContentView.Add(valueLable);
 			ContentView.Add(descriptionLable);
-			ContentView.Add(Avatar);
+			//ContentView.Add(Avatar);
 			ContentView.Add(EditBtn);
 		}
 
@@ -55,9 +55,9 @@ namespace ExpenseManager.ios.ListCells
 		public override void LayoutSubviews()
 		{
 			base.LayoutSubviews();
-			Avatar.Frame = new RectangleF(20, 5, 30, 40);
-			valueLable.Frame = new RectangleF(80, 15, 163, 30);
-			descriptionLable.Frame = new RectangleF((float)ContentView.Bounds.Width - 140, 17, 100, 30);
+			//Avatar.Frame = new RectangleF(20, 5, 30, 40);
+			valueLable.Frame = new RectangleF(40, 15, 163, 30);
+			descriptionLable.Frame = new RectangleF((float)ContentView.Bounds.Width - 250, 17, 150, 30);
 			EditBtn.Frame = new RectangleF((float)ContentView.Bounds.Width - 100, 17, 80, 30);
 		}
 

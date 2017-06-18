@@ -119,10 +119,13 @@
     <Compile Include="Core\AppDelegate.cs" />
     <Compile Include="Core\Main.cs" />
     <Compile Include="Utilities\StaticValues.cs" />
-    <Compile Include="Controllers\ExpensesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="ListSources\ExpenseListSource.cs" />
     <Compile Include="ListCells\ExpenseListCell.cs" />
+    <Compile Include="Controllers\ExpensesController.cs" />
+    <Compile Include="Controllers\ExpensesController.designer.cs">
+      <DependentUpon>ExpensesController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">
