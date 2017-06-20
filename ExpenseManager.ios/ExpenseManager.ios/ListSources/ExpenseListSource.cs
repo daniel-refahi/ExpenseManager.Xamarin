@@ -26,7 +26,7 @@ namespace ExpenseManager.ios.ListSources
 			if (cell == null)
 				cell = new ExpenseListCell(CellIdentifier, parentView);
 
-            cell.UpdateCell(Expenses[indexPath.Row].Value, Expenses[indexPath.Row].Description);
+            cell.UpdateCell(Expenses[indexPath.Row].Id, Expenses[indexPath.Row].Value, Expenses[indexPath.Row].Description);
 
 			//var caption = $"{Expenses[indexPath.Row].FirstName} {Expenses[indexPath.Row].LastName}";
 			//var subtitle = Expenses[indexPath.Row].Salary;

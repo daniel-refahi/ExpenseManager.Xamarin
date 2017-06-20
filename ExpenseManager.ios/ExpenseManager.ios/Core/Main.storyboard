@@ -84,6 +84,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue id="636" destination="466" kind="show" identifier="ExpenseDetailSeque"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -114,6 +117,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="304" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2382" y="176"/>
+        </scene>
+        <scene sceneID="465">
+            <objects>
+                <viewController id="466" sceneMemberID="viewController" customClass="ExpenseDetailController" storyboardIdentifier="ExpenseDetail" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="463"/>
+                        <viewControllerLayoutGuide type="bottom" id="464"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="467">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description...">
+                                <rect key="frame" x="16" y="120" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="507" firstAttribute="width" constant="343"/>
+                                </constraints>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="473" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Expense Value...">
+                                <rect key="frame" x="16" y="166" width="153" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="504" firstAttribute="width" constant="153"/>
+                                </constraints>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="474" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="16" y="85" width="80" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="475" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="104" y="85" width="255" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="510" firstAttribute="width" constant="255"/>
+                                    <constraint id="511" firstAttribute="height" constant="21"/>
+                                </constraints>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="502" firstItem="473" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="16"/>
+                            <constraint id="503" firstItem="473" firstAttribute="top" secondItem="467" secondAttribute="top" constant="166"/>
+                            <constraint id="505" firstItem="467" firstAttribute="trailing" secondItem="470" secondAttribute="trailing" constant="16"/>
+                            <constraint id="506" firstItem="470" firstAttribute="top" secondItem="467" secondAttribute="top" constant="120"/>
+                            <constraint id="508" firstItem="467" firstAttribute="trailing" secondItem="475" secondAttribute="trailing" constant="16"/>
+                            <constraint id="509" firstItem="475" firstAttribute="top" secondItem="467" secondAttribute="top" constant="85"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ExpenseDetail_CategoryName" destination="475" id="name-outlet-475"/>
+                        <outlet property="ExpenseDetail_Description" destination="470" id="name-outlet-470"/>
+                        <outlet property="ExpenseDetail_Value" destination="473" id="name-outlet-473"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="468" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-609" y="180"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

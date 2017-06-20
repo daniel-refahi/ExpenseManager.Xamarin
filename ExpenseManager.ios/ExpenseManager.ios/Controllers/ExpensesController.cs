@@ -9,7 +9,7 @@ namespace ExpenseManager.ios
 {
 	public partial class ExpensesController : UITableViewController
 	{
-		int selectedEmployeeId;
+		int selectedExpenseId;
 		public ExpensesController(IntPtr handle) : base(handle)
 		{
 		}
@@ -26,29 +26,28 @@ namespace ExpenseManager.ios
 
 		}
 
-		public void EditEmployeeClicked(int employeeId, UITableViewCell sender)
+        public void EditExpenseClicked(int expenseId, UITableViewCell sender)
 		{
-			selectedEmployeeId = employeeId;
-			PerformSegue("EmployeeListEmployeeDetailSegue", sender);
+			selectedExpenseId = expenseId;
+			PerformSegue("ExpenseDetailSeque", sender);
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue(segue, sender);
 
-			//if (segue.Identifier == "EmployeeListEmployeeDetailSegue")
-			//{
-			//  var employeeDetailViewController = segue.DestinationViewController as ViewController;
-			//  if (employeeDetailViewController != null)
-			//  {
-			//      // finding the selected item from table view
-			//      //var source = TableView.Source as EmployeeListSrouce;
-			//      //var rowPath = TableView.IndexPathForSelectedRow.Row;
-			//      //var employee = source.GetItem(rowPath);
-
-			//      employeeDetailViewController.EmployeeId = selectedEmployeeId;
-			//  }
-			//}
+			if (segue.Identifier == "ExpenseDetailSeque")
+			{
+                var expenseDetailController = segue.DestinationViewController as ExpenseDetailController;
+			    if (expenseDetailController != null)
+                {
+                    expenseDetailController.ExpenseId = selectedExpenseId;
+                    // finding the selected item from table view
+                    //var source = TableView.Source as EmployeeListSrouce;
+                    //var rowPath = TableView.IndexPathForSelectedRow.Row;
+                    //var employee = source.GetItem(rowPath);
+                }
+			}
 		}
 	}
 }

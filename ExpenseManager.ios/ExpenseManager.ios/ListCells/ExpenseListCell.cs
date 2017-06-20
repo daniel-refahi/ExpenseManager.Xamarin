@@ -12,7 +12,7 @@ namespace ExpenseManager.ios.ListCells
 		//UIImageView Avatar;
 		UIButton EditBtn;
         ExpensesController Parent;
-		//int EmployeeId;
+		int ExpenseId;
         public ExpenseListCell(string cellId, ExpensesController parent): base (UITableViewCellStyle.Default, cellId)
         {
 			SelectionStyle = UITableViewCellSelectionStyle.Default;
@@ -49,7 +49,7 @@ namespace ExpenseManager.ios.ListCells
 
 		private void EditBtnClicked(object sender, EventArgs e)
 		{
-			//Parent.EditEmployeeClicked(EmployeeId, this);
+            Parent.EditExpenseClicked(ExpenseId, this);
 		}
 
 		public override void LayoutSubviews()
@@ -71,9 +71,10 @@ namespace ExpenseManager.ios.ListCells
 		//	EmployeeId = employeeId;
 		//}
 
-        public void UpdateCell(double value, string description)
+        public void UpdateCell(int expenseId, double value, string description)
 		{
-		  //ImageView.Image = avatar;
+            //ImageView.Image = avatar;
+            ExpenseId = expenseId;
             valueLable.Text = value.ToString("C0");
             descriptionLable.Text = description;
 		}
