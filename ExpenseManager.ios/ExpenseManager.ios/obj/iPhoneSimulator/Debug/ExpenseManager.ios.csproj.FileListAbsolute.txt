@@ -19,3 +19,4 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/ExpenseManager.Repository.pdb
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/ExpenseManager.ios.exe
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/ExpenseManager.ios.pdb
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/ToastIOS.dll

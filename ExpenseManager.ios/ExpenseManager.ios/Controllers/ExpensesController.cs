@@ -17,14 +17,21 @@ namespace ExpenseManager.ios
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			var repository = new RepositoryCore();
-			var expenses = repository.GetExpenses();
-			var listSource = new ExpenseListSource(expenses, this);
-			TableView.Source = listSource;
+
 			NavigationItem.Title = "Expenses List";
             ParentViewController.Title = "Expenses";
 
 		}
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+			var repository = new RepositoryCore();
+			var expenses = repository.GetExpenses();
+			var listSource = new ExpenseListSource(expenses, this);
+			TableView.Source = listSource;
+            TableView.ReloadData();
+        }
 
         public void EditExpenseClicked(int expenseId, UITableViewCell sender)
 		{

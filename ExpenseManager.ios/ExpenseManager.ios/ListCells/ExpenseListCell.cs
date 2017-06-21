@@ -47,7 +47,7 @@ namespace ExpenseManager.ios.ListCells
 			ContentView.Add(EditBtn);
 		}
 
-		private void EditBtnClicked(object sender, EventArgs e)
+		void EditBtnClicked(object sender, EventArgs e)
 		{
             Parent.EditExpenseClicked(ExpenseId, this);
 		}
