@@ -137,6 +137,7 @@
     <Compile Include="Controllers\ExpenseDetailController.designer.cs">
       <DependentUpon>ExpenseDetailController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Enums.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">

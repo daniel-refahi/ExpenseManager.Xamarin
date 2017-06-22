@@ -18,17 +18,8 @@
                     <connections>
                         <segue id="190" destination="136" kind="relationship" relationship="viewControllers"/>
                         <segue id="441" destination="127" kind="relationship" relationship="viewControllers"/>
-                        <outlet property="TabBarAddBtn" destination="450" id="name-outlet-450"/>
                     </connections>
-                    <navigationItem title="Title" id="395" key="navigationItem">
-                        <barButtonItem key="rightBarButtonItem" id="450" systemItem="add">
-                            <inset key="imageInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
-                            <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
-                            <connections>
-                                <action selector="Clicked:" destination="43" id="460"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem title="Title" id="395" key="navigationItem"/>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationBar contentMode="scaleToFill" id="284" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
@@ -98,10 +89,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <toolbarItems/>
                     <connections/>
+                    <navigationItem title="Title" id="768" key="navigationItem"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="142" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1289" y="185"/>
+            <point key="canvasLocation" x="-1279" y="180"/>
         </scene>
         <scene sceneID="300">
             <objects>

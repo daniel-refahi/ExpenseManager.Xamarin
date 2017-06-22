@@ -10,7 +10,7 @@ namespace ExpenseManager.ios
     public partial class ExpenseDetailController : UIViewController
     {
         public int ExpenseId { get; set; }
-        private Expense _expense { get; set; }
+        Expense _expense { get; set; }
         public ExpenseDetailController (IntPtr handle) : base (handle)
         {
         }
@@ -26,14 +26,15 @@ namespace ExpenseManager.ios
                 ExpenseDetail_Description.Text = _expense.Description;
                 ExpenseDetail_CategoryName.Text = _expense.GetCategory().Name;
 
-                ExpenseDetail_Delete.Clicked += ExpenseDetail_Delete_Clicked;
-                ExpenseDetail_Save.Clicked += ExpenseDetail_Save_Clicked;
-                ExpenseDetail_Cancel.Clicked += ExpenseDetail_Cancel_Clicked;
             }
             catch
             {
-                NavigationController.PopViewController(true);
+                _expense = new Expense();
             }
+
+			ExpenseDetail_Delete.Clicked += ExpenseDetail_Delete_Clicked;
+			ExpenseDetail_Save.Clicked += ExpenseDetail_Save_Clicked;
+			ExpenseDetail_Cancel.Clicked += ExpenseDetail_Cancel_Clicked;
         }
 
         void ExpenseDetail_Delete_Clicked(object sender, EventArgs e)

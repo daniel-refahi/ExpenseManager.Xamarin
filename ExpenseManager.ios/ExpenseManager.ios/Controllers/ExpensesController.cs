@@ -4,6 +4,8 @@ using UIKit;
 using ExpenseManager.Repository.Repository;
 using ExpenseManager.ios.ListSources;
 using CoreGraphics;
+using ToastIOS;
+using ExpenseManager.ios.Utilities;
 
 namespace ExpenseManager.ios
 {
@@ -21,6 +23,8 @@ namespace ExpenseManager.ios
 			NavigationItem.Title = "Expenses List";
             ParentViewController.Title = "Expenses";
 
+
+
 		}
 
         public override void ViewDidAppear(bool animated)
@@ -31,6 +35,10 @@ namespace ExpenseManager.ios
 			var listSource = new ExpenseListSource(expenses, this);
 			TableView.Source = listSource;
             TableView.ReloadData();
+
+			
+
+            //ExpensesList_AddBtn.TouchUpInside += ExpensesList_AddBtn_Clicked;
         }
 
         public void EditExpenseClicked(int expenseId, UITableViewCell sender)
@@ -56,5 +64,5 @@ namespace ExpenseManager.ios
                 }
 			}
 		}
-	}
+    }
 }
