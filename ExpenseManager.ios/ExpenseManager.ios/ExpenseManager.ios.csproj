@@ -138,6 +138,7 @@
       <DependentUpon>ExpenseDetailController.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Enums.cs" />
+    <Compile Include="ListSources\CategorySelectorModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">

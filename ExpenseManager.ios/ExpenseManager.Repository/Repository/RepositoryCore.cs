@@ -42,6 +42,15 @@ namespace ExpenseManager.Repository.Repository
 			}
         }
 
+        public List<Category> GetCategories()
+        {
+			using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+			{
+                var categories = db.Table<Category>().ToList();
+                return categories;
+			}
+        }
+
         void Seed(SQLiteConnection db)
         {
             var commute = new Category() { Name = "Commute", Plan = 200 };

@@ -22,7 +22,9 @@ namespace ExpenseManager.ios
 
 			NavigationItem.Title = "Expenses List";
             ParentViewController.Title = "Expenses";
-
+   //         this.EdgesForExtendedLayout = UIRectEdge.None;
+			//this.ExtendedLayoutIncludesOpaqueBars = false;
+            //this.AutomaticallyAdjustsScrollViewInsets = false;
 
 
 		}

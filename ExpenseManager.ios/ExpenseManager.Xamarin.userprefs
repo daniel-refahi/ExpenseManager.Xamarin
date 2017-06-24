@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/ExpenseDetailController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/ExpensesController.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" Line="22" Column="18" />
-      <File FileName="ExpenseManager.ios/Controllers/ExpensesController.cs" Line="54" Column="47" />
-      <File FileName="ExpenseManager.ios/Controllers/MainTabBarController.cs" Line="57" Column="60" />
+      <File FileName="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" Line="48" Column="36" />
+      <File FileName="ExpenseManager.ios/Controllers/ExpensesController.cs" Line="25" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

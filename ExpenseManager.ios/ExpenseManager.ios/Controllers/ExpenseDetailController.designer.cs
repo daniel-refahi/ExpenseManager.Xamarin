@@ -20,7 +20,7 @@ namespace ExpenseManager.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel ExpenseDetail_CategoryName { get; set; }
+        UIKit.UIPickerView ExpenseDetail_Category { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -45,9 +45,9 @@ namespace ExpenseManager.ios
                 ExpenseDetail_Cancel = null;
             }
 
-            if (ExpenseDetail_CategoryName != null) {
-                ExpenseDetail_CategoryName.Dispose ();
-                ExpenseDetail_CategoryName = null;
+            if (ExpenseDetail_Category != null) {
+                ExpenseDetail_Category.Dispose ();
+                ExpenseDetail_Category = null;
             }
 
             if (ExpenseDetail_Delete != null) {

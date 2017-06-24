@@ -56,5 +56,61 @@ namespace ExpenseManager.Repository.Test.UnitTests
             Assert.IsNotNull(expeneses);
             Assert.AreEqual(230, expeneses.Where(e => e.Description == "for unit test").First().Value);
         }
+
+		[Test]
+		public void GetExpenses_WhenNoExpensesExist()
+		{
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+			if (File.Exists(dbPath))
+				File.Delete(dbPath);
+
+			var repositoryCore = new RepositoryCore();
+			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+
+            foreach (var expense in db.Table<Expense>())
+            {
+                expense.Delete();
+            }
+
+            var expeneses = repositoryCore.GetExpenses();
+			Assert.IsNotNull(expeneses);
+            Assert.AreEqual(0, expeneses.Count);
+		}
+
+		[Test]
+		public void GetExpenses_WhenCategoriesExist()
+		{
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+			if (File.Exists(dbPath))
+				File.Delete(dbPath);
+
+			var repositoryCore = new RepositoryCore();
+			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+			var category = db.Table<Category>().First();
+
+            var categories = repositoryCore.GetCategories();
+			Assert.IsNotNull(categories);
+            Assert.IsNotNull(categories.FirstOrDefault(c=> c.Name == category.Name));
+		}
+
+		[Test]
+		public void GetExpenses_WhenNoCategoryExist()
+		{
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+			if (File.Exists(dbPath))
+				File.Delete(dbPath);
+
+			var repositoryCore = new RepositoryCore();
+			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+
+			foreach (var category in db.Table<Category>())
+			{
+                category.Delete();
+			}
+
+            var categories = repositoryCore.GetCategories();
+			Assert.IsNotNull(categories);
+			Assert.AreEqual(0, categories.Count);
+		}
     }
 }
