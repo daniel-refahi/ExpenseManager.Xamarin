@@ -42,7 +42,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Description = string.Empty,
 				Value = -10
 			};
-			expense.Create();
+            expense.Upsert();
 		}
 
 		[Test]
@@ -61,7 +61,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Description = description,
 				Value = 10
 			};
-			expense.Create();
+            expense.Upsert();
 		}
 
 		[Test]
@@ -74,7 +74,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Description = string.Empty,
 				Value = 10
 			};
-			expense.Create();
+            expense.Upsert();
 
 			var e = _db.Get<Expense>(expense.Id);
 			Assert.AreEqual(e.Description, expense.Description);
@@ -92,10 +92,10 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Description = string.Empty,
 				Value = 10
 			};
-			expense.Create();
+            expense.Upsert();
 
 			expense.Value = -10;
-			expense.Update();
+            expense.Upsert();
 		}
 
 		[Test]
@@ -108,10 +108,10 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Description = "old description",
 				Value = 10
 			};
-			expense.Create();
+            expense.Upsert();
 			expense.Description = "new description";
 			expense.Value = 100;
-            expense.Update();
+            expense.Upsert();
 
 			var e = _db.Get<Expense>(expense.Id);
 			Assert.AreEqual(e.Description, expense.Description);
@@ -128,7 +128,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Description = "old description",
 				Value = 10
 			};
-			expense.Create();
+            expense.Upsert();
 
             var loadedExpense = new Expense(expense.Id);
             Assert.AreEqual(expense.CategoryId, loadedExpense.CategoryId);
@@ -146,7 +146,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Description = string.Empty,
 				Value = 10
 			};
-			expense.Create();
+            expense.Upsert();
             var expenseId = expense.Id;
 			expense.Delete();
 
@@ -164,7 +164,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Description = string.Empty,
 				Value = 10
 			};
-			expense.Create();
+            expense.Upsert();
 
             var category = expense.GetCategory();
 

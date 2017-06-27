@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using ExpenseManager.ios.Controllers;
 using UIKit;
 
 namespace ExpenseManager.ios.ListCells

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using ExpenseManager.ios.Controllers;
 using ExpenseManager.Repository.Repository;
 using Foundation;
 using SQLite.Net.Platform.XamarinIOS;

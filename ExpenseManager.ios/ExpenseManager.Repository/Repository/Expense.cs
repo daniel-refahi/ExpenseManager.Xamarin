@@ -17,7 +17,10 @@ namespace ExpenseManager.Repository
         public double Latitude { get; set; }
         public int CategoryId { get; set; }
 
-        public Expense(){}
+        public Expense()
+        {
+            Id = -1;
+        }
 
         public Expense(int id)
         {
@@ -42,21 +45,15 @@ namespace ExpenseManager.Repository
             }
         }
 
-        public void Create()
+        public void Upsert()
         {
             using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
             {
                 Validate();
-                db.Insert(this);
-            }
-        }
-
-        public void Update()
-        {
-            using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
-            {
-                Validate();
-                db.Update(this);
+                if (Id == -1)
+                    db.Insert(this);
+                else
+                    db.Update(this);
             }
         }
 

@@ -14,7 +14,8 @@ namespace ExpenseManager.ios
     public partial class ExpenseDetailController : UIViewController
     {
         public int ExpenseId { get; set; }
-        Expense _expense { get; set; }
+        Expense expense { get; set; }
+        List<Category> categories;
 
         public ExpenseDetailController (IntPtr handle) : base (handle)
         {
@@ -26,34 +27,35 @@ namespace ExpenseManager.ios
 
             try
             {
-                _expense = new Expense(ExpenseId);
-                ExpenseDetail_Value.Text = _expense.Value.ToString();
-                ExpenseDetail_Description.Text = _expense.Description;
+                expense = new Expense(ExpenseId);
+                ExpenseDetail_Value.Text = expense.Value.ToString();
+                ExpenseDetail_Description.Text = expense.Description;
 
             }
             catch
             {
-                _expense = new Expense();
+                expense = new Expense();
             }
 
-			ExpenseDetail_Delete.Clicked += ExpenseDetail_Delete_Clicked;
-			ExpenseDetail_Save.Clicked += ExpenseDetail_Save_Clicked;
-			ExpenseDetail_Cancel.Clicked += ExpenseDetail_Cancel_Clicked;
-
-            var categoryNames = (new RepositoryCore()).GetCategories().Select(c => c.Name).ToList();
+            categories = (new RepositoryCore()).GetCategories();
+            var categoryNames = categories.Select(c => c.Name).ToList();
             var categorySelectorModel = new CategorySelectorModel(categoryNames);
 
 
             ExpenseDetail_Category.Model = categorySelectorModel;
-            if(_expense.Value != 0)
-                ExpenseDetail_Category.Select(categoryNames.IndexOf(_expense.GetCategory().Name),0,true);
+            if(expense.Value != 0)
+                ExpenseDetail_Category.Select(categoryNames.IndexOf(expense.GetCategory().Name),0,true);
+
+			ExpenseDetail_Delete.Clicked += ExpenseDetail_Delete_Clicked;
+			ExpenseDetail_Save.Clicked += ExpenseDetail_Save_Clicked;
+			ExpenseDetail_Cancel.Clicked += ExpenseDetail_Cancel_Clicked;
         }
 
         void ExpenseDetail_Delete_Clicked(object sender, EventArgs e)
         {
             try
             {
-                _expense.Delete();
+                expense.Delete();
                 NavigationController.PopViewController(true);
             }
             catch
@@ -66,9 +68,11 @@ namespace ExpenseManager.ios
         {
             try
             {
-                _expense.Description = ExpenseDetail_Description.Text;
-                _expense.Value = Convert.ToInt16(ExpenseDetail_Value.Text);
-                _expense.Update();
+                var categoryName = ((CategorySelectorModel)ExpenseDetail_Category.Model).SelectedItem;
+                expense.CategoryId = categories.FirstOrDefault(c => c.Name == categoryName).Id;
+                expense.Description = ExpenseDetail_Description.Text;
+                expense.Value = Convert.ToInt16(ExpenseDetail_Value.Text);
+                expense.Upsert();
                 NavigationController.PopViewController(true);
             }
             catch(InvalidOperationException ex)

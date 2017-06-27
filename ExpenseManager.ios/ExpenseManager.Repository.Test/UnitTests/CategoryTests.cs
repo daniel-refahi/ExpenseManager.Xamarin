@@ -212,7 +212,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 					CategoryId = category.Id,
 					Value = 20
 				};
-				e1.Create();
+                e1.Upsert();
             }
 
             category.Delete();
@@ -271,14 +271,14 @@ namespace ExpenseManager.Repository.Test.UnitTests
                 CategoryId = category.Id,
                 Value = 20
             };
-            e1.Create();
+            e1.Upsert();
 
 			var e2 = new Expense()
 			{
 				CategoryId = category.Id,
 				Value = 25
 			};
-			e2.Create();
+            e2.Upsert();
 
 			var expenses = category.GetExpenses();
             Assert.AreEqual(2,expenses.Count);

@@ -19,28 +19,22 @@ namespace ExpenseManager.ios
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
-			NavigationItem.Title = "Expenses List";
-            ParentViewController.Title = "Expenses";
-   //         this.EdgesForExtendedLayout = UIRectEdge.None;
-			//this.ExtendedLayoutIncludesOpaqueBars = false;
-            //this.AutomaticallyAdjustsScrollViewInsets = false;
-
-
-		}
+            			
+            EdgesForExtendedLayout = UIRectEdge.None;
+			ExtendedLayoutIncludesOpaqueBars = false;
+            AutomaticallyAdjustsScrollViewInsets = false;
+        }
 
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
+			NavigationItem.Title = "Expenses List";
+			ParentViewController.Title = "Expenses";
 			var repository = new RepositoryCore();
 			var expenses = repository.GetExpenses();
 			var listSource = new ExpenseListSource(expenses, this);
 			TableView.Source = listSource;
             TableView.ReloadData();
-
-			
-
-            //ExpensesList_AddBtn.TouchUpInside += ExpensesList_AddBtn_Clicked;
         }
 
         public void EditExpenseClicked(int expenseId, UITableViewCell sender)

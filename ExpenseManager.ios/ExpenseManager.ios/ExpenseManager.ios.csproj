@@ -122,7 +122,6 @@
     <Compile Include="Core\AppDelegate.cs" />
     <Compile Include="Core\Main.cs" />
     <Compile Include="Utilities\StaticValues.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="ListSources\ExpenseListSource.cs" />
     <Compile Include="ListCells\ExpenseListCell.cs" />
     <Compile Include="Controllers\ExpensesController.cs" />
@@ -139,6 +138,12 @@
     </Compile>
     <Compile Include="Utilities\Enums.cs" />
     <Compile Include="ListSources\CategorySelectorModel.cs" />
+    <Compile Include="ListSources\CategoryListSource.cs" />
+    <Compile Include="ListCells\CategoryListCell.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoriesController.designer.cs">
+      <DependentUpon>CategoriesController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">
