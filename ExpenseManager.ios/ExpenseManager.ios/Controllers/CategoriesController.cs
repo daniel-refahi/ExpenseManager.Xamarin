@@ -8,6 +8,7 @@ namespace ExpenseManager.ios
 {
     public partial class CategoriesController : UITableViewController
     {
+        int selectedCategoryId;
         public CategoriesController (IntPtr handle) : base (handle)
         {
         }
@@ -32,6 +33,30 @@ namespace ExpenseManager.ios
             var listSource = new CategoryListSource(categories, this);
 			TableView.Source = listSource;
 			TableView.ReloadData();
+		}
+
+		public void EditCategoryClicked(int categoryId, UITableViewCell sender)
+		{
+            selectedCategoryId = categoryId;
+			PerformSegue("CategoryDetailSegue", sender);
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue(segue, sender);
+
+			if (segue.Identifier == "CategoryDetailSegue")
+			{
+                var categoryDetailController = segue.DestinationViewController as CategoryDetailController;
+				if (categoryDetailController != null)
+				{
+                    categoryDetailController.CategoryId = selectedCategoryId;
+					// finding the selected item from table view
+					//var source = TableView.Source as EmployeeListSrouce;
+					//var rowPath = TableView.IndexPathForSelectedRow.Row;
+					//var employee = source.GetItem(rowPath);
+				}
+			}
 		}
     }
 }

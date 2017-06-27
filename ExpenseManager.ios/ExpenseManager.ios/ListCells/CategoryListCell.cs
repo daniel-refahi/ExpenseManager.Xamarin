@@ -59,7 +59,7 @@ namespace ExpenseManager.ios.ListCells
 
 		void EditBtnClicked(object sender, EventArgs e)
 		{
-            //parent.EditExpenseClicked(categoryId, this);
+            parent.EditCategoryClicked(categoryId, this);
 		}
 
 		public override void LayoutSubviews()

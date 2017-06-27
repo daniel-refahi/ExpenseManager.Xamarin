@@ -46,6 +46,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue id="918" destination="858" kind="show" identifier="CategoryDetailSegue"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -197,6 +200,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="468" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-609" y="180"/>
+        </scene>
+        <scene sceneID="857">
+            <objects>
+                <viewController id="858" sceneMemberID="viewController" customClass="CategoryDetailController" storyboardIdentifier="CategoryDetail">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="855"/>
+                        <viewControllerLayoutGuide type="bottom" id="856"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="859">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="920" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Category's Name...">
+                                <rect key="frame" x="16" y="85" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="935" firstAttribute="width" constant="343"/>
+                                </constraints>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="924" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Plan...">
+                                <rect key="frame" x="16" y="123" width="150" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <constraints>
+                                    <constraint id="927" firstAttribute="width" constant="150"/>
+                                </constraints>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="928" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="151" y="128" width="15" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="932" firstAttribute="width" constant="15"/>
+                                </constraints>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="954" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem id="958" systemItem="trash">
+                                        <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
+                                    </barButtonItem>
+                                    <barButtonItem id="955" systemItem="fixedSpace" width="113"/>
+                                    <barButtonItem style="plain" systemItem="save" id="959">
+                                        <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
+                                    </barButtonItem>
+                                    <barButtonItem width="103" style="plain" systemItem="fixedSpace" id="963"/>
+                                    <barButtonItem id="964" systemItem="cancel">
+                                        <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <constraints>
+                            <constraint id="925" firstItem="924" firstAttribute="leading" secondItem="859" secondAttribute="leading" constant="16"/>
+                            <constraint id="926" firstItem="924" firstAttribute="top" secondItem="859" secondAttribute="top" constant="123"/>
+                            <constraint id="930" firstItem="928" firstAttribute="centerY" secondItem="924" secondAttribute="centerY"/>
+                            <constraint id="931" firstItem="928" firstAttribute="leading" secondItem="859" secondAttribute="leading" constant="151"/>
+                            <constraint id="933" firstItem="920" firstAttribute="top" secondItem="859" secondAttribute="top" constant="85"/>
+                            <constraint id="934" firstItem="859" firstAttribute="trailing" secondItem="920" secondAttribute="trailing" constant="16"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="CategoryDetail_Name" destination="920" id="name-outlet-920"/>
+                        <outlet property="CategoryDetail_Plan" destination="924" id="name-outlet-924"/>
+                        <outlet property="CategoryDetail_Save" destination="959" id="name-outlet-959"/>
+                        <outlet property="CategoryDetail_Delete" destination="958" id="name-outlet-958"/>
+                        <outlet property="CategoryDetail_Cancel" destination="964" id="name-outlet-964"/>
+                    </connections>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="860" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-606" y="898"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

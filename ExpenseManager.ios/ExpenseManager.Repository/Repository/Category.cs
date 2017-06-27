@@ -16,7 +16,10 @@ namespace ExpenseManager.Repository
         public string Name { get; set; }
         public double Plan { get; set; }
 
-        public Category(){}
+        public Category()
+        {
+            Id = -1;
+        }
 
         public Category(int id)
         {
@@ -39,21 +42,15 @@ namespace ExpenseManager.Repository
             }
         }
 
-        public void Create()
+        public void Upsert()
         {
             using(var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
             {
 				Validate(db);
-				db.Insert(this);    
-            }
-        }
-
-        public void Update()
-        {
-            using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
-            {
-                Validate(db);
-                db.Update(this);
+				if (Id == -1)
+					db.Insert(this);
+				else
+					db.Update(this);   
             }
         }
 

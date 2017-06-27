@@ -31,7 +31,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
                 Name = "some name",
                 Plan = -20
             };
-            category.Create();
+            category.Upsert();
 		}
 
 		[Test]
@@ -44,7 +44,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "",
 				Plan = 10
 			};
-            category.Create();
+            category.Upsert();
 		}
 
 		[Test]
@@ -63,7 +63,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = name,
 				Plan = 10
 			};
-            category.Create();
+            category.Upsert();
 		}
 
 		[Test]
@@ -76,14 +76,14 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-            category.Create();
+            category.Upsert();
 
             var invalidCategory = new Category() 
             {
                 Name = "some name",
                 Plan = 12
             };
-            category.Create();
+            category.Upsert();
 		}
 
         [Test]
@@ -95,7 +95,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-            category.Create();
+            category.Upsert();
 
             var c = _db.Get<Category>(category.Id);
             Assert.AreEqual(c.Name, category.Name);
@@ -112,10 +112,10 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 20
 			};
-			category.Create();
+			category.Upsert();
 
             category.Plan = -10;
-            category.Update();
+            category.Upsert();
 		}
 
 		[Test]
@@ -128,10 +128,10 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-			category.Create();
+			category.Upsert();
 
             category.Name = string.Empty;
-            category.Update();
+            category.Upsert();
 		}
 
 		[Test]
@@ -145,13 +145,13 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-			category.Create();
+			category.Upsert();
 
 			for (int i = 0; i < 101; i++)
 			{
                 category.Name += i;
 			}
-            category.Update();
+            category.Upsert();
 		}
 
 		[Test]
@@ -164,14 +164,14 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-			category.Create();
+			category.Upsert();
 
 			var invalidCategory = new Category()
 			{
 				Name = "some name",
 				Plan = 12
 			};
-            category.Update();
+            category.Upsert();
 		}
 
 		[Test]
@@ -183,11 +183,11 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-			category.Create();
+			category.Upsert();
 
             category.Name = "new name";
             category.Plan = 23;
-            category.Update();
+            category.Upsert();
 
 			var c = _db.Get<Category>(category.Id);
 			Assert.AreEqual(c.Name, category.Name);
@@ -203,7 +203,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-			category.Create();
+			category.Upsert();
 
             for (int i = 0; i < 5; i++)
             {
@@ -233,7 +233,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-			category.Create();
+			category.Upsert();
 
             var expenses = category.GetExpenses();
             Assert.AreEqual(0, expenses.Count);
@@ -248,7 +248,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-			category.Create();
+			category.Upsert();
 
             var loadedCategory = new Category(category.Id);
             Assert.AreEqual(category.Name, loadedCategory.Name);
@@ -264,7 +264,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 10
 			};
-			category.Create();
+			category.Upsert();
 
             var e1 = new Expense() 
             {

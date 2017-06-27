@@ -144,6 +144,10 @@
     <Compile Include="Controllers\CategoriesController.designer.cs">
       <DependentUpon>CategoriesController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CategoryDetailController.cs" />
+    <Compile Include="Controllers\CategoryDetailController.designer.cs">
+      <DependentUpon>CategoryDetailController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">

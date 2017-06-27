@@ -26,7 +26,15 @@ namespace ExpenseManager.ios
 			NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
 				{
-                    AddBtn_Clicked();
+                    switch(selectedTab)
+	                {
+                        case "Expenses":
+                            AddExpense();
+                            break;
+                        case "Categories":
+                            AddCategory();
+                            break;
+	                }
 				})
 			, true);
             
@@ -35,23 +43,16 @@ namespace ExpenseManager.ios
 				switch (TabBar.SelectedItem.Title)
 				{
 					case "Expenses":
-                        if (selectedTab == "Expenses")
-                            break;
-                        
-						NavigationItem.SetRightBarButtonItem(
-							new UIBarButtonItem(UIBarButtonSystemItem.Add, (btn, args) =>
-							{
-                                AddBtn_Clicked();
-							}), true);
+                        selectedTab = "Expenses";
 						break;
 					case "Categories":
-						NavigationItem.SetRightBarButtonItem(null, true);
-						break;
+                        selectedTab = "Categories";
+                        break;
 				}
 			};
         }
 
-        private void AddBtn_Clicked()
+        void AddExpense()
         {
 			ExpenseDetailController expenseDetailController =
 								Storyboard.InstantiateViewController("ExpenseDetail") as ExpenseDetailController;
@@ -60,5 +61,15 @@ namespace ExpenseManager.ios
 				NavigationController.PushViewController(expenseDetailController, true);
 			}
         }
+
+		void AddCategory()
+		{
+            CategoryDetailController categoryDetailController =
+								Storyboard.InstantiateViewController("CategoryDetail") as CategoryDetailController;
+			if (categoryDetailController != null)
+			{
+				NavigationController.PushViewController(categoryDetailController, true);
+			}
+		}
     }
 }

@@ -27,7 +27,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "category",
 				Plan = 20
 			};
-			category.Create();
+            category.Upsert();
 			_categoryId = category.Id;
 		}
 
