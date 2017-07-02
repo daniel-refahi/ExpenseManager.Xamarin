@@ -34,13 +34,13 @@
         <scene sceneID="126">
             <objects>
                 <tableViewController id="127" sceneMemberID="viewController" customClass="CategoriesController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="128">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="128">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="131">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="131" id="132">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -66,13 +66,13 @@
         <scene sceneID="135">
             <objects>
                 <tableViewController id="136" sceneMemberID="viewController" customClass="ExpensesController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="137">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="137">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="140" reuseIdentifier="ExpenseCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="140" id="141">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -125,65 +125,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description...">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description...">
                                 <rect key="frame" x="16" y="75" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <constraints>
-                                    <constraint id="812" firstAttribute="width" constant="343"/>
-                                </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="473" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Expense Value...">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="473" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Expense Value..." misplaced="YES">
                                 <rect key="frame" x="16" y="113" width="153" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                <constraints>
-                                    <constraint id="806" firstAttribute="width" constant="153"/>
-                                </constraints>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="716" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" translucent="YES">
+                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="716" translatesAutoresizingMaskIntoConstraints="NO" translucent="YES" opaque="NO">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem id="718" systemItem="trash">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
                                     </barButtonItem>
-                                    <barButtonItem width="114" style="plain" systemItem="fixedSpace" id="719"/>
+                                    <barButtonItem width="129" style="plain" systemItem="fixedSpace" id="719"/>
                                     <barButtonItem id="720" systemItem="save">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
                                     </barButtonItem>
-                                    <barButtonItem width="89" style="plain" systemItem="fixedSpace" id="721"/>
+                                    <barButtonItem width="106" style="plain" systemItem="fixedSpace" id="721"/>
                                     <barButtonItem id="722" systemItem="cancel">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="733" translatesAutoresizingMaskIntoConstraints="NO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="733" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                                 <rect key="frame" x="149" y="118" width="14" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <constraints>
-                                    <constraint id="809" firstAttribute="width" constant="14"/>
-                                </constraints>
                             </label>
-                            <pickerView contentMode="scaleToFill" id="786" translatesAutoresizingMaskIntoConstraints="NO">
+                            <pickerView contentMode="scaleToFill" id="786" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                                 <rect key="frame" x="16" y="151" width="343" height="143"/>
-                                <constraints>
-                                    <constraint id="816" firstAttribute="width" constant="343"/>
-                                    <constraint id="817" firstAttribute="height" constant="143"/>
-                                </constraints>
                             </pickerView>
                         </subviews>
                         <constraints>
-                            <constraint id="804" firstItem="473" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="16"/>
-                            <constraint id="805" firstItem="473" firstAttribute="top" secondItem="467" secondAttribute="top" constant="113"/>
-                            <constraint id="807" firstItem="733" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="149"/>
-                            <constraint id="808" firstItem="733" firstAttribute="top" secondItem="467" secondAttribute="top" constant="118"/>
-                            <constraint id="810" firstItem="467" firstAttribute="trailing" secondItem="470" secondAttribute="trailing" constant="16"/>
-                            <constraint id="811" firstItem="470" firstAttribute="top" secondItem="467" secondAttribute="top" constant="75"/>
-                            <constraint id="813" firstItem="786" firstAttribute="centerX" secondItem="470" secondAttribute="centerX"/>
-                            <constraint id="814" firstItem="786" firstAttribute="top" secondItem="467" secondAttribute="top" constant="151"/>
-                            <constraint id="815" firstItem="786" firstAttribute="leading" secondItem="473" secondAttribute="leading"/>
+                            <constraint id="1101" firstItem="467" firstAttribute="leadingMargin" secondItem="716" secondAttribute="leading" constant="16"/>
+                            <constraint id="1102" firstItem="716" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin" constant="16"/>
+                            <constraint id="1103" firstItem="716" firstAttribute="bottom" secondItem="467" secondAttribute="bottom"/>
+                            <constraint id="1104" firstItem="470" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="11"/>
+                            <constraint id="1105" firstItem="470" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
+                            <constraint id="1106" firstItem="470" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
+                            <constraint id="1107" firstItem="473" firstAttribute="top" secondItem="470" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1108" firstItem="473" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
+                            <constraint id="1109" firstItem="733" firstAttribute="top" secondItem="473" secondAttribute="top" constant="5"/>
+                            <constraint id="1110" firstItem="733" firstAttribute="leading" secondItem="473" secondAttribute="centerX" constant="56"/>
+                            <constraint id="1111" firstItem="473" firstAttribute="bottom" secondItem="733" secondAttribute="bottom" constant="4"/>
+                            <constraint id="1112" firstItem="473" firstAttribute="trailing" secondItem="733" secondAttribute="trailing" constant="6"/>
+                            <constraint id="1113" firstItem="786" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
+                            <constraint id="1114" firstItem="786" firstAttribute="top" secondItem="473" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1115" firstItem="786" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
+                            <constraint id="1116" firstItem="470" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="11"/>
+                            <constraint id="1117" firstItem="470" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
+                            <constraint id="1118" firstItem="470" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
                         </constraints>
                     </view>
                     <connections>
@@ -217,51 +213,77 @@
                                 <rect key="frame" x="16" y="85" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <constraints>
-                                    <constraint id="935" firstAttribute="width" constant="343"/>
-                                </constraints>
+                                <rect key="contentStretch" x="0" y="0.0" width="1" height="1"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="924" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Plan...">
-                                <rect key="frame" x="16" y="123" width="150" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="924" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Plan..." misplaced="YES">
+                                <rect key="frame" x="16" y="129" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                <constraints>
-                                    <constraint id="927" firstAttribute="width" constant="150"/>
-                                </constraints>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="928" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="151" y="128" width="15" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="928" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="143" y="134" width="15" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <constraints>
-                                    <constraint id="932" firstAttribute="width" constant="15"/>
-                                </constraints>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="954" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="954" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem id="958" systemItem="trash">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
                                     </barButtonItem>
-                                    <barButtonItem id="955" systemItem="fixedSpace" width="113"/>
+                                    <barButtonItem id="955" systemItem="fixedSpace" width="126"/>
                                     <barButtonItem style="plain" systemItem="save" id="959">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
                                     </barButtonItem>
-                                    <barButtonItem width="103" style="plain" systemItem="fixedSpace" id="963"/>
+                                    <barButtonItem width="116" style="plain" systemItem="fixedSpace" id="963"/>
                                     <barButtonItem id="964" systemItem="cancel">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
                                     </barButtonItem>
                                 </items>
+                                <constraints>
+                                    <constraint id="1015" firstAttribute="width" constant="375"/>
+                                </constraints>
                             </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1121" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="167" width="343" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1122">
+                                        <rect key="frame" x="0.0" y="56" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1122" id="1123">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <color key="sectionIndexBackgroundColor" colorSpace="calibratedRGB" red="0.6" green="0.4" blue="0.2" alpha="1"/>
+                            </tableView>
                         </subviews>
                         <constraints>
-                            <constraint id="925" firstItem="924" firstAttribute="leading" secondItem="859" secondAttribute="leading" constant="16"/>
-                            <constraint id="926" firstItem="924" firstAttribute="top" secondItem="859" secondAttribute="top" constant="123"/>
-                            <constraint id="930" firstItem="928" firstAttribute="centerY" secondItem="924" secondAttribute="centerY"/>
-                            <constraint id="931" firstItem="928" firstAttribute="leading" secondItem="859" secondAttribute="leading" constant="151"/>
-                            <constraint id="933" firstItem="920" firstAttribute="top" secondItem="859" secondAttribute="top" constant="85"/>
-                            <constraint id="934" firstItem="859" firstAttribute="trailing" secondItem="920" secondAttribute="trailing" constant="16"/>
+                            <constraint id="1013" firstItem="859" firstAttribute="trailing" secondItem="954" secondAttribute="trailing"/>
+                            <constraint id="1014" firstItem="859" firstAttribute="bottom" secondItem="954" secondAttribute="bottom"/>
+                            <constraint id="1063" firstItem="859" firstAttribute="leadingMargin" secondItem="954" secondAttribute="leading" constant="16"/>
+                            <constraint id="1064" firstItem="954" firstAttribute="trailing" secondItem="859" secondAttribute="trailingMargin" constant="16"/>
+                            <constraint id="1065" firstItem="954" firstAttribute="bottom" secondItem="859" secondAttribute="bottom"/>
+                            <constraint id="1077" firstItem="924" firstAttribute="leading" secondItem="859" secondAttribute="leadingMargin"/>
+                            <constraint id="1080" firstItem="859" firstAttribute="leadingMargin" secondItem="954" secondAttribute="leading" constant="16"/>
+                            <constraint id="1081" firstItem="954" firstAttribute="trailing" secondItem="859" secondAttribute="trailingMargin" constant="16"/>
+                            <constraint id="1082" firstItem="954" firstAttribute="bottom" secondItem="859" secondAttribute="bottom"/>
+                            <constraint id="1088" firstItem="920" firstAttribute="top" secondItem="855" secondAttribute="bottom" constant="21"/>
+                            <constraint id="1089" firstItem="920" firstAttribute="leading" secondItem="859" secondAttribute="leadingMargin"/>
+                            <constraint id="1090" firstItem="920" firstAttribute="trailing" secondItem="859" secondAttribute="trailingMargin"/>
+                            <constraint id="1091" firstItem="924" firstAttribute="top" secondItem="920" secondAttribute="bottom" constant="14"/>
+                            <constraint id="1092" firstItem="924" firstAttribute="leading" secondItem="859" secondAttribute="leadingMargin"/>
+                            <constraint id="1095" firstItem="928" firstAttribute="top" secondItem="924" secondAttribute="top" constant="5"/>
+                            <constraint id="1096" firstItem="924" firstAttribute="trailing" secondItem="928" secondAttribute="trailing" constant="8"/>
+                            <constraint id="1097" firstItem="924" firstAttribute="bottom" secondItem="928" secondAttribute="bottom" constant="4"/>
+                            <constraint id="1098" firstItem="928" firstAttribute="leading" secondItem="924" secondAttribute="centerX" constant="52"/>
+                            <constraint id="1124" firstItem="1121" firstAttribute="trailing" secondItem="859" secondAttribute="trailingMargin"/>
+                            <constraint id="1125" firstItem="1121" firstAttribute="leading" secondItem="859" secondAttribute="leadingMargin"/>
+                            <constraint id="1126" firstItem="1121" firstAttribute="top" secondItem="924" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1127" firstItem="954" firstAttribute="top" secondItem="1121" secondAttribute="bottom" constant="8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -270,6 +292,7 @@
                         <outlet property="CategoryDetail_Save" destination="959" id="name-outlet-959"/>
                         <outlet property="CategoryDetail_Delete" destination="958" id="name-outlet-958"/>
                         <outlet property="CategoryDetail_Cancel" destination="964" id="name-outlet-964"/>
+                        <outlet property="CategoryDetail_ExpenseList" destination="1121" id="name-outlet-1121"/>
                     </connections>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

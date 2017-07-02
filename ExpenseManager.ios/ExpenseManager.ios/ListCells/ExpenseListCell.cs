@@ -11,11 +11,18 @@ namespace ExpenseManager.ios.ListCells
 		//UIImageView Avatar;
 		UIButton EditBtn;
         ExpensesController Parent;
+        bool showEditBtn;
 		int ExpenseId;
-        public ExpenseListCell(string cellId, ExpensesController parent): base (UITableViewCellStyle.Default, cellId)
+        public ExpenseListCell(string cellId, UITableViewController parent): base (UITableViewCellStyle.Default, cellId)
         {
 			SelectionStyle = UITableViewCellSelectionStyle.Default;
-			Parent = parent;
+            if (parent is ExpensesController)
+            {
+                Parent = (ExpensesController)parent;
+                showEditBtn = true;
+            }
+            else
+                showEditBtn = false;
 
 			// setting background color of each cell 
 			//ContentView.BackgroundColor = UIColor.FromRGB(0, 114, 253);
@@ -42,8 +49,9 @@ namespace ExpenseManager.ios.ListCells
 
 			ContentView.Add(valueLable);
 			ContentView.Add(descriptionLable);
-			//ContentView.Add(Avatar);
-			ContentView.Add(EditBtn);
+            //ContentView.Add(Avatar);
+            if(showEditBtn)
+			    ContentView.Add(EditBtn);
 		}
 
 		void EditBtnClicked(object sender, EventArgs e)

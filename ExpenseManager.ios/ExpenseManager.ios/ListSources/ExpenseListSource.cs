@@ -11,11 +11,12 @@ namespace ExpenseManager.ios.ListSources
 	{
         List<Expense> Expenses;
 		string CellIdentifier = "ExpenseCell";
-        ExpensesController parentView;
+        UITableViewController parentView;
         public ExpenseListSource(List<Expense> expenses, UITableViewController viewController)
 		{
 			Expenses = expenses;
-            parentView = viewController as ExpensesController;
+
+            parentView = viewController;
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)

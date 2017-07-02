@@ -5,6 +5,7 @@ using ExpenseManager.Repository;
 using ExpenseManager.Repository.Repository;
 using ToastIOS;
 using ExpenseManager.ios.Utilities;
+using ExpenseManager.ios.ListSources;
 
 namespace ExpenseManager.ios
 {
@@ -25,6 +26,12 @@ namespace ExpenseManager.ios
                 category = new Category(CategoryId);
                 CategoryDetail_Name.Text = category.Name;
                 CategoryDetail_Plan.Text = category.Plan.ToString();
+
+                var expenses = category.GetExpenses();
+                var tableView = new UITableViewController();
+                var listSource = new ExpenseListSource(expenses, new UITableViewController());
+                CategoryDetail_ExpenseList.Source = listSource;
+                CategoryDetail_ExpenseList.ReloadData();
 			}
 			catch
 			{

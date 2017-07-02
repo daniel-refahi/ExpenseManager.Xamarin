@@ -24,6 +24,10 @@ namespace ExpenseManager.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView CategoryDetail_ExpenseList { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField CategoryDetail_Name { get; set; }
 
         [Outlet]
@@ -44,6 +48,11 @@ namespace ExpenseManager.ios
             if (CategoryDetail_Delete != null) {
                 CategoryDetail_Delete.Dispose ();
                 CategoryDetail_Delete = null;
+            }
+
+            if (CategoryDetail_ExpenseList != null) {
+                CategoryDetail_ExpenseList.Dispose ();
+                CategoryDetail_ExpenseList = null;
             }
 
             if (CategoryDetail_Name != null) {
