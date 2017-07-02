@@ -51,6 +51,18 @@ namespace ExpenseManager.Repository.Repository
 			}
         }
 
+        public List<Category> GetTopCategories()
+        {
+			using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+			{
+                var categories = db.Table<Category>().ToList();
+                var topCategories = categories.OrderByDescending(c => c.GetExpenses().Sum(e=> e.Value))
+                                              .Take(5)
+                                              .ToList();
+                return topCategories;
+			}
+        }
+
         void Seed(SQLiteConnection db)
         {
             var commute = new Category() { Name = "Commute", Plan = 200 };

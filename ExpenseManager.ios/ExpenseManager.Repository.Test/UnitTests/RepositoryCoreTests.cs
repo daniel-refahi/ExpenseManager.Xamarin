@@ -78,7 +78,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 		}
 
 		[Test]
-		public void GetExpenses_WhenCategoriesExist()
+		public void GetCategories_WhenCategoriesExist()
 		{
 			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
 			if (File.Exists(dbPath))
@@ -94,7 +94,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 		}
 
 		[Test]
-		public void GetExpenses_WhenNoCategoryExist()
+		public void GetCategories_WhenNoCategoryExist()
 		{
 			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
 			if (File.Exists(dbPath))
@@ -111,6 +111,66 @@ namespace ExpenseManager.Repository.Test.UnitTests
             var categories = repositoryCore.GetCategories();
 			Assert.IsNotNull(categories);
 			Assert.AreEqual(0, categories.Count);
+		}
+
+		[Test]
+		public void GetTopCategories_WhenNoCategoryExist()
+		{
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+			if (File.Exists(dbPath))
+				File.Delete(dbPath);
+
+			var repositoryCore = new RepositoryCore();
+			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+
+			foreach (var category in db.Table<Category>())
+			{
+				category.Delete();
+			}
+
+			var categories = repositoryCore.GetTopCategories();
+			Assert.IsNotNull(categories);
+			Assert.AreEqual(0, categories.Count);
+		}
+
+		[Test]
+		public void GetTopCategories_WhenCategoriesExist()
+		{
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+			if (File.Exists(dbPath))
+				File.Delete(dbPath);
+
+			var repositoryCore = new RepositoryCore();
+			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+
+            // delete the existing categories
+			foreach (var category in db.Table<Category>()){category.Delete();}
+
+            for (int i = 0; i < 10; i++)
+            {
+                var c = new Category();
+                c.Name = i.ToString();
+                c.Plan = i;
+                c.Upsert();
+
+                // adding expenses
+                for (int j = 0; j < i; j++)
+                {
+                    var e = new Expense();
+                    e.CategoryId = c.Id;
+                    e.Value = 10;
+                    e.Upsert();
+                }
+            }
+
+			var categories = repositoryCore.GetTopCategories();
+			Assert.IsNotNull(categories);
+            Assert.AreEqual(5, categories.Count);
+            Assert.IsTrue(categories.Any(c => c.Name == "9"));
+            Assert.IsTrue(categories.Any(c => c.Name == "8"));
+            Assert.IsTrue(categories.Any(c => c.Name == "7"));
+            Assert.IsTrue(categories.Any(c => c.Name == "6"));
+            Assert.IsTrue(categories.Any(c => c.Name == "5"));
 		}
     }
 }
