@@ -112,6 +112,7 @@
     <Compile Include="UnitTests\RepositoryCoreTests.cs" />
     <Compile Include="UnitTests\ExpenseTests.cs" />
     <Compile Include="Services\LogService.cs" />
+    <Compile Include="UnitTests\SettingsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">

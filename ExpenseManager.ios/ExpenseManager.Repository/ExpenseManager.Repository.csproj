@@ -32,7 +32,7 @@
     <Compile Include="Repository\Category.cs" />
     <Compile Include="Repository\Expense.cs" />
     <Compile Include="Repository\RepositoryCore.cs" />
-    <Compile Include="Repository\Settings.cs" />
+    <Compile Include="Repository\Setting.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">

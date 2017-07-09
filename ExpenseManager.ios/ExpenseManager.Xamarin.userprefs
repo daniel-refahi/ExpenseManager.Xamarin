@@ -1,19 +1,20 @@
-﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/MainTabBarController.cs">
+﻿<Properties StartupConfiguration="{3D84D4ED-3DCE-4060-9FA3-74869CA5D0AB}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.ios/Utilities/StaticValues.cs" Line="25" Column="77" />
-      <File FileName="ExpenseManager.ios/Controllers/ExpensesController.cs" Line="53" Column="68" />
-      <File FileName="ExpenseManager.ios/Controllers/ReportController.cs" Line="1" Column="1" />
-      <File FileName="ExpenseManager.ios/ListSources/ExpenseListSource.cs" Line="27" Column="78" />
-      <File FileName="ExpenseManager.ios/Core/Main.cs" Line="12" Column="1" />
-      <File FileName="ExpenseManager.ios/Controllers/MainTabBarController.cs" Line="55" Column="85" />
+      <File FileName="ExpenseManager.Repository/Repository/Setting.cs" Line="18" Column="27" />
+      <File FileName="ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs" Line="30" Column="13" />
+      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="64" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.ItemProperties.ExpenseManager.Repository.Test PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/Repository/Settings.cs" relfile="ExpenseManager.Repository/Repository/Settings.cs" line="59" column="1" />
+      <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/Repository/Settings.cs" relfile="ExpenseManager.Repository/Repository/Settings.cs" line="26" column="1" />
+      <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs" relfile="ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs" line="40" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
