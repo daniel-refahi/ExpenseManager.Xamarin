@@ -6,6 +6,7 @@ using ExpenseManager.ios.ListSources;
 using CoreGraphics;
 using ToastIOS;
 using ExpenseManager.ios.Utilities;
+using Microsoft.Azure.Mobile.Crashes;
 
 namespace ExpenseManager.ios
 {
@@ -14,6 +15,7 @@ namespace ExpenseManager.ios
 		int selectedExpenseId;
 		public ExpensesController(IntPtr handle) : base(handle)
 		{
+            
 		}
 
 		public override void ViewDidLoad()
@@ -28,9 +30,9 @@ namespace ExpenseManager.ios
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-			NavigationItem.Title = "Expenses List";
-			ParentViewController.Title = "Expenses";
-			var repository = new RepositoryCore();
+            NavigationItem.Title = StaticValues.ExpenseListNavigationItemTitle;
+            ParentViewController.Title = StaticValues.ExpenseListNavigationTitle;
+            var repository = new RepositoryCore(CoreUtilities.GetLogService());
 			var expenses = repository.GetExpenses();
 			var listSource = new ExpenseListSource(expenses, this);
 			TableView.Source = listSource;
@@ -40,14 +42,14 @@ namespace ExpenseManager.ios
         public void EditExpenseClicked(int expenseId, UITableViewCell sender)
 		{
 			selectedExpenseId = expenseId;
-			PerformSegue("ExpenseDetailSeque", sender);
+            PerformSegue(StaticValues.ExpenseDetailSegue, sender);
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue(segue, sender);
 
-			if (segue.Identifier == "ExpenseDetailSeque")
+            if (segue.Identifier == StaticValues.ExpenseDetailSegue)
 			{
                 var expenseDetailController = segue.DestinationViewController as ExpenseDetailController;
 			    if (expenseDetailController != null)

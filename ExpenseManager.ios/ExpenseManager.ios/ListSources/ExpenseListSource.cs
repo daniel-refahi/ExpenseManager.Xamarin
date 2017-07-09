@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ExpenseManager.ios.ListCells;
+using ExpenseManager.ios.Utilities;
 using ExpenseManager.Repository;
 using Foundation;
 using UIKit;
@@ -10,7 +11,6 @@ namespace ExpenseManager.ios.ListSources
 	public class ExpenseListSource : UITableViewSource
 	{
         List<Expense> Expenses;
-		string CellIdentifier = "ExpenseCell";
         UITableViewController parentView;
         public ExpenseListSource(List<Expense> expenses, UITableViewController viewController)
 		{
@@ -22,9 +22,9 @@ namespace ExpenseManager.ios.ListSources
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
 			tableView.RowHeight = 60;
-			var cell = tableView.DequeueReusableCell(CellIdentifier) as ExpenseListCell;
+            var cell = tableView.DequeueReusableCell(StaticValues.ExpenseCellIdentifier) as ExpenseListCell;
 			if (cell == null)
-				cell = new ExpenseListCell(CellIdentifier, parentView);
+                cell = new ExpenseListCell(StaticValues.ExpenseCellIdentifier, parentView);
 
             cell.UpdateCell(Expenses[indexPath.Row].Id, Expenses[indexPath.Row].Value, Expenses[indexPath.Row].Description);
 

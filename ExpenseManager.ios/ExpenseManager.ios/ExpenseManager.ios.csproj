@@ -95,6 +95,30 @@
     <Reference Include="ToastIOS">
       <HintPath>..\Components\ToastIOS-1.6\lib\ios-unified\ToastIOS.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Mobile">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.0.13.1\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.0.13.1\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Crashes">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Crashes.0.13.1\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.Crashes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Crashes.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Crashes.0.13.1\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.Crashes.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Analytics">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Analytics.0.13.1\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Analytics.iOS.Bindings">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Analytics.0.13.1\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.Analytics.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -108,6 +132,7 @@
     <Folder Include="Core\" />
     <Folder Include="Assets\" />
     <Folder Include="ListCells\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Core\LaunchScreen.storyboard" />
@@ -148,15 +173,25 @@
     <Compile Include="Controllers\CategoryDetailController.designer.cs">
       <DependentUpon>CategoryDetailController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportController.cs" />
-    <Compile Include="ReportController.designer.cs">
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReportController.designer.cs">
       <DependentUpon>ReportController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\SettingController.cs" />
+    <Compile Include="Controllers\SettingController.designer.cs">
+      <DependentUpon>SettingController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\CoreUtilities.cs" />
+    <Compile Include="Services\LogService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">
       <Project>{0F02C4F7-3C0B-4D29-A2AF-ECC70EC8B905}</Project>
       <Name>ExpenseManager.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExpenseManage.Common\ExpenseManage.Common.csproj">
+      <Project>{C20E7BE0-66EB-474E-B088-F8275A846272}</Project>
+      <Name>ExpenseManage.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

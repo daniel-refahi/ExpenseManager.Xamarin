@@ -1,9 +1,13 @@
-﻿<Properties StartupConfiguration="{3D84D4ED-3DCE-4060-9FA3-74869CA5D0AB}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository.Test/UnitTests/RepositoryCoreTests.cs">
+﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/MainTabBarController.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="59" Column="23" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/RepositoryCoreTests.cs" Line="116" Column="9" />
+      <File FileName="ExpenseManager.ios/Utilities/StaticValues.cs" Line="25" Column="77" />
+      <File FileName="ExpenseManager.ios/Controllers/ExpensesController.cs" Line="53" Column="68" />
+      <File FileName="ExpenseManager.ios/Controllers/ReportController.cs" Line="1" Column="1" />
+      <File FileName="ExpenseManager.ios/ListSources/ExpenseListSource.cs" Line="27" Column="78" />
+      <File FileName="ExpenseManager.ios/Core/Main.cs" Line="12" Column="1" />
+      <File FileName="ExpenseManager.ios/Controllers/MainTabBarController.cs" Line="55" Column="85" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

@@ -18,3 +18,5 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/obj/iPhoneSimulator/Debug/ExpenseManager.Repository.Test.pdb
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/ExpenseManager.Repository.Test.exe.config
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/obj/iPhoneSimulator/Debug/ExpenseManager.Repository.Test.csproj.ExpenseManager.Repository.Test.exe.config
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/ExpenseManage.Common.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/bin/iPhoneSimulator/Debug/ExpenseManage.Common.pdb

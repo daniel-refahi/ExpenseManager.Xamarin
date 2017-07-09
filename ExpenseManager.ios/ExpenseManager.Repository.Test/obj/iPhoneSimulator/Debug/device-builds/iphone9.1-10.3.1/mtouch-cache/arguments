@@ -23,6 +23,8 @@
 	-r \
 	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/packages/Castle.Core.4.0.0/lib/netstandard1.3/Castle.Core.dll \
 	-r \
+	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManage.Common/bin/Debug/ExpenseManage.Common.dll \
+	-r \
 	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/bin/Debug/ExpenseManager.Repository.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/MonoTouch.NUnitLite.dll \
@@ -310,6 +312,8 @@
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Facades/System.Xml.Xsl.Primitives.dll \
 	-r \
 	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/packages/Castle.Core.4.0.0/lib/netstandard1.3/Castle.Core.dll \
+	-r \
+	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManage.Common/bin/Debug/ExpenseManage.Common.dll \
 	-r \
 	/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/bin/Debug/ExpenseManager.Repository.dll \
 	-r \

@@ -18,7 +18,8 @@
                     <connections>
                         <segue id="190" destination="136" kind="relationship" relationship="viewControllers"/>
                         <segue id="441" destination="127" kind="relationship" relationship="viewControllers"/>
-                        <segue id="1197" destination="1147" kind="relationship" relationship="viewControllers"/>
+                        <segue id="1252" destination="1218" kind="relationship" relationship="viewControllers"/>
+                        <segue id="1388" destination="1257" kind="relationship" relationship="viewControllers"/>
                     </connections>
                     <navigationItem title="Title" id="395" key="navigationItem"/>
                 </tabBarController>
@@ -335,7 +336,45 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1153" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1930" y="961"/>
+            <point key="canvasLocation" x="-2401" y="1025"/>
+        </scene>
+        <scene sceneID="1217">
+            <objects>
+                <viewController id="1218" sceneMemberID="viewController" customClass="ReportController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1215"/>
+                        <viewControllerLayoutGuide type="bottom" id="1216"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1219">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="1251"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1220" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1281" y="1643"/>
+        </scene>
+        <scene sceneID="1256">
+            <objects>
+                <viewController id="1257" sceneMemberID="viewController" customClass="SettingController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1254"/>
+                        <viewControllerLayoutGuide type="bottom" id="1255"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1258">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="1320"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1259" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1280" y="-585"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

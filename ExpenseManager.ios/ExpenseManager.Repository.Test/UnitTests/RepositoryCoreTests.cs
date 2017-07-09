@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using ExpenseManager.Repository.Repository;
+using ExpenseManager.Repository.Test.Services;
 using NUnit.Framework;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinIOS;
@@ -19,7 +20,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
             if (File.Exists(_dbPath))
                 File.Delete(_dbPath);
             
-            var core = new RepositoryCore();
+            var core = new RepositoryCore(new LogService());
             core.CreateDataBase(_dbPath, new SQLitePlatformIOS());
 
             Assert.IsTrue(File.Exists(_dbPath));
@@ -31,7 +32,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			if (File.Exists(_dbPath))
 				File.Delete(_dbPath);
 
-			var core = new RepositoryCore();
+			var core = new RepositoryCore(new LogService());
 			core.CreateDataBase(_dbPath, new SQLitePlatformIOS());
 
             var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
@@ -47,7 +48,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			if (File.Exists(dbPath))
 				File.Delete(dbPath);
 
-			var repositoryCore = new RepositoryCore();
+			var repositoryCore = new RepositoryCore(new LogService());
 			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
             var category = db.Table<Category>().First();
             db.Insert(new Expense(){ CategoryId = category.Id, Value = 230, Description="for unit test"});
@@ -64,7 +65,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			if (File.Exists(dbPath))
 				File.Delete(dbPath);
 
-			var repositoryCore = new RepositoryCore();
+			var repositoryCore = new RepositoryCore(new LogService());
 			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
 
             foreach (var expense in db.Table<Expense>())
@@ -84,7 +85,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			if (File.Exists(dbPath))
 				File.Delete(dbPath);
 
-			var repositoryCore = new RepositoryCore();
+			var repositoryCore = new RepositoryCore(new LogService());
 			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
 			var category = db.Table<Category>().First();
 
@@ -100,7 +101,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			if (File.Exists(dbPath))
 				File.Delete(dbPath);
 
-			var repositoryCore = new RepositoryCore();
+			var repositoryCore = new RepositoryCore(new LogService());
 			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
 
 			foreach (var category in db.Table<Category>())
@@ -120,7 +121,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			if (File.Exists(dbPath))
 				File.Delete(dbPath);
 
-			var repositoryCore = new RepositoryCore();
+			var repositoryCore = new RepositoryCore(new LogService());
 			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
 
 			foreach (var category in db.Table<Category>())
@@ -140,7 +141,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			if (File.Exists(dbPath))
 				File.Delete(dbPath);
 
-			var repositoryCore = new RepositoryCore();
+			var repositoryCore = new RepositoryCore(new LogService());
 			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
 
             // delete the existing categories

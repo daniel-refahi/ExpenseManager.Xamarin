@@ -3,6 +3,7 @@ using System;
 using UIKit;
 using ExpenseManager.Repository.Repository;
 using ExpenseManager.ios.ListSources;
+using ExpenseManager.ios.Utilities;
 
 namespace ExpenseManager.ios
 {
@@ -26,9 +27,9 @@ namespace ExpenseManager.ios
 		public override void ViewDidAppear(bool animated)
 		{
 			base.ViewDidAppear(animated);
-			NavigationItem.Title = "Categories List";
-			ParentViewController.Title = "Categories";
-			var repository = new RepositoryCore();
+            NavigationItem.Title = StaticValues.CategoryListNavigationItemTitle;
+            ParentViewController.Title = StaticValues.CategoryListNavigationTitle;
+            var repository = new RepositoryCore(CoreUtilities.GetLogService());
 			var categories = repository.GetCategories();
             var listSource = new CategoryListSource(categories, this);
 			TableView.Source = listSource;
@@ -38,14 +39,14 @@ namespace ExpenseManager.ios
 		public void EditCategoryClicked(int categoryId, UITableViewCell sender)
 		{
             selectedCategoryId = categoryId;
-			PerformSegue("CategoryDetailSegue", sender);
+            PerformSegue(StaticValues.CategoryDetailSegue, sender);
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue(segue, sender);
 
-			if (segue.Identifier == "CategoryDetailSegue")
+            if (segue.Identifier == StaticValues.CategoryDetailSegue)
 			{
                 var categoryDetailController = segue.DestinationViewController as CategoryDetailController;
 				if (categoryDetailController != null)

@@ -1,0 +1,5 @@
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManage.Common/bin/Debug/ExpenseManage.Common.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManage.Common/bin/Debug/ExpenseManage.Common.pdb
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManage.Common/obj/Debug/ExpenseManage.Common.csproj.CoreCompileInputs.cache
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManage.Common/obj/Debug/ExpenseManage.Common.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManage.Common/obj/Debug/ExpenseManage.Common.pdb

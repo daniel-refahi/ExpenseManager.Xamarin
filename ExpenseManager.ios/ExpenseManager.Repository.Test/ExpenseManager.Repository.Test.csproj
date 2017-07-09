@@ -111,16 +111,22 @@
     <Compile Include="UnitTests\CategoryTests.cs" />
     <Compile Include="UnitTests\RepositoryCoreTests.cs" />
     <Compile Include="UnitTests\ExpenseTests.cs" />
+    <Compile Include="Services\LogService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">
       <Project>{0F02C4F7-3C0B-4D29-A2AF-ECC70EC8B905}</Project>
       <Name>ExpenseManager.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExpenseManage.Common\ExpenseManage.Common.csproj">
+      <Project>{C20E7BE0-66EB-474E-B088-F8275A846272}</Project>
+      <Name>ExpenseManage.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="UnitTests\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

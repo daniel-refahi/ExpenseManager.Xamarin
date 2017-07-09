@@ -4,6 +4,14 @@ using ExpenseManager.Repository.Repository;
 using Foundation;
 using SQLite.Net.Platform.XamarinIOS;
 using UIKit;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
+using System.ComponentModel;
+using Microsoft.Practices.Unity;
+using ExpenseManage.Common;
+using ExpenseManager.ios.Services;
+using ExpenseManager.ios.Utilities;
 
 namespace ExpenseManager.ios
 {
@@ -20,6 +28,8 @@ namespace ExpenseManager.ios
             set;
         }
 
+        public static IContainer Container { get; set; }
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             // Override point for customization after application launch.
@@ -28,10 +38,20 @@ namespace ExpenseManager.ios
             // Code to start the Xamarin Test Cloud Agent
             #if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
-            #endif
+#endif
 
+            MobileCenter.Start("784c62e5-d8ec-4c2b-9d16-751016a6b84e",typeof(Analytics), typeof(Crashes));
+			Crashes.GetErrorAttachments = (ErrorReport report) =>
+			{
+				return new ErrorAttachmentLog[]
+				{
+                    ErrorAttachmentLog.AttachmentWithText(CoreUtilities.GetLogService().GetLogs(), "events.txt"),
+				};
+			};
+
+            CoreUtilities.GetLogService().Log(nameof(AppDelegate.FinishedLaunching), "right after errors attached");
 			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-            var repositoryCore = new RepositoryCore();
+            var repositoryCore = new RepositoryCore(CoreUtilities.GetLogService());
             if (File.Exists(dbPath))
                 repositoryCore.SetUpDataBaseConnection(dbPath, new SQLitePlatformIOS());
             else 

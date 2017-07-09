@@ -8,3 +8,5 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/obj/Debug/ExpenseManager.Repository.csproj.CoreCompileInputs.cache
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/obj/Debug/ExpenseManager.Repository.dll
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/obj/Debug/ExpenseManager.Repository.pdb
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/bin/Debug/ExpenseManage.Common.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/bin/Debug/ExpenseManage.Common.pdb

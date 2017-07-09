@@ -16,7 +16,7 @@ namespace ExpenseManager.ios
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            selectedTab = "Expenses";
+            selectedTab = StaticValues.ExpenseListNavigationTitle;
 
             HandleAddBtn();
         }
@@ -26,36 +26,23 @@ namespace ExpenseManager.ios
 			NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
 				{
-                    switch(selectedTab)
-	                {
-                        case "Expenses":
-                            AddExpense();
-                            break;
-                        case "Categories":
-                            AddCategory();
-                            break;
-	                }
+                    if(selectedTab == StaticValues.ExpenseListNavigationTitle)
+                        AddExpense();
+                    else if (selectedTab == StaticValues.CategoryListNavigationTitle)
+                        AddCategory();
 				})
 			, true);
             
 			ViewControllerSelected += (sender, e) =>
 			{
-				switch (TabBar.SelectedItem.Title)
-				{
-					case "Expenses":
-                        selectedTab = "Expenses";
-						break;
-					case "Categories":
-                        selectedTab = "Categories";
-                        break;
-				}
+                selectedTab = TabBar.SelectedItem.Title;
 			};
         }
 
         void AddExpense()
         {
 			ExpenseDetailController expenseDetailController =
-								Storyboard.InstantiateViewController("ExpenseDetail") as ExpenseDetailController;
+                Storyboard.InstantiateViewController(StaticValues.ExpenseDetailView) as ExpenseDetailController;
 			if (expenseDetailController != null)
 			{
 				NavigationController.PushViewController(expenseDetailController, true);
@@ -65,7 +52,7 @@ namespace ExpenseManager.ios
 		void AddCategory()
 		{
             CategoryDetailController categoryDetailController =
-								Storyboard.InstantiateViewController("CategoryDetail") as CategoryDetailController;
+                Storyboard.InstantiateViewController(StaticValues.CategoryDetailView) as CategoryDetailController;
 			if (categoryDetailController != null)
 			{
 				NavigationController.PushViewController(categoryDetailController, true);

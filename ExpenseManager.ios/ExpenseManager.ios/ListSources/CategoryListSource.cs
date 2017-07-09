@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ExpenseManager.ios.ListCells;
+using ExpenseManager.ios.Utilities;
 using ExpenseManager.Repository;
 using Foundation;
 using UIKit;
@@ -11,7 +12,6 @@ namespace ExpenseManager.ios.ListSources
 	public class CategoryListSource:UITableViewSource
 	{
         List<Category> categories;
-		string CellIdentifier = "CategoryCell";
         CategoriesController parentView;
         public CategoryListSource(List<Category> categories, UITableViewController viewController)
 		{
@@ -22,9 +22,9 @@ namespace ExpenseManager.ios.ListSources
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
 			tableView.RowHeight = 60;
-            var cell = tableView.DequeueReusableCell(CellIdentifier) as CategoryListCell;
+            var cell = tableView.DequeueReusableCell(StaticValues.CategoryCellIdentifier) as CategoryListCell;
 			if (cell == null)
-				cell = new CategoryListCell(CellIdentifier, parentView);
+                cell = new CategoryListCell(StaticValues.CategoryCellIdentifier, parentView);
 
             var totalExpenses = categories[indexPath.Row].GetExpenses().Sum(e=> e.Value);
             cell.UpdateCell(categories[indexPath.Row].Id, categories[indexPath.Row].Name, totalExpenses);

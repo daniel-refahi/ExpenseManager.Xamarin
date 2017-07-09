@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using ExpenseManager.Repository.Repository;
+using ExpenseManager.Repository.Test.Services;
 using NUnit.Framework;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinIOS;
@@ -18,7 +19,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			if (File.Exists(dbPath))
 				File.Delete(dbPath);
             
-			var repositoryCore = new RepositoryCore();
+			var repositoryCore = new RepositoryCore(new LogService());
 			_db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
         }
 

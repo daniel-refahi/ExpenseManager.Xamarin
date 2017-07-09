@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ExpenseManage.Common;
 using ExpenseManager.Repository.Repository;
 using SQLite.Net;
 using SQLite.Net.Attributes;
@@ -18,52 +19,89 @@ namespace ExpenseManager.Repository
 
         public Category()
         {
+            RepositoryCore.Logger.Log("category ctor without id");
             Id = -1;
         }
 
         public Category(int id)
         {
-			using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
-			{
-				var category = db.Find<Category>(id);
-				Id = category.Id;
-				Name = category.Name;
-				Plan = category.Plan;
+			try
+            {
+                RepositoryCore.Logger.Log("category ctor with id");
+                using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+                {
+                    var category = db.Find<Category>(id);
+                    Id = category.Id;
+                    Name = category.Name;
+                    Plan = category.Plan;
+                }
+			} 
+            catch (Exception ex) 
+            {
+                RepositoryCore.Logger.Log("category ctor with id", ex.Message, LogType.Exception);
+                throw ex;
 			}
         }
 
         public List<Expense> GetExpenses ()
         {
-            using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+            try
             {
-                var expenses = db.Table<Expense>().Where(e => e.CategoryId == Id);
+                RepositoryCore.Logger.Log(nameof(Category.GetExpenses));
+                using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+                {
+                    var expenses = db.Table<Expense>().Where(e => e.CategoryId == Id);
 
-                return expenses == null ? new List<Expense>() : expenses.ToList();
+                    return expenses == null ? new List<Expense>() : expenses.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                RepositoryCore.Logger.Log(nameof(Category.GetExpenses), ex.Message, LogType.Exception);
+                throw ex;
             }
         }
 
         public void Upsert()
         {
-            using(var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+            try
             {
-				Validate(db);
-				if (Id == -1)
-					db.Insert(this);
-				else
-					db.Update(this);   
+                RepositoryCore.Logger.Log(nameof(Category.Upsert), ToString());
+                using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+                {
+                    Validate(db);
+                    if (Id == -1)
+                        db.Insert(this);
+                    else
+                        db.Update(this);
+                }
+            }
+            catch (Exception ex) 
+            {
+                RepositoryCore.Logger.Log(nameof(Category.Upsert), ex.Message, LogType.Exception);
+                throw ex;
             }
         }
 
         public void Delete()
 		{
-            using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
+            try
             {
-                foreach (var expense in GetExpenses())
+                RepositoryCore.Logger.Log(nameof(Category.Delete), ToString());
+                using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
                 {
-                    expense.Delete();
-                }
+                    foreach (var expense in GetExpenses())
+                    {
+                        expense.Delete();
+                    }
 
-                db.Delete(this);
+                    db.Delete(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                RepositoryCore.Logger.Log(nameof(Category.Delete), ex.Message, LogType.Exception);
+                throw ex;
             }
         }
 
@@ -77,6 +115,11 @@ namespace ExpenseManager.Repository
 				throw new InvalidOperationException("Category name can't be more than 100 character.");
 			if (db.Table<Category>().Where(c => c.Name == Name).FirstOrDefault() != null)
 				throw new InvalidOperationException("Category name already exists.");
+        }
+
+        public override string ToString()
+        {
+            return string.Format("[Category: Id={0}, Name={1}, Plan={2}]", Id, Name, Plan);
         }
     }
 }

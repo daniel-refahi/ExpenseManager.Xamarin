@@ -37,7 +37,7 @@ namespace ExpenseManager.ios
                 expense = new Expense();
             }
 
-            categories = (new RepositoryCore()).GetCategories();
+            categories = (new RepositoryCore(CoreUtilities.GetLogService())).GetCategories();
             var categoryNames = categories.Select(c => c.Name).ToList();
             var categorySelectorModel = new CategorySelectorModel(categoryNames);
 

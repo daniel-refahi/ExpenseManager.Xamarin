@@ -45,15 +45,8 @@ namespace ExpenseManager.ios
 
         void CategoryDetail_Delete_Clicked(object sender, EventArgs e)
         {
-			try
-			{
-                category.Delete();
-				NavigationController.PopViewController(true);
-			}
-			catch
-			{
-				Toast.MakeText("Something went wrong!").SetDuration(StaticValues.ToastDuration).Show();
-			}
+			category.Delete();
+			NavigationController.PopViewController(true);
         }
 
         void CategoryDetail_Save_Clicked(object sender, EventArgs e)

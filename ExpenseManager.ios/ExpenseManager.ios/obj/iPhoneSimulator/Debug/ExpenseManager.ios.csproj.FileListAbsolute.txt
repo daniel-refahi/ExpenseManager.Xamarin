@@ -20,3 +20,16 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/expense_selected.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/expense_unselected.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Azure.Mobile.Analytics.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Azure.Mobile.Analytics.iOS.Bindings.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Azure.Mobile.Crashes.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Azure.Mobile.Crashes.iOS.Bindings.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Azure.Mobile.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Azure.Mobile.iOS.Bindings.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/ExpenseManage.Common.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Practices.ServiceLocation.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Practices.Unity.dll
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/ExpenseManage.Common.pdb
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Practices.ServiceLocation.pdb
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Practices.ServiceLocation.xml
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Microsoft.Practices.Unity.xml
