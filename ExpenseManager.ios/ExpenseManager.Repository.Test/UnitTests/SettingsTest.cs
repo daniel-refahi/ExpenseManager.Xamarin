@@ -63,6 +63,9 @@ namespace ExpenseManager.Repository.Test.UnitTests
             Assert.AreEqual(9, newSettings.CurrentYear);
             Assert.AreEqual(8, newSettings.CurrentMonth);
             Assert.AreNotEqual(-1, newSettings.Id);
+
+            Assert.AreEqual(9, _repository.GetAppSettings().CurrentYear);
+            Assert.AreEqual(8, _repository.GetAppSettings().CurrentMonth);
 		}
 
         [Test]
@@ -84,6 +87,9 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			Assert.AreEqual(1, newSettings.CurrentMonth);
             Assert.AreEqual(2, newSettings.CurrentYear);
 			Assert.AreNotEqual(-1, newSettings.Id);
+
+            Assert.AreEqual(2, _repository.GetAppSettings().CurrentYear);
+            Assert.AreEqual(1, _repository.GetAppSettings().CurrentMonth);
 		}
     }
 }

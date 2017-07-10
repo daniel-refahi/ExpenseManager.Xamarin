@@ -1,10 +1,12 @@
 ﻿<Properties StartupConfiguration="{3D84D4ED-3DCE-4060-9FA3-74869CA5D0AB}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository/Repository/Setting.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.Repository/Repository/Setting.cs" Line="18" Column="27" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs" Line="30" Column="13" />
-      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="64" Column="33" />
+      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="27" Column="21" />
+      <File FileName="ExpenseManager.Repository.Test/UnitTests/CategoryTests.cs" Line="32" Column="9" />
+      <File FileName="ExpenseManager.Repository.Test/UnitTests/RepositoryCoreTests.cs" Line="209" Column="60" />
+      <File FileName="ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs" Line="12" Column="18" />
+      <File FileName="ExpenseManager.Repository/Repository/Setting.cs" Line="32" Column="22" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -13,7 +15,6 @@
     <BreakpointStore>
       <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/Repository/Settings.cs" relfile="ExpenseManager.Repository/Repository/Settings.cs" line="59" column="1" />
       <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/Repository/Settings.cs" relfile="ExpenseManager.Repository/Repository/Settings.cs" line="26" column="1" />
-      <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs" relfile="ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs" line="40" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

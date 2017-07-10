@@ -36,6 +36,7 @@ namespace ExpenseManager.Repository
                     else
                         db.Update(this);
                 }
+                RepositoryCore.SetCurrentMonth(CurrentYear, CurrentMonth);
 			} 
             catch (Exception ex) 
             {

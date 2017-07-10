@@ -24,7 +24,7 @@ namespace ExpenseManager.Repository.Repository
 
         public static int CurrentYear { get; internal set; } = DateTime.Now.Year;
         public static int CurrentMonth { get; internal set; } = DateTime.Now.Month;
-        public void SetCurrentMonth(int year, int month)
+        public static void SetCurrentMonth(int year, int month)
         {
             CurrentMonth = month;
             CurrentYear = year;

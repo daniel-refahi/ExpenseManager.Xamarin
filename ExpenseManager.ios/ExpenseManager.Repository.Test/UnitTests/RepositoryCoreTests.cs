@@ -26,7 +26,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
             Assert.IsTrue(File.Exists(_dbPath));
         }
 
-		[Test]
+		[Test]  
 		public void CreateDataBase_IfDbDoesNotExist_CheckCategoryTable()
 		{
 			if (File.Exists(_dbPath))
@@ -173,5 +173,45 @@ namespace ExpenseManager.Repository.Test.UnitTests
             Assert.IsTrue(categories.Any(c => c.Name == "6"));
             Assert.IsTrue(categories.Any(c => c.Name == "5"));
 		}
+
+        [Test]
+        public void GetAppSettings_WhenSettingHasSetAlready()
+        {
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+			if (File.Exists(dbPath))
+				File.Delete(dbPath);
+
+			var repositoryCore = new RepositoryCore(new LogService());
+			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+            var setting = new Setting();
+            setting.CurrentYear = 2013;
+            setting.CurrentMonth = 7;
+            setting.Upsert();
+
+            var currentSetting = repositoryCore.GetAppSettings();
+            Assert.AreEqual(setting.CurrentMonth, currentSetting.CurrentMonth);
+            Assert.AreEqual(setting.CurrentYear, currentSetting.CurrentYear);
+        }
+
+		[Test]
+		public void GetAppSettings_WhenSettingHasNotSet()
+		{
+			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
+			if (File.Exists(dbPath))
+				File.Delete(dbPath);
+
+			var repositoryCore = new RepositoryCore(new LogService());
+			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+
+			var currentSetting = repositoryCore.GetAppSettings();
+            Assert.IsNotNull(currentSetting);
+            Assert.AreNotEqual(0, currentSetting.CurrentMonth);
+            Assert.AreNotEqual(0,currentSetting.CurrentYear);
+		}
     }
 }
+
+
+
+
+
