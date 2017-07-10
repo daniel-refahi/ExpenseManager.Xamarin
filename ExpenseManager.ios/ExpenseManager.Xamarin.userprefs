@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{3D84D4ED-3DCE-4060-9FA3-74869CA5D0AB}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository/Repository/Setting.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="27" Column="21" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/CategoryTests.cs" Line="32" Column="9" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/RepositoryCoreTests.cs" Line="209" Column="60" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/SettingsTest.cs" Line="12" Column="18" />
-      <File FileName="ExpenseManager.Repository/Repository/Setting.cs" Line="32" Column="22" NotebookId="1" />
+      <File FileName="ExpenseManager.Repository/Repository/Expense.cs" Line="126" Column="1" />
+      <File FileName="ExpenseManager.Repository/Repository/Category.cs" Line="57" Column="45" />
+      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="75" Column="69" />
+      <File FileName="ExpenseManager.Repository.Test/UnitTests/RepositoryCoreTests.cs" Line="13" Column="18" />
+      <File FileName="ExpenseManager.Repository.Test/UnitTests/CategoryTests.cs" Line="262" Column="31" />
+      <File FileName="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs" Line="69" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

@@ -77,9 +77,10 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			};
             expense.Upsert();
 
-			var e = _db.Get<Expense>(expense.Id);
+            var e = new Expense(expense.Id);
 			Assert.AreEqual(e.Description, expense.Description);
 			Assert.AreEqual(e.Value, expense.Value);
+            Assert.AreEqual(e.ExpenseDate, expense.ExpenseDate);
 		}
 
 		[Test]
@@ -114,9 +115,10 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			expense.Value = 100;
             expense.Upsert();
 
-			var e = _db.Get<Expense>(expense.Id);
+			var e = new Expense(expense.Id);
 			Assert.AreEqual(e.Description, expense.Description);
 			Assert.AreEqual(e.Value, expense.Value);
+            Assert.AreEqual(e.ExpenseDate, expense.ExpenseDate);
 		}
 
 		[Test]
@@ -135,6 +137,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
             Assert.AreEqual(expense.CategoryId, loadedExpense.CategoryId);
             Assert.AreEqual(expense.Description, loadedExpense.Description);
             Assert.AreEqual(expense.Value, loadedExpense.Value);
+            Assert.AreEqual(expense.ExpenseDate, loadedExpense.ExpenseDate);
 		}
 
 		[Test]

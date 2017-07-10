@@ -75,7 +75,13 @@ namespace ExpenseManager.Repository.Repository
                 Logger.Log(nameof(RepositoryCore), "Get Expenses.");
                 using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
                 {
-                    var expenses = db.Table<Expense>().ToList();
+                    var startDate = new DateTime(CurrentYear, CurrentMonth, 1).ToUniversalTime();
+					var endDate = startDate.AddMonths(1).ToUniversalTime();
+
+                    var expenses = db.Table<Expense>()
+									 .Where(e => e.ExpenseDate >= startDate &&
+											     e.ExpenseDate < endDate)
+                                     .ToList();
 
                     Logger.Log(nameof(RepositoryCore), "Get Expenses done.");
                     return expenses;

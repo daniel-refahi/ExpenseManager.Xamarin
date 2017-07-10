@@ -50,7 +50,12 @@ namespace ExpenseManager.Repository
                 RepositoryCore.Logger.Log(nameof(Category.GetExpenses));
                 using (var db = new SQLiteConnection(DBConnectionString.PLATFORM, DBConnectionString.DBPATH))
                 {
-                    var expenses = db.Table<Expense>().Where(e => e.CategoryId == Id);
+                    var startDate = new DateTime(RepositoryCore.CurrentYear, RepositoryCore.CurrentMonth, 1).ToUniversalTime();
+                    var endDate = startDate.AddMonths(1).ToUniversalTime();
+                    var expenses = db.Table<Expense>()
+                                     .Where(e => e.CategoryId == Id && 
+                                            e.ExpenseDate >= startDate && 
+                                            e.ExpenseDate < endDate);
 
                     return expenses == null ? new List<Expense>() : expenses.ToList();
                 }

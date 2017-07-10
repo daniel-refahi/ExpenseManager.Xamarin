@@ -40,6 +40,7 @@ namespace ExpenseManager.Repository
                     Longitude = expense.Longitude;
                     Latitude = expense.Latitude;
                     CategoryId = expense.CategoryId;
+                    ExpenseDate = expense.ExpenseDate.ToLocalTime();
                 }
             }
 			catch(Exception ex)

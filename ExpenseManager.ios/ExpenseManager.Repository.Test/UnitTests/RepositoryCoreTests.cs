@@ -52,10 +52,13 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
             var category = db.Table<Category>().First();
             db.Insert(new Expense(){ CategoryId = category.Id, Value = 230, Description="for unit test"});
+            db.Insert(new Expense() { CategoryId = category.Id, Value = 230, ExpenseDate = DateTime.Now.AddMonths(-1) });
+            db.Insert(new Expense() { CategoryId = category.Id, Value = 230, ExpenseDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 1, 1, 1) });
 
-            var expeneses = repositoryCore.GetExpenses();
-            Assert.IsNotNull(expeneses);
-            Assert.AreEqual(230, expeneses.Where(e => e.Description == "for unit test").First().Value);
+			var expenses = repositoryCore.GetExpenses();
+            Assert.IsNotNull(expenses);
+            Assert.AreEqual(1, expenses.Count);
+            Assert.AreEqual(230, expenses.Where(e => e.Description == "for unit test").First().Value);
         }
 
 		[Test]
@@ -193,7 +196,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
             Assert.AreEqual(setting.CurrentYear, currentSetting.CurrentYear);
         }
 
-		[Test]
+        [Test]
 		public void GetAppSettings_WhenSettingHasNotSet()
 		{
 			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");

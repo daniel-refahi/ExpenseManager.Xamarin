@@ -21,6 +21,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
             
 			var repositoryCore = new RepositoryCore(new LogService());
 			_db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+            RepositoryCore.SetCurrentMonth(DateTime.Now.Year, DateTime.Now.Month);
         }
 
         [Test][ExpectedException(typeof(InvalidOperationException))]
@@ -241,6 +242,32 @@ namespace ExpenseManager.Repository.Test.UnitTests
 		}
 
 		[Test]
+		public void GetExpenses_Valid()
+		{
+			DbSetup();
+			var category = new Category(){Name = "some name",Plan = 10};
+			category.Upsert();
+
+			var e1 = new Expense(){CategoryId = category.Id,Value = 20};
+			e1.Upsert();
+
+			var e2 = new Expense(){CategoryId = category.Id,Value = 25};
+			e2.Upsert();
+
+            var e3 = new Expense(){CategoryId = category.Id,Value = 25, ExpenseDate = DateTime.Now.AddMonths(-2)};
+			e3.Upsert();
+
+            // to test the utc issue with sqlite
+            var e4 = new Expense() { CategoryId = category.Id, Value = 25, ExpenseDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 1,1,1) };
+			e4.Upsert();
+
+			var expenses = category.GetExpenses();
+			Assert.AreEqual(2, expenses.Count);
+            Assert.AreEqual(20, expenses[0].Value);
+			Assert.AreEqual(25, expenses[1].Value);
+		}
+
+		[Test]
 		public void Ctor_Valid()
 		{
 			DbSetup();
@@ -254,36 +281,6 @@ namespace ExpenseManager.Repository.Test.UnitTests
             var loadedCategory = new Category(category.Id);
             Assert.AreEqual(category.Name, loadedCategory.Name);
             Assert.AreEqual(category.Plan, loadedCategory.Plan);
-		}
-
-		[Test]
-		public void GetExpenses_Valid()
-		{
-			DbSetup();
-			var category = new Category()
-			{
-				Name = "some name",
-				Plan = 10
-			};
-			category.Upsert();
-
-            var e1 = new Expense() 
-            {
-                CategoryId = category.Id,
-                Value = 20
-            };
-            e1.Upsert();
-
-			var e2 = new Expense()
-			{
-				CategoryId = category.Id,
-				Value = 25
-			};
-            e2.Upsert();
-
-			var expenses = category.GetExpenses();
-            Assert.AreEqual(2,expenses.Count);
-            Assert.AreEqual(25,expenses[1].Value);
 		}
     }
 }
