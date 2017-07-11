@@ -11,17 +11,20 @@ namespace ExpenseManager.Repository.Test.UnitTests
 	[TestFixture]
 	public class ExpenseTests
 	{
-		SQLiteConnection _db;
+		string _dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
 		int _categoryId;
 
 		public void DbSetup()
 		{
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
+			if (File.Exists(_dbPath))
+				File.Delete(_dbPath);
 
-			var repositoryCore = new RepositoryCore(new LogService());
-			_db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+			var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
+			db.CreateTable<Category>();
+			db.CreateTable<Expense>();
+			db.CreateTable<Setting>();
+
+            RepositoryCore.SetCurrentMonth(DateTime.Now.Year, DateTime.Now.Month);
 
 			var category = new Category()
 			{
@@ -154,7 +157,8 @@ namespace ExpenseManager.Repository.Test.UnitTests
             var expenseId = expense.Id;
 			expense.Delete();
 
-            var deletedExpense = _db.Table<Expense>().Where(e => e.Id == expenseId).FirstOrDefault();
+            var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
+            var deletedExpense = db.Table<Expense>().Where(e => e.Id == expenseId).FirstOrDefault();
 			Assert.IsNull(deletedExpense);
 		}
 

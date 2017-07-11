@@ -14,6 +14,19 @@ namespace ExpenseManager.Repository.Test.UnitTests
     {
         string _dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
 
+		public void DbSetup()
+		{
+			if (File.Exists(_dbPath))
+				File.Delete(_dbPath);
+
+			var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
+			db.CreateTable<Category>();
+			db.CreateTable<Expense>();
+			db.CreateTable<Setting>();
+
+			RepositoryCore.SetCurrentMonth(DateTime.Now.Year, DateTime.Now.Month);
+		}
+
         [Test]
         public void CreateDataBase_IfDbDoesNotExist_CheckDb()
         {
@@ -44,37 +57,31 @@ namespace ExpenseManager.Repository.Test.UnitTests
         [Test]
         public void GetExpenses_WhenExpensesExist()
         {
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
-
+            DbSetup();
+            var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
 			var repositoryCore = new RepositoryCore(new LogService());
-			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
-            var category = db.Table<Category>().First();
-            db.Insert(new Expense(){ CategoryId = category.Id, Value = 230, Description="for unit test"});
+			var category = new Category();
+			category.Name = "test";
+			category.Plan = 45;
+			category.Upsert();
+
+            var beginingOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 1, 1, 1);
+			db.Insert(new Expense() { CategoryId = category.Id, Value = 230, Description="for unit test"});
             db.Insert(new Expense() { CategoryId = category.Id, Value = 230, ExpenseDate = DateTime.Now.AddMonths(-1) });
-            db.Insert(new Expense() { CategoryId = category.Id, Value = 230, ExpenseDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 1, 1, 1) });
+            db.Insert(new Expense() { CategoryId = category.Id, Value = 230, ExpenseDate = beginingOfMonth });
+            db.Insert(new Expense() { CategoryId = category.Id, Value = 230, ExpenseDate = beginingOfMonth.AddHours(-2) });
 
 			var expenses = repositoryCore.GetExpenses();
             Assert.IsNotNull(expenses);
-            Assert.AreEqual(1, expenses.Count);
+            Assert.AreEqual(2, expenses.Count);
             Assert.AreEqual(230, expenses.Where(e => e.Description == "for unit test").First().Value);
         }
 
 		[Test]
 		public void GetExpenses_WhenNoExpensesExist()
 		{
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
-
+			DbSetup();
 			var repositoryCore = new RepositoryCore(new LogService());
-			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
-
-            foreach (var expense in db.Table<Expense>())
-            {
-                expense.Delete();
-            }
 
             var expeneses = repositoryCore.GetExpenses();
 			Assert.IsNotNull(expeneses);
@@ -84,33 +91,29 @@ namespace ExpenseManager.Repository.Test.UnitTests
 		[Test]
 		public void GetCategories_WhenCategoriesExist()
 		{
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
-
+			DbSetup();
 			var repositoryCore = new RepositoryCore(new LogService());
-			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
-			var category = db.Table<Category>().First();
+            var category = new Category();
+            category.Name = "test";
+            category.Plan = 45;
+            category.Upsert();
+
+			var category1 = new Category();
+            category1.Name = "test1";
+			category1.Plan = 45;
+			category1.Upsert();
 
             var categories = repositoryCore.GetCategories();
 			Assert.IsNotNull(categories);
             Assert.IsNotNull(categories.FirstOrDefault(c=> c.Name == category.Name));
+            Assert.AreEqual(2, categories.Count);
 		}
 
 		[Test]
 		public void GetCategories_WhenNoCategoryExist()
 		{
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
-
+			DbSetup();
 			var repositoryCore = new RepositoryCore(new LogService());
-			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
-
-			foreach (var category in db.Table<Category>())
-			{
-                category.Delete();
-			}
 
             var categories = repositoryCore.GetCategories();
 			Assert.IsNotNull(categories);
@@ -120,17 +123,8 @@ namespace ExpenseManager.Repository.Test.UnitTests
 		[Test]
 		public void GetTopCategories_WhenNoCategoryExist()
 		{
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
-
+			DbSetup();
 			var repositoryCore = new RepositoryCore(new LogService());
-			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
-
-			foreach (var category in db.Table<Category>())
-			{
-				category.Delete();
-			}
 
 			var categories = repositoryCore.GetTopCategories();
 			Assert.IsNotNull(categories);
@@ -140,15 +134,8 @@ namespace ExpenseManager.Repository.Test.UnitTests
 		[Test]
 		public void GetTopCategories_WhenCategoriesExist()
 		{
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
-
+			DbSetup();
 			var repositoryCore = new RepositoryCore(new LogService());
-			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
-
-            // delete the existing categories
-			foreach (var category in db.Table<Category>()){category.Delete();}
 
             for (int i = 0; i < 10; i++)
             {
@@ -180,12 +167,8 @@ namespace ExpenseManager.Repository.Test.UnitTests
         [Test]
         public void GetAppSettings_WhenSettingHasSetAlready()
         {
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
-
+			DbSetup();
 			var repositoryCore = new RepositoryCore(new LogService());
-			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
             var setting = new Setting();
             setting.CurrentYear = 2013;
             setting.CurrentMonth = 7;
@@ -199,12 +182,8 @@ namespace ExpenseManager.Repository.Test.UnitTests
         [Test]
 		public void GetAppSettings_WhenSettingHasNotSet()
 		{
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
-
+			DbSetup();
 			var repositoryCore = new RepositoryCore(new LogService());
-			var db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
 
 			var currentSetting = repositoryCore.GetAppSettings();
             Assert.IsNotNull(currentSetting);

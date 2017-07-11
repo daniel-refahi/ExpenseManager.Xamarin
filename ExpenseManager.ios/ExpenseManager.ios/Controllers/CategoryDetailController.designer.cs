@@ -38,6 +38,10 @@ namespace ExpenseManager.ios
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem CategoryDetail_Save { get; set; }
 
+        [Action ("CategoryDetail_Cancel_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void CategoryDetail_Cancel_Activated (UIKit.UIBarButtonItem sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (CategoryDetail_Cancel != null) {

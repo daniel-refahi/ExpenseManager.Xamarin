@@ -1,13 +1,9 @@
-﻿<Properties StartupConfiguration="{3D84D4ED-3DCE-4060-9FA3-74869CA5D0AB}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs">
+﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.Repository/Repository/Expense.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.Repository/Repository/Expense.cs" Line="126" Column="1" />
-      <File FileName="ExpenseManager.Repository/Repository/Category.cs" Line="57" Column="45" />
-      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="75" Column="69" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/RepositoryCoreTests.cs" Line="13" Column="18" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/CategoryTests.cs" Line="262" Column="31" />
-      <File FileName="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs" Line="69" Column="26" />
+      <File FileName="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" Line="64" Column="14" />
+      <File FileName="ExpenseManager.Repository/Repository/Expense.cs" Line="9" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -18,7 +14,10 @@
       <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/Repository/Settings.cs" relfile="ExpenseManager.Repository/Repository/Settings.cs" line="26" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs" line="72" offsetX="437" offsetY="1157" expression="expense.ExpenseDate" liveUpdate="False" />
+    <Watch file="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs" line="80" offsetX="438" offsetY="1194" expression="e.ExpenseDate" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
 </Properties>

@@ -11,20 +11,21 @@ namespace ExpenseManager.Repository.Test.UnitTests
     [TestFixture]
     public class CategoryTests
     {
-        SQLiteConnection _db;
-
+        string _dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
         public void DbSetup()
-        {
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-			if (File.Exists(dbPath))
-				File.Delete(dbPath);
+        {	
+			if (File.Exists(_dbPath))
+				File.Delete(_dbPath);
             
-			var repositoryCore = new RepositoryCore(new LogService());
-			_db = repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+			var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
+			db.CreateTable<Category>();
+			db.CreateTable<Expense>();
+			db.CreateTable<Setting>();
+            			
             RepositoryCore.SetCurrentMonth(DateTime.Now.Year, DateTime.Now.Month);
         }
 
-        [Test][ExpectedException(typeof(InvalidOperationException))]
+        [Test()][ExpectedException(typeof(InvalidOperationException))]
         public void Create_NegativePlan()
 		{
             DbSetup();
@@ -99,7 +100,8 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			};
             category.Upsert();
 
-            var c = _db.Get<Category>(category.Id);
+            var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
+            var c = db.Get<Category>(category.Id);
             Assert.AreEqual(c.Name, category.Name);
             Assert.AreEqual(c.Plan, category.Plan);
 		}
@@ -191,7 +193,8 @@ namespace ExpenseManager.Repository.Test.UnitTests
             category.Plan = 23;
             category.Upsert();
 
-			var c = _db.Get<Category>(category.Id);
+            var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
+			var c = db.Get<Category>(category.Id);
 			Assert.AreEqual(c.Name, category.Name);
 			Assert.AreEqual(c.Plan, category.Plan);
 		}
@@ -219,10 +222,11 @@ namespace ExpenseManager.Repository.Test.UnitTests
 
             category.Delete();
 
-            var deletedCategory = _db.Table<Category>().Where(c => c.Id == category.Id).FirstOrDefault();
+            var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
+            var deletedCategory = db.Table<Category>().Where(c => c.Id == category.Id).FirstOrDefault();
             Assert.IsNull(deletedCategory);
 
-            var deletedExpense = _db.Table<Expense>().Where(e => e.CategoryId == category.Id).FirstOrDefault();
+            var deletedExpense = db.Table<Expense>().Where(e => e.CategoryId == category.Id).FirstOrDefault();
 			Assert.IsNull(deletedExpense);
 		}
 
@@ -258,11 +262,15 @@ namespace ExpenseManager.Repository.Test.UnitTests
 			e3.Upsert();
 
             // to test the utc issue with sqlite
-            var e4 = new Expense() { CategoryId = category.Id, Value = 25, ExpenseDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 1,1,1) };
+            var beginingOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 1, 1, 1);
+            var e4 = new Expense() { CategoryId = category.Id, Value = 25, ExpenseDate =  beginingOfMonth};
 			e4.Upsert();
 
+            var e5 = new Expense() { CategoryId = category.Id, Value = 25, ExpenseDate = beginingOfMonth.AddHours(-2) };
+			e5.Upsert();
+
 			var expenses = category.GetExpenses();
-			Assert.AreEqual(2, expenses.Count);
+			Assert.AreEqual(3, expenses.Count);
             Assert.AreEqual(20, expenses[0].Value);
 			Assert.AreEqual(25, expenses[1].Value);
 		}

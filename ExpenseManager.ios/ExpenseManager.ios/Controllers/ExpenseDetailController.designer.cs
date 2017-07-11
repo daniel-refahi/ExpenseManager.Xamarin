@@ -24,6 +24,10 @@ namespace ExpenseManager.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIDatePicker ExpenseDetail_Date { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem ExpenseDetail_Delete { get; set; }
 
         [Outlet]
@@ -48,6 +52,11 @@ namespace ExpenseManager.ios
             if (ExpenseDetail_Category != null) {
                 ExpenseDetail_Category.Dispose ();
                 ExpenseDetail_Category = null;
+            }
+
+            if (ExpenseDetail_Date != null) {
+                ExpenseDetail_Date.Dispose ();
+                ExpenseDetail_Date = null;
             }
 
             if (ExpenseDetail_Delete != null) {

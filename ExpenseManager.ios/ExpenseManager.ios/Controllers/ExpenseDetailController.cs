@@ -30,7 +30,7 @@ namespace ExpenseManager.ios
                 expense = new Expense(ExpenseId);
                 ExpenseDetail_Value.Text = expense.Value.ToString();
                 ExpenseDetail_Description.Text = expense.Description;
-
+                ExpenseDetail_Date.Date = expense.ExpenseDate.ToNSDate();
             }
             catch
             {
@@ -72,6 +72,7 @@ namespace ExpenseManager.ios
                 expense.CategoryId = categories.FirstOrDefault(c => c.Name == categoryName).Id;
                 expense.Description = ExpenseDetail_Description.Text;
                 expense.Value = Convert.ToInt16(ExpenseDetail_Value.Text);
+                expense.ExpenseDate = ExpenseDetail_Date.Date.ToDateTime();
                 expense.Upsert();
                 NavigationController.PopViewController(true);
             }

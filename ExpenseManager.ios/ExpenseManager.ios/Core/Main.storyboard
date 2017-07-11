@@ -127,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description...">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description..." misplaced="YES">
                                 <rect key="frame" x="16" y="75" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -147,7 +147,7 @@
                                     <barButtonItem id="720" systemItem="save">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
                                     </barButtonItem>
-                                    <barButtonItem width="106" style="plain" systemItem="fixedSpace" id="721"/>
+                                    <barButtonItem width="94" style="plain" systemItem="fixedSpace" id="721"/>
                                     <barButtonItem id="722" systemItem="cancel">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
                                     </barButtonItem>
@@ -159,9 +159,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" id="786" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="16" y="151" width="343" height="143"/>
+                            <pickerView contentMode="scaleToFill" id="786" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="399" width="343" height="216"/>
                             </pickerView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="1411" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="16" y="166" width="343" height="208"/>
+                                <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
+                                    <!--2011-07-18 18:00:01 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="504961200">
+                                    <!--Sun, 01 Jan 2017 11:00:00 GMT-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="694177200">
+                                    <!--Sat, 31 Dec 2022 11:00:00 GMT-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <constraints>
                             <constraint id="1101" firstItem="467" firstAttribute="leadingMargin" secondItem="716" secondAttribute="leading" constant="16"/>
@@ -176,12 +188,18 @@
                             <constraint id="1110" firstItem="733" firstAttribute="leading" secondItem="473" secondAttribute="centerX" constant="56"/>
                             <constraint id="1111" firstItem="473" firstAttribute="bottom" secondItem="733" secondAttribute="bottom" constant="4"/>
                             <constraint id="1112" firstItem="473" firstAttribute="trailing" secondItem="733" secondAttribute="trailing" constant="6"/>
-                            <constraint id="1113" firstItem="786" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
-                            <constraint id="1114" firstItem="786" firstAttribute="top" secondItem="473" secondAttribute="bottom" constant="8"/>
-                            <constraint id="1115" firstItem="786" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
                             <constraint id="1116" firstItem="470" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="11"/>
                             <constraint id="1117" firstItem="470" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
                             <constraint id="1118" firstItem="470" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
+                            <constraint id="1408" firstItem="786" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
+                            <constraint id="1409" firstItem="716" firstAttribute="top" secondItem="786" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1410" firstItem="786" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
+                            <constraint id="1412" firstItem="1411" firstAttribute="top" secondItem="473" secondAttribute="bottom" constant="23"/>
+                            <constraint id="1413" firstItem="1411" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
+                            <constraint id="1414" firstItem="1411" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
+                            <constraint id="1415" firstItem="786" firstAttribute="top" secondItem="1411" secondAttribute="bottom" constant="25"/>
+                            <constraint id="1416" firstItem="786" firstAttribute="top" secondItem="1411" secondAttribute="bottom" constant="25"/>
+                            <constraint id="1417" firstItem="1411" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
                         </constraints>
                     </view>
                     <connections>
@@ -191,6 +209,7 @@
                         <outlet property="ExpenseDetail_Save" destination="720" id="name-outlet-720"/>
                         <outlet property="ExpenseDetail_Cancel" destination="722" id="name-outlet-722"/>
                         <outlet property="ExpenseDetail_Category" destination="786" id="name-outlet-786"/>
+                        <outlet property="ExpenseDetail_Date" destination="1411" id="name-outlet-1411"/>
                     </connections>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -238,9 +257,12 @@
                                     <barButtonItem style="plain" systemItem="save" id="959">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
                                     </barButtonItem>
-                                    <barButtonItem width="116" style="plain" systemItem="fixedSpace" id="963"/>
-                                    <barButtonItem id="964" systemItem="cancel">
+                                    <barButtonItem width="85" style="plain" systemItem="fixedSpace" id="963"/>
+                                    <barButtonItem id="964" systemItem="cancel" width="53">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
+                                        <connections>
+                                            <action selector="CategoryDetail_Cancel_Activated:" destination="858" id="1418"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                                 <constraints>

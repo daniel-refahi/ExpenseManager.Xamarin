@@ -183,6 +183,7 @@
     </Compile>
     <Compile Include="Utilities\CoreUtilities.cs" />
     <Compile Include="Services\LogService.cs" />
+    <Compile Include="Utilities\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">
