@@ -1,6 +1,7 @@
 using Foundation;
 using System;
 using UIKit;
+using ExpenseManager.ios.Utilities;
 
 namespace ExpenseManager.ios
 {
@@ -9,5 +10,13 @@ namespace ExpenseManager.ios
         public SettingController (IntPtr handle) : base (handle)
         {
         }
+
+		public override void ViewDidAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
+
+            ParentViewController.Title = StaticValues.SettingsNavigationTitle;
+
+		}
     }
 }

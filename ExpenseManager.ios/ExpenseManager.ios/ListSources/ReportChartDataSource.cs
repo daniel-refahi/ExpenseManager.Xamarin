@@ -1,111 +1,103 @@
 ﻿using System;
+using System.Linq;
+using ExpenseManager.ios.Utilities;
+using ExpenseManager.Repository.Repository;
 using Foundation;
 using Syncfusion.SfChart.iOS;
+using UIKit;
 
 namespace ExpenseManager.ios.ListSources
 {
     public class ReportChartDataSource : SFChartDataSource
     {
-		NSMutableArray highTemperature;
-		NSMutableArray lowTemperature;
-		NSMutableArray precipitation;
+        NSMutableArray _expenseAverage;
+        NSMutableArray _category;
+        SFNumericalAxis _axis;
 
 		public ReportChartDataSource()
 		{
-			highTemperature = new NSMutableArray();
-			lowTemperature = new NSMutableArray();
-			precipitation = new NSMutableArray();
+			_expenseAverage = new NSMutableArray();
+			_category = new NSMutableArray();
 
-			AddDataPointsForChart("Jan", 42, 27, 3.03);
-			AddDataPointsForChart("Feb", 44, 28, 2.48);
-			AddDataPointsForChart("Mar", 53, 35, 3.23);
-			AddDataPointsForChart("Apr", 64, 44, 3.15);
-			AddDataPointsForChart("May", 75, 54, 4.13);
-			AddDataPointsForChart("Jun", 83, 63, 3.23);
-			AddDataPointsForChart("Jul", 87, 68, 4.13);
-			AddDataPointsForChart("Aug", 84, 66, 4.88);
-			AddDataPointsForChart("Sep", 78, 59, 3.82);
-			AddDataPointsForChart("Oct", 67, 48, 3.07);
-			AddDataPointsForChart("Nov", 55, 38, 2.83);
-			AddDataPointsForChart("Dec", 45, 29, 2.80);
+
+			var repository = new RepositoryCore(CoreUtilities.GetLogService());
+			var topCategories = repository.GetTopCategories();
+			var averageSpent = repository.GetExpenses().Average(e => e.Value);
+
+			AddDataPointsForChart(topCategories[0].Name, averageSpent, topCategories[0].GetExpenses().Sum(e => e.Value));
+			AddDataPointsForChart(topCategories[1].Name, averageSpent, topCategories[1].GetExpenses().Sum(e => e.Value));
+			AddDataPointsForChart(topCategories[2].Name, averageSpent, topCategories[2].GetExpenses().Sum(e => e.Value));
+			AddDataPointsForChart(topCategories[3].Name, averageSpent, topCategories[3].GetExpenses().Sum(e => e.Value));
+			AddDataPointsForChart(topCategories[4].Name, averageSpent, topCategories[4].GetExpenses().Sum(e => e.Value));
+
+
+
+			//AddDataPointsForChart("Jan", 45, 27);
+			//AddDataPointsForChart("Feb", 45, 28);
+			//AddDataPointsForChart("Mar", 45, 35);
+			//AddDataPointsForChart("Apr", 45, 44);
+			//AddDataPointsForChart("May", 45, 54);
 		}
 
-		/// <summary>
-		/// Method to populate the array required for all the series.
-		/// </summary>
-		/// <param name="month">Month.</param>
-		/// <param name="high">High Temperature.</param>
-		/// <param name="low">Low Temperature.</param>
-		/// <param name="ppt">Precipitation.</param>
-		void AddDataPointsForChart(String month, Double high, Double low, Double ppt)
+        void AddDataPointsForChart(String categoryName, Double expsenseAverage, Double categoryValue)
 		{
-			highTemperature.Add(new SFChartDataPoint(NSObject.FromObject(month), NSObject.FromObject(high)));
-
-			lowTemperature.Add(new SFChartDataPoint(NSObject.FromObject(month), NSObject.FromObject(low)));
-
-			precipitation.Add(new SFChartDataPoint(NSObject.FromObject(month), NSObject.FromObject(ppt)));
+			_expenseAverage.Add(new SFChartDataPoint(NSObject.FromObject(categoryName), NSObject.FromObject(expsenseAverage)));
+			_category.Add(new SFChartDataPoint(NSObject.FromObject(categoryName), NSObject.FromObject(categoryValue)));
 		}
 
 		[Export("numberOfSeriesInChart:")]
 		public override nint NumberOfSeriesInChart(SFChart chart)
 		{
-			return 3;
-			//returns no of series required for the chart.
+			return 2;
 		}
 
 		[Export("chart:seriesAtIndex:")]
 		public override SFSeries GetSeries(SFChart chart, nint index)
 		{
-			//returns the series for the chart.
 			if (index == 1)
 			{
 				SFSplineSeries series = new SFSplineSeries();
-				series.Label = new NSString("High");
-				return series;
-			}
-			else if (index == 2)
-			{
-				SFSplineSeries series = new SFSplineSeries();
-				series.Label = new NSString("Low");
+                series.Label = new NSString(StaticValues.ReportExpenseAverage);
+                series.YAxis = getYAxis();
 				return series;
 			}
 			else
 			{
 				SFColumnSeries series = new SFColumnSeries();
-				series.Label = new NSString("Precipitation");
-
-				SFNumericalAxis axis = new SFNumericalAxis();
-				axis.OpposedPosition = true;
-				axis.ShowMajorGridLines = false;
-				series.YAxis = axis;
-
+				series.Label = new NSString(StaticValues.ReportTopCategoriesLabel);
+                series.YAxis = getYAxis();
 				return series;
 			}
 		}
 
-		[Export("chart:dataPointAtIndex:forSeriesAtIndex:")]
+        SFRangeAxisBase getYAxis()
+        {
+            if (_axis == null)
+            {
+                _axis = new SFNumericalAxis();
+                _axis.OpposedPosition = true;
+                _axis.ShowMajorGridLines = false;
+            }
+            return _axis;
+        }
+
+        [Export("chart:dataPointAtIndex:forSeriesAtIndex:")]
 		public override SFChartDataPoint GetDataPoint(SFChart chart, nint index, nint seriesIndex)
 		{
-			//returns the datapoint for each series.
 			if (seriesIndex == 1)
 			{
-				return highTemperature.GetItem<SFChartDataPoint>((nuint)index);
-			}
-			else if (seriesIndex == 2)
-			{
-				return lowTemperature.GetItem<SFChartDataPoint>((nuint)index);
+				return _expenseAverage.GetItem<SFChartDataPoint>((nuint)index);
 			}
 			else
 			{
-				return precipitation.GetItem<SFChartDataPoint>((nuint)index);
+				return _category.GetItem<SFChartDataPoint>((nuint)index);
 			}
 		}
 
 		[Export("chart:numberOfDataPointsForSeriesAtIndex:")]
 		public override nint GetNumberOfDataPoints(SFChart chart, nint index)
 		{
-			return 12;
-			//No of datapoints needed for each series.
+			return 5;
 		}
     }
 }

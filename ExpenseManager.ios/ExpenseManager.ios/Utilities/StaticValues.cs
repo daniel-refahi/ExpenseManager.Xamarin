@@ -24,6 +24,10 @@ namespace ExpenseManager.ios.Utilities
         public static readonly string ExpenseDetailView = "ExpenseDetail";
         public static readonly string ExpenseCellIdentifier = "ExpenseCell";
 
+        public static readonly string ReportNavigationTitle = "Report";
+        public static readonly string ReportTopCategoriesLabel = "Top Categories";
+        public static readonly string ReportExpenseAverage = "Average Spent";
 
+        public static readonly string SettingsNavigationTitle = "Settings";
     }
 }

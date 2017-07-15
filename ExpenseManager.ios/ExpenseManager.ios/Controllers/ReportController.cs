@@ -1,8 +1,11 @@
 using Foundation;
 using System;
+using System.Linq;
 using UIKit;
 using Syncfusion.SfChart.iOS;
 using ExpenseManager.ios.ListSources;
+using System.Drawing;
+using ExpenseManager.ios.Utilities;
 
 namespace ExpenseManager.ios
 {
@@ -16,33 +19,30 @@ namespace ExpenseManager.ios
         {
             base.ViewDidAppear(animated);
 
+            ParentViewController.Title = StaticValues.ReportNavigationTitle;
+
+            foreach (var view in View.Subviews)
+            {
+                view.RemoveFromSuperview();
+            }
+
 			SFChart chart = new SFChart();
 			chart.Frame = this.View.Frame;
 
-			//Define the title for the Chart.
-			chart.Title.Text = new NSString("Weather Analysis");
-
-			//Adding legend to the Chart.
 			chart.Legend.Visible = true;
 
-			//Adding Primary Axis for the Chart.
 			SFCategoryAxis primaryAxis = new SFCategoryAxis();
-			primaryAxis.Title.Text = new NSString("Month");
 			chart.PrimaryAxis = primaryAxis;
+            chart.ColorModel.Palette = SFChartColorPalette.Custom;
+            chart.ColorModel.CustomColors =
+					NSArray.FromObjects(UIColor.FromRGB(0, 0, 77),
+										UIColor.FromRGB(128, 179, 255));
 
-			//Adding Secondary Axis for the Chart.
-			SFNumericalAxis secondaryAxis = new SFNumericalAxis();
-			secondaryAxis.Title.Text = new NSString("Temperature");
-			chart.SecondaryAxis = secondaryAxis;
-
-			//Defining the data source for the Chart.
 			var dataModel = new ReportChartDataSource();
 			chart.DataSource = dataModel as SFChartDataSource;
 
-			//Adding our Chart as a sub view.
-			this.View.AddSubview(chart);
-
-			// Perform any additional setup after loading the view, typically from a nib.
+            this.View.AddSubview(chart);
+            chart.Frame = new RectangleF(10,70,(float)View.Bounds.Width - 10,(float)View.Bounds.Height - 160);
 		}
     }
 }

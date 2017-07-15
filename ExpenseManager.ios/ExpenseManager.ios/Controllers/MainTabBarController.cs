@@ -19,6 +19,16 @@ namespace ExpenseManager.ios
             selectedTab = StaticValues.ExpenseListNavigationTitle;
 
             HandleAddBtn();
+
+			ViewControllerSelected += (sender, e) =>
+			{
+				selectedTab = TabBar.SelectedItem.Title;
+                if (selectedTab == StaticValues.ReportNavigationTitle || selectedTab == StaticValues.SettingsNavigationTitle)
+                    NavigationItem.RightBarButtonItem.Enabled = false;
+                else 
+                    NavigationItem.RightBarButtonItem.Enabled = true;
+
+			};
         }
 
         void HandleAddBtn()
@@ -32,11 +42,6 @@ namespace ExpenseManager.ios
                         AddCategory();
 				})
 			, true);
-            
-			ViewControllerSelected += (sender, e) =>
-			{
-                selectedTab = TabBar.SelectedItem.Title;
-			};
         }
 
         void AddExpense()
