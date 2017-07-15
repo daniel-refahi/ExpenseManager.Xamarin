@@ -188,6 +188,7 @@
     <Compile Include="Controllers\ReportController.designer.cs">
       <DependentUpon>ReportController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListSources\SettingSelectors.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">

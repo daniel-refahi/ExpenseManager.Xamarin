@@ -390,9 +390,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" id="1483" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="167" width="343" height="64"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" id="1484" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="268" width="343" height="69"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1487" translatesAutoresizingMaskIntoConstraints="NO" text="The app shows records for the selected month." numberOfLines="2" enabled="NO">
+                                <rect key="frame" x="16" y="80" width="343" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                <color key="highlightedColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                                <color key="shadowColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                <size key="shadowOffset" width="1" height="0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1488" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="138" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1489" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="239" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="1526" firstItem="1487" firstAttribute="top" secondItem="1254" secondAttribute="bottom" constant="16"/>
+                            <constraint id="1527" firstItem="1487" firstAttribute="leading" secondItem="1258" secondAttribute="leadingMargin"/>
+                            <constraint id="1528" firstItem="1487" firstAttribute="trailing" secondItem="1258" secondAttribute="trailingMargin"/>
+                            <constraint id="1529" firstItem="1488" firstAttribute="top" secondItem="1487" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1530" firstItem="1488" firstAttribute="top" secondItem="1254" secondAttribute="bottom" constant="74"/>
+                            <constraint id="1531" firstItem="1488" firstAttribute="leading" secondItem="1258" secondAttribute="leadingMargin"/>
+                            <constraint id="1532" firstItem="1258" firstAttribute="trailingMargin" secondItem="1488" secondAttribute="trailing" constant="280"/>
+                            <constraint id="1533" firstItem="1483" firstAttribute="top" secondItem="1488" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1534" firstItem="1483" firstAttribute="leading" secondItem="1258" secondAttribute="leadingMargin"/>
+                            <constraint id="1535" firstItem="1483" firstAttribute="trailing" secondItem="1258" secondAttribute="trailingMargin"/>
+                            <constraint id="1536" firstItem="1483" firstAttribute="trailing" secondItem="1258" secondAttribute="trailingMargin"/>
+                            <constraint id="1537" firstItem="1483" firstAttribute="top" secondItem="1488" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1539" firstItem="1489" firstAttribute="top" secondItem="1483" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1540" firstItem="1255" firstAttribute="top" secondItem="1483" secondAttribute="bottom" constant="387"/>
+                            <constraint id="1541" firstItem="1489" firstAttribute="leading" secondItem="1258" secondAttribute="leadingMargin"/>
+                            <constraint id="1542" firstItem="1489" firstAttribute="top" secondItem="1483" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1543" firstItem="1258" firstAttribute="trailingMargin" secondItem="1489" secondAttribute="trailing" constant="280"/>
+                            <constraint id="1544" firstItem="1255" firstAttribute="top" secondItem="1489" secondAttribute="bottom" constant="358"/>
+                            <constraint id="1545" firstItem="1484" firstAttribute="top" secondItem="1489" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1546" firstItem="1484" firstAttribute="leading" secondItem="1258" secondAttribute="leadingMargin"/>
+                            <constraint id="1547" firstItem="1484" firstAttribute="trailing" secondItem="1258" secondAttribute="trailingMargin"/>
+                            <constraint id="1548" firstItem="1255" firstAttribute="top" secondItem="1484" secondAttribute="bottom" constant="281"/>
+                            <constraint id="1549" firstItem="1483" firstAttribute="trailing" secondItem="1258" secondAttribute="trailingMargin"/>
+                            <constraint id="1550" firstItem="1483" firstAttribute="leading" secondItem="1258" secondAttribute="leadingMargin"/>
+                            <constraint id="1551" firstItem="1483" firstAttribute="top" secondItem="1254" secondAttribute="bottom" constant="103"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="1320"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="Settings_MonthPicker" destination="1483" id="name-outlet-1483"/>
+                        <outlet property="Settings_YearPicker" destination="1484" id="name-outlet-1484"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1259" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

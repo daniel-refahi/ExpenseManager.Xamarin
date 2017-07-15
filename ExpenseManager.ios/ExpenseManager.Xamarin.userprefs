@@ -2,11 +2,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/SettingController.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.ios/Controllers/ReportController.cs" Line="21" Column="1" />
-      <File FileName="ExpenseManager.ios/Controllers/MainTabBarController.cs" Line="26" Column="37" />
-      <File FileName="ExpenseManager.ios/Controllers/CategoriesController.cs" Line="30" Column="1" />
-      <File FileName="ExpenseManager.ios/Utilities/StaticValues.cs" Line="15" Column="58" />
-      <File FileName="ExpenseManager.ios/Controllers/SettingController.cs" Line="15" Column="32" />
+      <File FileName="ExpenseManager.ios/Controllers/SettingController.cs" Line="25" Column="1" />
+      <File FileName="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" Line="40" Column="75" />
+      <File FileName="ExpenseManager.ios/ListSources/SettingSelectors.cs" Line="99" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -22,5 +20,5 @@
     <Watch file="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs" line="80" offsetX="438" offsetY="1194" expression="e.ExpenseDate" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
+  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.95111662-F646-479F-A780-4D1E330E390A" />
 </Properties>
