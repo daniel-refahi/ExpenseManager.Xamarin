@@ -189,6 +189,8 @@
       <DependentUpon>ReportController.cs</DependentUpon>
     </Compile>
     <Compile Include="ListSources\SettingSelectors.cs" />
+    <Compile Include="Utilities\Camera.cs" />
+    <Compile Include="Utilities\ImageUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenseManager.Repository\ExpenseManager.Repository.csproj">

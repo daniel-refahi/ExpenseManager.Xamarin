@@ -127,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description..." misplaced="YES">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description...">
                                 <rect key="frame" x="16" y="75" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -160,20 +160,71 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" id="786" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="16" y="399" width="343" height="216"/>
+                                <rect key="frame" x="16" y="307" width="343" height="140"/>
+                                <constraints>
+                                    <constraint id="1598" firstAttribute="width" constant="343"/>
+                                    <constraint id="1599" firstAttribute="height" constant="140"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1598"/>
+                                        <exclude reference="1599"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1598"/>
+                                        <include reference="1599"/>
+                                    </mask>
+                                </variation>
                             </pickerView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="1411" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="16" y="166" width="343" height="208"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="1411" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="159" width="343" height="140"/>
                                 <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
                                     <!--2011-07-18 18:00:01 +0000-->
                                 </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="504961200">
-                                    <!--Sun, 01 Jan 2017 11:00:00 GMT-->
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="441802800">
+                                    <!--Thu, 01 Jan 2015 11:00:00 GMT-->
                                 </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="694177200">
-                                    <!--Sat, 31 Dec 2022 11:00:00 GMT-->
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="788871600">
+                                    <!--Wed, 31 Dec 2025 11:00:00 GMT-->
                                 </date>
+                                <constraints>
+                                    <constraint id="1594" firstAttribute="width" constant="343"/>
+                                    <constraint id="1595" firstAttribute="height" constant="140"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1594"/>
+                                        <exclude reference="1595"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1594"/>
+                                        <include reference="1595"/>
+                                    </mask>
+                                </variation>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1600" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="585" width="160" height="30"/>
+                                <state key="normal" title="Add Receipt">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <constraints>
+                                    <constraint id="1613" firstAttribute="width" constant="160"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1613"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1613"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint id="1101" firstItem="467" firstAttribute="leadingMargin" secondItem="716" secondAttribute="leading" constant="16"/>
@@ -191,16 +242,39 @@
                             <constraint id="1116" firstItem="470" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="11"/>
                             <constraint id="1117" firstItem="470" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
                             <constraint id="1118" firstItem="470" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
-                            <constraint id="1408" firstItem="786" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
-                            <constraint id="1409" firstItem="716" firstAttribute="top" secondItem="786" secondAttribute="bottom" constant="8"/>
-                            <constraint id="1410" firstItem="786" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
-                            <constraint id="1412" firstItem="1411" firstAttribute="top" secondItem="473" secondAttribute="bottom" constant="23"/>
-                            <constraint id="1413" firstItem="1411" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
-                            <constraint id="1414" firstItem="1411" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
-                            <constraint id="1415" firstItem="786" firstAttribute="top" secondItem="1411" secondAttribute="bottom" constant="25"/>
-                            <constraint id="1416" firstItem="786" firstAttribute="top" secondItem="1411" secondAttribute="bottom" constant="25"/>
-                            <constraint id="1417" firstItem="1411" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
+                            <constraint id="1592" firstItem="467" firstAttribute="trailing" secondItem="1411" secondAttribute="trailing" constant="16"/>
+                            <constraint id="1593" firstItem="1411" firstAttribute="top" secondItem="467" secondAttribute="top" constant="159"/>
+                            <constraint id="1596" firstItem="467" firstAttribute="trailing" secondItem="786" secondAttribute="trailing" constant="16"/>
+                            <constraint id="1597" firstItem="467" firstAttribute="bottom" secondItem="786" secondAttribute="bottom" constant="220"/>
+                            <constraint id="1611" firstItem="1600" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="16"/>
+                            <constraint id="1612" firstItem="467" firstAttribute="bottom" secondItem="1600" secondAttribute="bottom" constant="52"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1592"/>
+                                <exclude reference="1593"/>
+                                <exclude reference="1596"/>
+                                <exclude reference="1597"/>
+                                <exclude reference="1611"/>
+                                <exclude reference="1612"/>
+                            </mask>
+                            <mask key="subviews">
+                                <exclude reference="1600"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="1592"/>
+                                <include reference="1593"/>
+                                <include reference="1596"/>
+                                <include reference="1597"/>
+                                <include reference="1611"/>
+                                <include reference="1612"/>
+                            </mask>
+                            <mask key="subviews">
+                                <include reference="1600"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="ExpenseDetail_Description" destination="470" id="name-outlet-470"/>
@@ -210,6 +284,7 @@
                         <outlet property="ExpenseDetail_Cancel" destination="722" id="name-outlet-722"/>
                         <outlet property="ExpenseDetail_Category" destination="786" id="name-outlet-786"/>
                         <outlet property="ExpenseDetail_Date" destination="1411" id="name-outlet-1411"/>
+                        <outlet property="ExpenseDetail_RecieptBtn" destination="1600" id="name-outlet-1600"/>
                     </connections>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

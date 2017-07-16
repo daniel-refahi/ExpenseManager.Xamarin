@@ -1,11 +1,25 @@
 ﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/SettingController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Core/Main.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.ios/Controllers/SettingController.cs" Line="25" Column="1" />
-      <File FileName="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" Line="40" Column="75" />
-      <File FileName="ExpenseManager.ios/ListSources/SettingSelectors.cs" Line="99" Column="16" />
+      <File FileName="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" Line="112" Column="13" />
+      <File FileName="ExpenseManager.ios/Utilities/Camera.cs" Line="23" Column="31" />
+      <File FileName="ExpenseManager.ios/Utilities/ImageUtility.cs" Line="79" Column="53" />
+      <File FileName="ExpenseManager.ios/Core/Main.cs" Line="12" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ExpenseManager.Xamarin" expanded="True">
+            <Node name="ExpenseManager.ios" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Core" expanded="True" />
+              <Node name="Utilities" expanded="True" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.ItemProperties.ExpenseManager.Repository.Test PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
@@ -20,5 +34,5 @@
     <Watch file="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs" line="80" offsetX="438" offsetY="1194" expression="e.ExpenseDate" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.95111662-F646-479F-A780-4D1E330E390A" />
+  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
 </Properties>

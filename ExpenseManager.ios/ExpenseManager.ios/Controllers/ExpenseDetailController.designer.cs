@@ -36,6 +36,10 @@ namespace ExpenseManager.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ExpenseDetail_RecieptBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem ExpenseDetail_Save { get; set; }
 
         [Outlet]
@@ -67,6 +71,11 @@ namespace ExpenseManager.ios
             if (ExpenseDetail_Description != null) {
                 ExpenseDetail_Description.Dispose ();
                 ExpenseDetail_Description = null;
+            }
+
+            if (ExpenseDetail_RecieptBtn != null) {
+                ExpenseDetail_RecieptBtn.Dispose ();
+                ExpenseDetail_RecieptBtn = null;
             }
 
             if (ExpenseDetail_Save != null) {
