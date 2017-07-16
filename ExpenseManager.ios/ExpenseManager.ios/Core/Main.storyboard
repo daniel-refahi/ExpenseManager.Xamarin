@@ -160,21 +160,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" id="786" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="16" y="307" width="343" height="140"/>
+                                <rect key="frame" x="16" y="307" width="343" height="100"/>
                                 <constraints>
-                                    <constraint id="1598" firstAttribute="width" constant="343"/>
-                                    <constraint id="1599" firstAttribute="height" constant="140"/>
+                                    <constraint id="1673" firstItem="786" firstAttribute="height" constant="216">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="1598"/>
-                                        <exclude reference="1599"/>
+                                        <exclude reference="1673"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="1598"/>
-                                        <include reference="1599"/>
+                                        <include reference="1673"/>
                                     </mask>
                                 </variation>
                             </pickerView>
@@ -207,23 +206,67 @@
                                 </variation>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1600" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="16" y="585" width="160" height="30"/>
-                                <state key="normal" title="Add Receipt">
+                                <rect key="frame" x="10" y="572" width="113" height="30"/>
+                                <state key="normal" title="Update Receipt">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <constraints>
-                                    <constraint id="1613" firstAttribute="width" constant="160"/>
+                                    <constraint id="1711" firstAttribute="width" constant="113"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="1613"/>
+                                        <exclude reference="1711"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="1613"/>
+                                        <include reference="1711"/>
                                     </mask>
                                 </variation>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1637" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="10" y="415" width="166" height="150"/>
+                                <constraints>
+                                    <constraint id="1703" firstAttribute="width" constant="166"/>
+                                    <constraint id="1704" firstAttribute="height" constant="150"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1703"/>
+                                        <exclude reference="1704"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" image="Assets/receipt.png">
+                                    <mask key="constraints">
+                                        <include reference="1703"/>
+                                        <include reference="1704"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="1648" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="184" y="415" width="175" height="149"/>
+                                <constraints>
+                                    <constraint id="1699" firstAttribute="width" constant="175"/>
+                                    <constraint id="1700" firstAttribute="height" constant="149"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1699"/>
+                                        <exclude reference="1700"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1699"/>
+                                        <include reference="1700"/>
+                                    </mask>
+                                </variation>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1649" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="184" y="572" width="175" height="30"/>
+                                <state key="normal" title="Update Location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <constraints>
@@ -244,35 +287,62 @@
                             <constraint id="1118" firstItem="470" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
                             <constraint id="1592" firstItem="467" firstAttribute="trailing" secondItem="1411" secondAttribute="trailing" constant="16"/>
                             <constraint id="1593" firstItem="1411" firstAttribute="top" secondItem="467" secondAttribute="top" constant="159"/>
-                            <constraint id="1596" firstItem="467" firstAttribute="trailing" secondItem="786" secondAttribute="trailing" constant="16"/>
-                            <constraint id="1597" firstItem="467" firstAttribute="bottom" secondItem="786" secondAttribute="bottom" constant="220"/>
-                            <constraint id="1611" firstItem="1600" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="16"/>
-                            <constraint id="1612" firstItem="467" firstAttribute="bottom" secondItem="1600" secondAttribute="bottom" constant="52"/>
+                            <constraint id="1657" firstItem="786" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
+                            <constraint id="1666" firstItem="716" firstAttribute="top" secondItem="1649" secondAttribute="bottom" constant="21"/>
+                            <constraint id="1668" firstItem="467" firstAttribute="trailingMargin" secondItem="1649" secondAttribute="trailing" constant="62"/>
+                            <constraint id="1674" firstItem="786" firstAttribute="top" secondItem="1411" secondAttribute="bottom" constant="8"/>
+                            <constraint id="1683" firstItem="786" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
+                            <constraint id="1697" firstItem="467" firstAttribute="trailing" secondItem="1648" secondAttribute="trailing" constant="16"/>
+                            <constraint id="1698" firstItem="467" firstAttribute="bottom" secondItem="1648" secondAttribute="bottom" constant="103"/>
+                            <constraint id="1701" firstItem="1637" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="10"/>
+                            <constraint id="1702" firstItem="467" firstAttribute="bottom" secondItem="1637" secondAttribute="bottom" constant="102"/>
+                            <constraint id="1709" firstItem="1600" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="10"/>
+                            <constraint id="1710" firstItem="467" firstAttribute="bottom" secondItem="1600" secondAttribute="bottom" constant="65"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="1592"/>
                                 <exclude reference="1593"/>
-                                <exclude reference="1596"/>
-                                <exclude reference="1597"/>
-                                <exclude reference="1611"/>
-                                <exclude reference="1612"/>
+                                <exclude reference="1657"/>
+                                <exclude reference="1666"/>
+                                <exclude reference="1668"/>
+                                <exclude reference="1674"/>
+                                <exclude reference="1683"/>
+                                <exclude reference="1697"/>
+                                <exclude reference="1698"/>
+                                <exclude reference="1701"/>
+                                <exclude reference="1702"/>
+                                <exclude reference="1709"/>
+                                <exclude reference="1710"/>
                             </mask>
                             <mask key="subviews">
                                 <exclude reference="1600"/>
+                                <exclude reference="1637"/>
+                                <exclude reference="1648"/>
+                                <exclude reference="1649"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="1592"/>
                                 <include reference="1593"/>
-                                <include reference="1596"/>
-                                <include reference="1597"/>
-                                <include reference="1611"/>
-                                <include reference="1612"/>
+                                <include reference="1657"/>
+                                <include reference="1666"/>
+                                <include reference="1668"/>
+                                <include reference="1674"/>
+                                <include reference="1683"/>
+                                <include reference="1697"/>
+                                <include reference="1698"/>
+                                <include reference="1701"/>
+                                <include reference="1702"/>
+                                <include reference="1709"/>
+                                <include reference="1710"/>
                             </mask>
                             <mask key="subviews">
                                 <include reference="1600"/>
+                                <include reference="1637"/>
+                                <include reference="1648"/>
+                                <include reference="1649"/>
                             </mask>
                         </variation>
                     </view>
@@ -285,6 +355,9 @@
                         <outlet property="ExpenseDetail_Category" destination="786" id="name-outlet-786"/>
                         <outlet property="ExpenseDetail_Date" destination="1411" id="name-outlet-1411"/>
                         <outlet property="ExpenseDetail_RecieptBtn" destination="1600" id="name-outlet-1600"/>
+                        <outlet property="ExpenseDetail_Map" destination="1648" id="name-outlet-1648"/>
+                        <outlet property="ExpenseDetail_Receipt" destination="1637" id="name-outlet-1637"/>
+                        <outlet property="ExpenseDetail_MapBtn" destination="1649" id="name-outlet-1649"/>
                     </connections>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -545,5 +618,6 @@
         <image name="Assets/category_unselected.png" width="30" height="30"/>
         <image name="Assets/expense_selected.png" width="30" height="30"/>
         <image name="Assets/expense_unselected.png" width="30" height="30"/>
+        <image name="Assets/receipt.png" width="128" height="128"/>
     </resources>
 </document>

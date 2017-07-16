@@ -209,6 +209,7 @@
     <BundleResource Include="Assets\category_unselected.png" />
     <BundleResource Include="Assets\expense_selected.png" />
     <BundleResource Include="Assets\expense_unselected.png" />
+    <BundleResource Include="Assets\receipt.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="ToastIOS">

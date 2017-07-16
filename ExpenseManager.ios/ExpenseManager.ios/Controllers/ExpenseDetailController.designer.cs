@@ -36,6 +36,18 @@ namespace ExpenseManager.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        MapKit.MKMapView ExpenseDetail_Map { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ExpenseDetail_MapBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView ExpenseDetail_Receipt { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton ExpenseDetail_RecieptBtn { get; set; }
 
         [Outlet]
@@ -71,6 +83,21 @@ namespace ExpenseManager.ios
             if (ExpenseDetail_Description != null) {
                 ExpenseDetail_Description.Dispose ();
                 ExpenseDetail_Description = null;
+            }
+
+            if (ExpenseDetail_Map != null) {
+                ExpenseDetail_Map.Dispose ();
+                ExpenseDetail_Map = null;
+            }
+
+            if (ExpenseDetail_MapBtn != null) {
+                ExpenseDetail_MapBtn.Dispose ();
+                ExpenseDetail_MapBtn = null;
+            }
+
+            if (ExpenseDetail_Receipt != null) {
+                ExpenseDetail_Receipt.Dispose ();
+                ExpenseDetail_Receipt = null;
             }
 
             if (ExpenseDetail_RecieptBtn != null) {

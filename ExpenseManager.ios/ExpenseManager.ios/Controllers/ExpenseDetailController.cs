@@ -9,14 +9,17 @@ using System.Collections.Generic;
 using ExpenseManager.Repository.Repository;
 using System.Linq;
 using AVFoundation;
+using ExpenseManage.Common;
 
 namespace ExpenseManager.ios
 {
     public partial class ExpenseDetailController : UIViewController
     {
         public int ExpenseId { get; set; }
-        Expense expense { get; set; }
-        List<Category> categories;
+        Expense _expense { get; set; }
+        List<Category> _categories;
+        NSData _recieptImageData;
+
 
         public ExpenseDetailController (IntPtr handle) : base (handle)
         {
@@ -36,95 +39,115 @@ namespace ExpenseManager.ios
 
         void loadExpense()
         {
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "load expenses");
 			try
 			{
-				expense = new Expense(ExpenseId);
-				ExpenseDetail_Value.Text = expense.Value.ToString();
-				ExpenseDetail_Description.Text = expense.Description;
-				ExpenseDetail_Date.Date = expense.ExpenseDate.ToNSDate();
+				_expense = new Expense(ExpenseId);
+				ExpenseDetail_Value.Text = _expense.Value.ToString();
+				ExpenseDetail_Description.Text = _expense.Description;
+				ExpenseDetail_Date.Date = _expense.ExpenseDate.ToNSDate();
+
+                if (_expense.ReceiptImage != null)
+                {
+                    //ExpenseDetail_RecieptBtn.SetTitle("Show Reciept", UIControlState.Normal);
+                    ExpenseDetail_Receipt.Image = new UIImage(_expense.ReceiptImage);
+                }
 			}
 			catch
 			{
-				expense = new Expense();
+                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "load expenses as a new expense");
+				_expense = new Expense();
 			}
         }
 
         void loadCategorySelector()
         {
-			categories = (new RepositoryCore(CoreUtilities.GetLogService())).GetCategories();
-			var categoryNames = categories.Select(c => c.Name).ToList();
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "load categoryies");
+			_categories = (new RepositoryCore(CoreUtilities.GetLogService())).GetCategories();
+			var categoryNames = _categories.Select(c => c.Name).ToList();
 			var categorySelectorModel = new CategorySelectorModel(categoryNames);
 
-
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "assiging model for the category selector");
 			ExpenseDetail_Category.Model = categorySelectorModel;
-			if (expense.Value != 0)
-				ExpenseDetail_Category.Select(categoryNames.IndexOf(expense.GetCategory().Name), 0, true);
+			if (_expense.Value != 0)
+				ExpenseDetail_Category.Select(categoryNames.IndexOf(_expense.GetCategory().Name), 0, true);
         }
 
         void ExpenseDetail_Delete_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                expense.Delete();
-                NavigationController.PopViewController(true);
-            }
-            catch
-            {
-                Toast.MakeText("Something went wrong!").SetDuration(StaticValues.ToastDuration).Show();
-            }
+			CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "try to delete expense");
+			_expense.Delete();
+			NavigationController.PopViewController(true);
         }
 
         void ExpenseDetail_Save_Clicked(object sender, EventArgs e)
         {
             try
             {
+				CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "try to save expense");
                 var categoryName = ((CategorySelectorModel)ExpenseDetail_Category.Model).SelectedItem;
-                expense.CategoryId = categories.FirstOrDefault(c => c.Name == categoryName).Id;
-                expense.Description = ExpenseDetail_Description.Text;
-                expense.Value = Convert.ToInt16(ExpenseDetail_Value.Text);
-                expense.ExpenseDate = ExpenseDetail_Date.Date.ToDateTime();
-                expense.Upsert();
+                _expense.CategoryId = _categories.FirstOrDefault(c => c.Name == categoryName).Id;
+                _expense.Description = ExpenseDetail_Description.Text;
+                _expense.Value = Convert.ToInt16(ExpenseDetail_Value.Text);
+                _expense.ExpenseDate = ExpenseDetail_Date.Date.ToDateTime();
+                _expense.ReceiptImage = saveReciept();
+
+                _expense.Upsert();
                 NavigationController.PopViewController(true);
             }
             catch(InvalidOperationException ex)
             {
                 Toast.MakeText(ex.Message).SetDuration(StaticValues.ToastDuration).Show();
             }
-            catch
+            catch (Exception ex)
             {
+                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), ex.Message, LogType.Exception);
                 Toast.MakeText("Please provide correct values.").SetDuration(StaticValues.ToastDuration).Show();
             }
         }
 
-        void ExpenseDetail_Cancel_Clicked(object sender, EventArgs e)
+        string saveReciept()
         {
+            NSError err = null;
+            var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var jpgFilename = System.IO.Path.Combine(documentsDirectory, $"{Guid.NewGuid().ToString()}.jpg");
+            if (_recieptImageData.Save(jpgFilename, false, out err))
+			{
+				CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "image taken and everything is fine");
+				_expense.ReceiptImage = jpgFilename;
+                return jpgFilename;
+			}
+			else
+			{
+				CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController),
+												  $"image not taken because: {err.LocalizedDescription}");
+                return null;
+			}
+ 		}
+
+		void ExpenseDetail_Cancel_Clicked(object sender, EventArgs e)
+        {
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "caceling expense page");
             NavigationController.PopViewController(true);
         }
 
         async void ExpenseDetail_RecieptBtn_TouchUpInside(object sender, EventArgs e)
         {
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "adding receipt");
 			var authorizationStatus = AVCaptureDevice.GetAuthorizationStatus(AVMediaType.Video);
 
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "checking for camera authorization");
 			if (authorizationStatus != AVAuthorizationStatus.Authorized)
 			{
+                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "asking for camera access");
 				await AVCaptureDevice.RequestAccessForMediaTypeAsync(AVMediaType.Video);
 			}
 
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "loading camera");
 			Camera.TakePicture(this, (obj) =>
 			{
 				var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-				var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-				string jpgFilename = System.IO.Path.Combine(documentsDirectory, $"{Guid.NewGuid().ToString()}.jpg"); // hardcoded filename, overwritten each time
-				NSData imgData = photo.AsJPEG();
-				NSError err = null;
-				if (imgData.Save(jpgFilename, false, out err))
-				{
-					Console.WriteLine("saved as " + jpgFilename);
-				}
-				else
-				{
-					Console.WriteLine("NOT saved as " + jpgFilename + " because" + err.LocalizedDescription);
-				}
+                _recieptImageData = photo.AsJPEG();
 			});
         }
     }
