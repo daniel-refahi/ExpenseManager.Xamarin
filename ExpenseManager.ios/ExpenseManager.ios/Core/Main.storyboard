@@ -128,14 +128,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description...">
-                                <rect key="frame" x="16" y="75" width="343" height="30"/>
+                                <rect key="frame" x="20" y="75" width="137" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="473" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Expense Value..." misplaced="YES">
-                                <rect key="frame" x="16" y="113" width="153" height="30"/>
+                                <rect key="frame" x="19" y="113" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1816"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="1816" firstAttribute="width" constant="150"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1816"/>
+                                    </mask>
+                                </variation>
                             </textField>
                             <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="716" translatesAutoresizingMaskIntoConstraints="NO" translucent="YES" opaque="NO">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -160,25 +173,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" id="786" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="16" y="307" width="343" height="100"/>
-                                <constraints>
-                                    <constraint id="1673" firstItem="786" firstAttribute="height" constant="216">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="100"/>
-                                    </constraint>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="1673"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="1673"/>
-                                    </mask>
-                                </variation>
+                                <rect key="frame" x="20" y="307" width="374" height="100"/>
                             </pickerView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="1411" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="16" y="159" width="343" height="140"/>
+                                <rect key="frame" x="17" y="159" width="341" height="120"/>
                                 <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
                                     <!--2011-07-18 18:00:01 +0000-->
                                 </date>
@@ -189,19 +187,18 @@
                                     <!--Wed, 31 Dec 2025 11:00:00 GMT-->
                                 </date>
                                 <constraints>
-                                    <constraint id="1594" firstAttribute="width" constant="343"/>
-                                    <constraint id="1595" firstAttribute="height" constant="140"/>
+                                    <constraint id="1844" firstItem="1411" firstAttribute="height" constant="216">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="120"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="1594"/>
-                                        <exclude reference="1595"/>
+                                        <exclude reference="1844"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="1594"/>
-                                        <include reference="1595"/>
+                                        <include reference="1844"/>
                                     </mask>
                                 </variation>
                             </datePicker>
@@ -236,7 +233,7 @@
                                         <exclude reference="1704"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" image="Assets/receipt.png">
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="1703"/>
                                         <include reference="1704"/>
@@ -248,17 +245,20 @@
                                 <constraints>
                                     <constraint id="1699" firstAttribute="width" constant="175"/>
                                     <constraint id="1700" firstAttribute="height" constant="149"/>
+                                    <constraint id="1760" firstItem="1648" firstAttribute="width" constant="175"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1699"/>
                                         <exclude reference="1700"/>
+                                        <exclude reference="1760"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="1699"/>
                                         <include reference="1700"/>
+                                        <include reference="1760"/>
                                     </mask>
                                 </variation>
                             </mapView>
@@ -268,81 +268,189 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" id="1762" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="17" y="302" width="341" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <mask key="constraints">
+                                        <include reference="1874"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="1874" firstItem="1762" firstAttribute="height" constant="1"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1874"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" id="1763" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="155" width="338" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <mask key="constraints">
+                                        <include reference="1836"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="1836" firstAttribute="height" constant="1"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1836"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" id="1776" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="-20" y="331" width="380" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <mask key="constraints">
+                                        <include reference="1857"/>
+                                        <include reference="1858"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="1857" firstAttribute="width" constant="380"/>
+                                    <constraint id="1858" firstAttribute="height" constant="1"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1857"/>
+                                        <exclude reference="1858"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint id="1101" firstItem="467" firstAttribute="leadingMargin" secondItem="716" secondAttribute="leading" constant="16"/>
                             <constraint id="1102" firstItem="716" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin" constant="16"/>
                             <constraint id="1103" firstItem="716" firstAttribute="bottom" secondItem="467" secondAttribute="bottom"/>
-                            <constraint id="1104" firstItem="470" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="11"/>
-                            <constraint id="1105" firstItem="470" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
-                            <constraint id="1106" firstItem="470" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
-                            <constraint id="1107" firstItem="473" firstAttribute="top" secondItem="470" secondAttribute="bottom" constant="8"/>
-                            <constraint id="1108" firstItem="473" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
-                            <constraint id="1109" firstItem="733" firstAttribute="top" secondItem="473" secondAttribute="top" constant="5"/>
-                            <constraint id="1110" firstItem="733" firstAttribute="leading" secondItem="473" secondAttribute="centerX" constant="56"/>
-                            <constraint id="1111" firstItem="473" firstAttribute="bottom" secondItem="733" secondAttribute="bottom" constant="4"/>
-                            <constraint id="1112" firstItem="473" firstAttribute="trailing" secondItem="733" secondAttribute="trailing" constant="6"/>
-                            <constraint id="1116" firstItem="470" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="11"/>
-                            <constraint id="1117" firstItem="470" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
-                            <constraint id="1118" firstItem="470" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
-                            <constraint id="1592" firstItem="467" firstAttribute="trailing" secondItem="1411" secondAttribute="trailing" constant="16"/>
-                            <constraint id="1593" firstItem="1411" firstAttribute="top" secondItem="467" secondAttribute="top" constant="159"/>
-                            <constraint id="1657" firstItem="786" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin"/>
                             <constraint id="1666" firstItem="716" firstAttribute="top" secondItem="1649" secondAttribute="bottom" constant="21"/>
                             <constraint id="1668" firstItem="467" firstAttribute="trailingMargin" secondItem="1649" secondAttribute="trailing" constant="62"/>
-                            <constraint id="1674" firstItem="786" firstAttribute="top" secondItem="1411" secondAttribute="bottom" constant="8"/>
-                            <constraint id="1683" firstItem="786" firstAttribute="trailing" secondItem="467" secondAttribute="trailingMargin"/>
                             <constraint id="1697" firstItem="467" firstAttribute="trailing" secondItem="1648" secondAttribute="trailing" constant="16"/>
                             <constraint id="1698" firstItem="467" firstAttribute="bottom" secondItem="1648" secondAttribute="bottom" constant="103"/>
                             <constraint id="1701" firstItem="1637" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="10"/>
                             <constraint id="1702" firstItem="467" firstAttribute="bottom" secondItem="1637" secondAttribute="bottom" constant="102"/>
                             <constraint id="1709" firstItem="1600" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="10"/>
                             <constraint id="1710" firstItem="467" firstAttribute="bottom" secondItem="1600" secondAttribute="bottom" constant="65"/>
+                            <constraint id="1759" firstItem="1648" firstAttribute="leading" secondItem="1637" secondAttribute="trailing" constant="8"/>
+                            <constraint id="1761" firstItem="1648" firstAttribute="leading" secondItem="1637" secondAttribute="trailing" constant="8"/>
+                            <constraint id="1802" firstItem="470" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin">
+                                <variation key="heightClass=regular-widthClass=compact"/>
+                            </constraint>
+                            <constraint id="1803" firstItem="467" firstAttribute="trailingMargin" secondItem="470" secondAttribute="trailing" constant="237">
+                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
+                            </constraint>
+                            <constraint id="1804" firstItem="470" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="11"/>
+                            <constraint id="1814" firstItem="473" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="23">
+                                <variation key="heightClass=regular-widthClass=compact" constant="19"/>
+                            </constraint>
+                            <constraint id="1815" firstItem="473" firstAttribute="top" secondItem="467" secondAttribute="top" constant="113"/>
+                            <constraint id="1833" firstItem="1763" firstAttribute="leading" secondItem="467" secondAttribute="leading" constant="23">
+                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint id="1834" firstItem="1763" firstAttribute="top" secondItem="467" secondAttribute="top" constant="155"/>
+                            <constraint id="1837" firstItem="467" firstAttribute="trailingMargin" secondItem="1763" secondAttribute="trailing" constant="75">
+                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
+                            </constraint>
+                            <constraint id="1841" firstItem="1411" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="95"/>
+                            <constraint id="1842" firstItem="1411" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin" constant="4">
+                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
+                            </constraint>
+                            <constraint id="1843" firstItem="467" firstAttribute="trailingMargin" secondItem="1411" secondAttribute="trailing" constant="54">
+                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
+                            </constraint>
+                            <constraint id="1855" firstItem="467" firstAttribute="trailing" secondItem="1776" secondAttribute="trailing" constant="15"/>
+                            <constraint id="1856" firstItem="467" firstAttribute="bottom" secondItem="1776" secondAttribute="bottom" constant="335"/>
+                            <constraint id="1871" firstItem="1762" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin" constant="1">
+                                <variation key="heightClass=regular-widthClass=compact"/>
+                            </constraint>
+                            <constraint id="1872" firstItem="1762" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="238"/>
+                            <constraint id="1873" firstItem="467" firstAttribute="trailingMargin" secondItem="1762" secondAttribute="trailing" constant="1"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="1592"/>
-                                <exclude reference="1593"/>
-                                <exclude reference="1657"/>
                                 <exclude reference="1666"/>
                                 <exclude reference="1668"/>
-                                <exclude reference="1674"/>
-                                <exclude reference="1683"/>
                                 <exclude reference="1697"/>
                                 <exclude reference="1698"/>
                                 <exclude reference="1701"/>
                                 <exclude reference="1702"/>
                                 <exclude reference="1709"/>
                                 <exclude reference="1710"/>
+                                <exclude reference="1759"/>
+                                <exclude reference="1761"/>
+                                <exclude reference="1802"/>
+                                <exclude reference="1803"/>
+                                <exclude reference="1804"/>
+                                <exclude reference="1814"/>
+                                <exclude reference="1815"/>
+                                <exclude reference="1832"/>
+                                <exclude reference="1833"/>
+                                <exclude reference="1834"/>
+                                <exclude reference="1837"/>
+                                <exclude reference="1841"/>
+                                <exclude reference="1842"/>
+                                <exclude reference="1843"/>
+                                <exclude reference="1855"/>
+                                <exclude reference="1856"/>
+                                <exclude reference="1871"/>
+                                <exclude reference="1872"/>
+                                <exclude reference="1873"/>
                             </mask>
                             <mask key="subviews">
                                 <exclude reference="1600"/>
                                 <exclude reference="1637"/>
                                 <exclude reference="1648"/>
                                 <exclude reference="1649"/>
+                                <exclude reference="1762"/>
+                                <exclude reference="1763"/>
+                                <exclude reference="1776"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="1592"/>
-                                <include reference="1593"/>
-                                <include reference="1657"/>
                                 <include reference="1666"/>
                                 <include reference="1668"/>
-                                <include reference="1674"/>
-                                <include reference="1683"/>
                                 <include reference="1697"/>
                                 <include reference="1698"/>
                                 <include reference="1701"/>
                                 <include reference="1702"/>
                                 <include reference="1709"/>
                                 <include reference="1710"/>
+                                <include reference="1759"/>
+                                <include reference="1761"/>
+                                <include reference="1802"/>
+                                <include reference="1803"/>
+                                <include reference="1804"/>
+                                <include reference="1814"/>
+                                <include reference="1815"/>
+                                <include reference="1832"/>
+                                <include reference="1833"/>
+                                <include reference="1834"/>
+                                <include reference="1837"/>
+                                <include reference="1841"/>
+                                <include reference="1842"/>
+                                <include reference="1843"/>
+                                <include reference="1855"/>
+                                <include reference="1856"/>
+                                <include reference="1871"/>
+                                <include reference="1872"/>
+                                <include reference="1873"/>
                             </mask>
                             <mask key="subviews">
                                 <include reference="1600"/>
                                 <include reference="1637"/>
                                 <include reference="1648"/>
                                 <include reference="1649"/>
+                                <include reference="1762"/>
+                                <include reference="1763"/>
+                                <include reference="1776"/>
                             </mask>
                         </variation>
                     </view>

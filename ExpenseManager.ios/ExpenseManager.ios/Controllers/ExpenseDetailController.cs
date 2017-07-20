@@ -19,7 +19,7 @@ namespace ExpenseManager.ios
         Expense _expense { get; set; }
         List<Category> _categories;
         NSData _recieptImageData;
-
+        bool _isFromCamara = false;
 
         public ExpenseDetailController (IntPtr handle) : base (handle)
         {
@@ -37,6 +37,30 @@ namespace ExpenseManager.ios
             ExpenseDetail_RecieptBtn.TouchUpInside += ExpenseDetail_RecieptBtn_TouchUpInside;
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+			if (_expense.ReceiptImage != null)
+			{
+                //ExpenseDetail_RecieptBtn.SetTitle("Show Reciept", UIControlState.Normal);
+                try
+                {
+                    if (_isFromCamara)
+                        ExpenseDetail_Receipt.Image = new UIImage(_recieptImageData);
+                    else 
+                        ExpenseDetail_Receipt.Image = new UIImage(_expense.ReceiptImage);
+                }
+                catch
+                {
+                    ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
+                }
+			}
+			else
+				ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
+            _isFromCamara = false;
+		}
+
         void loadExpense()
         {
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "load expenses");
@@ -46,14 +70,8 @@ namespace ExpenseManager.ios
 				ExpenseDetail_Value.Text = _expense.Value.ToString();
 				ExpenseDetail_Description.Text = _expense.Description;
 				ExpenseDetail_Date.Date = _expense.ExpenseDate.ToNSDate();
-
-                if (_expense.ReceiptImage != null)
-                {
-                    //ExpenseDetail_RecieptBtn.SetTitle("Show Reciept", UIControlState.Normal);
-                    ExpenseDetail_Receipt.Image = new UIImage(_expense.ReceiptImage);
-                }
 			}
-			catch
+            catch
 			{
                 CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "load expenses as a new expense");
 				_expense = new Expense();
@@ -114,7 +132,6 @@ namespace ExpenseManager.ios
             if (_recieptImageData.Save(jpgFilename, false, out err))
 			{
 				CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "image taken and everything is fine");
-				_expense.ReceiptImage = jpgFilename;
                 return jpgFilename;
 			}
 			else
@@ -133,6 +150,7 @@ namespace ExpenseManager.ios
 
         async void ExpenseDetail_RecieptBtn_TouchUpInside(object sender, EventArgs e)
         {
+            _isFromCamara = true;
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "adding receipt");
 			var authorizationStatus = AVCaptureDevice.GetAuthorizationStatus(AVMediaType.Video);
 
