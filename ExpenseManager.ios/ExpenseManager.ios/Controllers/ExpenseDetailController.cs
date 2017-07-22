@@ -10,6 +10,7 @@ using ExpenseManager.Repository.Repository;
 using System.Linq;
 using AVFoundation;
 using ExpenseManage.Common;
+using CoreLocation;
 
 namespace ExpenseManager.ios
 {
@@ -35,6 +36,7 @@ namespace ExpenseManager.ios
 			ExpenseDetail_Save.Clicked += ExpenseDetail_Save_Clicked;
 			ExpenseDetail_Cancel.Clicked += ExpenseDetail_Cancel_Clicked;
             ExpenseDetail_RecieptBtn.TouchUpInside += ExpenseDetail_RecieptBtn_TouchUpInside;
+            ExpenseDetail_MapBtn.TouchUpInside += ExpenseDetail_MapBtn_TouchUpInside;
         }
 
         public override void ViewDidAppear(bool animated)
@@ -167,6 +169,20 @@ namespace ExpenseManager.ios
 				var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
                 _recieptImageData = photo.AsJPEG();
 			});
+        }
+
+        void ExpenseDetail_MapBtn_TouchUpInside(object sender, EventArgs e)
+        {
+            var locMgr = new CLLocationManager();
+            locMgr.RequestWhenInUseAuthorization();
+            locMgr.LocationsUpdated += LocMgr_LocationsUpdated;;
+            locMgr.RequestLocation();
+            var currentLocation = locMgr.Location;
+        }
+
+        void LocMgr_LocationsUpdated(object sender, CLLocationsUpdatedEventArgs e)
+        {
+
         }
     }
 }
