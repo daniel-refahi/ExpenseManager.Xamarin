@@ -36,5 +36,7 @@
 	<string>We need to access your camera to capture reciept picture</string>
 	<key>NSLocationUsageDescription</key>
 	<string>We need to access your Location Service to save where you spent your expenses</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>New Entry</string>
 </dict>
 </plist>

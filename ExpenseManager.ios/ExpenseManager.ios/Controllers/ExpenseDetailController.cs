@@ -11,6 +11,7 @@ using System.Linq;
 using AVFoundation;
 using ExpenseManage.Common;
 using CoreLocation;
+using MapKit;
 
 namespace ExpenseManager.ios
 {
@@ -20,6 +21,9 @@ namespace ExpenseManager.ios
         Expense _expense { get; set; }
         List<Category> _categories;
         NSData _recieptImageData;
+        double _longitude;
+        double _latitute;
+        CLLocationManager _locationManager;
         bool _isFromCamara = false;
 
         public ExpenseDetailController (IntPtr handle) : base (handle)
@@ -32,9 +36,9 @@ namespace ExpenseManager.ios
             loadExpense();
             loadCategorySelector();
 
-			ExpenseDetail_Delete.Clicked += ExpenseDetail_Delete_Clicked;
-			ExpenseDetail_Save.Clicked += ExpenseDetail_Save_Clicked;
-			ExpenseDetail_Cancel.Clicked += ExpenseDetail_Cancel_Clicked;
+            ExpenseDetail_Delete.Clicked += ExpenseDetail_Delete_Clicked;
+            ExpenseDetail_Save.Clicked += ExpenseDetail_Save_Clicked;
+            ExpenseDetail_Cancel.Clicked += ExpenseDetail_Cancel_Clicked;
             ExpenseDetail_RecieptBtn.TouchUpInside += ExpenseDetail_RecieptBtn_TouchUpInside;
             ExpenseDetail_MapBtn.TouchUpInside += ExpenseDetail_MapBtn_TouchUpInside;
         }
@@ -42,9 +46,9 @@ namespace ExpenseManager.ios
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-
-			if (_expense.ReceiptImage != null)
-			{
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController.ViewDidAppear));
+            if (_expense.ReceiptImage != null)
+            {
                 //ExpenseDetail_RecieptBtn.SetTitle("Show Reciept", UIControlState.Normal);
                 try
                 {
@@ -57,61 +61,65 @@ namespace ExpenseManager.ios
                 {
                     ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
                 }
-			}
-			else
-				ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
+            }
+            else
+                ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
             _isFromCamara = false;
-		}
+        }
 
         void loadExpense()
         {
-            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "load expenses");
-			try
-			{
-				_expense = new Expense(ExpenseId);
-				ExpenseDetail_Value.Text = _expense.Value.ToString();
-				ExpenseDetail_Description.Text = _expense.Description;
-				ExpenseDetail_Date.Date = _expense.ExpenseDate.ToNSDate();
-			}
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController.loadExpense));
+            try
+            {
+                _expense = new Expense(ExpenseId);
+                ExpenseDetail_Value.Text = _expense.Value.ToString();
+                ExpenseDetail_Description.Text = _expense.Description;
+                ExpenseDetail_Date.Date = _expense.ExpenseDate.ToNSDate();
+
+                if(_expense.Longitude != 0)
+                    showLocationOnMap();
+            }
             catch
-			{
+            {
                 CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "load expenses as a new expense");
-				_expense = new Expense();
-			}
+                _expense = new Expense();
+            }
         }
 
         void loadCategorySelector()
         {
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "load categoryies");
-			_categories = (new RepositoryCore(CoreUtilities.GetLogService())).GetCategories();
-			var categoryNames = _categories.Select(c => c.Name).ToList();
-			var categorySelectorModel = new CategorySelectorModel(categoryNames);
+            _categories = (new RepositoryCore(CoreUtilities.GetLogService())).GetCategories();
+            var categoryNames = _categories.Select(c => c.Name).ToList();
+            var categorySelectorModel = new CategorySelectorModel(categoryNames);
 
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "assiging model for the category selector");
-			ExpenseDetail_Category.Model = categorySelectorModel;
-			if (_expense.Value != 0)
-				ExpenseDetail_Category.Select(categoryNames.IndexOf(_expense.GetCategory().Name), 0, true);
+            ExpenseDetail_Category.Model = categorySelectorModel;
+            if (_expense.Value != 0)
+                ExpenseDetail_Category.Select(categoryNames.IndexOf(_expense.GetCategory().Name), 0, true);
         }
 
         void ExpenseDetail_Delete_Clicked(object sender, EventArgs e)
         {
-			CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "try to delete expense");
-			_expense.Delete();
-			NavigationController.PopViewController(true);
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "try to delete expense");
+            _expense.Delete();
+            NavigationController.PopViewController(true);
         }
 
         void ExpenseDetail_Save_Clicked(object sender, EventArgs e)
         {
             try
             {
-				CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "try to save expense");
+                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "try to save expense");
                 var categoryName = ((CategorySelectorModel)ExpenseDetail_Category.Model).SelectedItem;
                 _expense.CategoryId = _categories.FirstOrDefault(c => c.Name == categoryName).Id;
                 _expense.Description = ExpenseDetail_Description.Text;
                 _expense.Value = Convert.ToInt16(ExpenseDetail_Value.Text);
                 _expense.ExpenseDate = ExpenseDetail_Date.Date.ToDateTime();
                 _expense.ReceiptImage = saveReciept();
-
+                _expense.Longitude = _longitude;
+                _expense.Latitude = _latitute;
                 _expense.Upsert();
                 NavigationController.PopViewController(true);
             }
@@ -132,19 +140,19 @@ namespace ExpenseManager.ios
             var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var jpgFilename = System.IO.Path.Combine(documentsDirectory, $"{Guid.NewGuid().ToString()}.jpg");
             if (_recieptImageData.Save(jpgFilename, false, out err))
-			{
-				CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "image taken and everything is fine");
+            {
+                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "image taken and everything is fine");
                 return jpgFilename;
-			}
-			else
-			{
-				CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController),
-												  $"image not taken because: {err.LocalizedDescription}");
+            }
+            else
+            {
+                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController),
+                                                  $"image not taken because: {err.LocalizedDescription}");
                 return null;
-			}
- 		}
+            }
+         }
 
-		void ExpenseDetail_Cancel_Clicked(object sender, EventArgs e)
+        void ExpenseDetail_Cancel_Clicked(object sender, EventArgs e)
         {
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "caceling expense page");
             NavigationController.PopViewController(true);
@@ -154,35 +162,62 @@ namespace ExpenseManager.ios
         {
             _isFromCamara = true;
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "adding receipt");
-			var authorizationStatus = AVCaptureDevice.GetAuthorizationStatus(AVMediaType.Video);
+            var authorizationStatus = AVCaptureDevice.GetAuthorizationStatus(AVMediaType.Video);
 
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "checking for camera authorization");
-			if (authorizationStatus != AVAuthorizationStatus.Authorized)
-			{
+            if (authorizationStatus != AVAuthorizationStatus.Authorized)
+            {
                 CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "asking for camera access");
-				await AVCaptureDevice.RequestAccessForMediaTypeAsync(AVMediaType.Video);
-			}
+                await AVCaptureDevice.RequestAccessForMediaTypeAsync(AVMediaType.Video);
+            }
 
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "loading camera");
-			Camera.TakePicture(this, (obj) =>
-			{
-				var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
+            Camera.TakePicture(this, (obj) =>
+            {
+                var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
                 _recieptImageData = photo.AsJPEG();
-			});
+            });
         }
 
         void ExpenseDetail_MapBtn_TouchUpInside(object sender, EventArgs e)
         {
-            var locMgr = new CLLocationManager();
-            locMgr.RequestWhenInUseAuthorization();
-            locMgr.LocationsUpdated += LocMgr_LocationsUpdated;;
-            locMgr.RequestLocation();
-            var currentLocation = locMgr.Location;
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "clicked on update location");
+            _locationManager = new CLLocationManager();
+
+            _locationManager.RequestAlwaysAuthorization();
+            _locationManager.StartUpdatingLocation();
+            _locationManager.LocationsUpdated += LocMgr_LocationsUpdated;
         }
 
         void LocMgr_LocationsUpdated(object sender, CLLocationsUpdatedEventArgs e)
         {
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController.LocMgr_LocationsUpdated),"location update event");
+            if (e.Locations.Count() > 0)
+            {
+                _longitude = e.Locations[0].Coordinate.Longitude;
+                _latitute = e.Locations[0].Coordinate.Latitude;
+                showLocationOnMap();
+            }
 
+            _locationManager.StopUpdatingLocation();
+        }
+
+        void showLocationOnMap()
+        {
+            CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController.showLocationOnMap));
+            var annotation = new MKPointAnnotation();
+            var coordination = new CLLocationCoordinate2D(_latitute, _longitude);
+            annotation.Coordinate = coordination;
+            ExpenseDetail_Map.RemoveAnnotations((ExpenseDetail_Map.Annotations));
+            ExpenseDetail_Map.AddAnnotation(annotation);
+
+            var region = new MKCoordinateRegion();
+            region.Center.Latitude = coordination.Latitude;
+            region.Center.Longitude = coordination.Longitude;
+            region.Span.LatitudeDelta = 0.01;
+            region.Span.LongitudeDelta = 0.01;
+
+            ExpenseDetail_Map.SetRegion(region, true);
         }
     }
 }
