@@ -8,7 +8,7 @@ namespace ExpenseManager.ios
 {
     public partial class MainTabBarController : UITabBarController
     {
-        string selectedTab;
+        int selectedTab;
         public MainTabBarController (IntPtr handle) : base (handle)
         {
         }
@@ -16,14 +16,13 @@ namespace ExpenseManager.ios
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            selectedTab = StaticValues.ExpenseListNavigationTitle;
 
             HandleAddBtn();
 
 			ViewControllerSelected += (sender, e) =>
 			{
-				selectedTab = TabBar.SelectedItem.Title;
-                if (selectedTab == StaticValues.ReportNavigationTitle || selectedTab == StaticValues.SettingsNavigationTitle)
+                selectedTab = (int)SelectedIndex;
+                if (selectedTab == 2 || selectedTab == 3)
                     NavigationItem.RightBarButtonItem.Enabled = false;
                 else 
                     NavigationItem.RightBarButtonItem.Enabled = true;
@@ -36,9 +35,9 @@ namespace ExpenseManager.ios
 			NavigationItem.SetRightBarButtonItem(
 				new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) =>
 				{
-                    if(selectedTab == StaticValues.ExpenseListNavigationTitle)
+                    if(selectedTab == 0)
                         AddExpense();
-                    else if (selectedTab == StaticValues.CategoryListNavigationTitle)
+                    else if (selectedTab == 1)
                         AddCategory();
 				})
 			, true);

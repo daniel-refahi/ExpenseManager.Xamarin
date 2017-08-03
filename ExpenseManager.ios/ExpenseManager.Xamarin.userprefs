@@ -1,18 +1,17 @@
 ﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/ExpenseDetailController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/Controllers/MainTabBarController.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" Line="214" Column="2" />
+      <File FileName="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" Line="78" Column="41" />
+      <File FileName="ExpenseManager.ios/Controllers/MainTabBarController.cs" Line="43" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.ItemProperties.ExpenseManager.Repository.Test PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/Repository/Settings.cs" relfile="ExpenseManager.Repository/Repository/Settings.cs" line="59" column="1" />
       <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.Repository/Repository/Settings.cs" relfile="ExpenseManager.Repository/Repository/Settings.cs" line="26" column="1" />
-      <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/Controllers/ExpenseDetailController.cs" relfile="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" line="194" column="1" />
-      <Breakpoint file="/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/Controllers/ExpenseDetailController.cs" relfile="ExpenseManager.ios/Controllers/ExpenseDetailController.cs" line="191" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
@@ -20,5 +19,5 @@
     <Watch file="ExpenseManager.Repository.Test/UnitTests/ExpenseTests.cs" line="80" offsetX="438" offsetY="1194" expression="e.ExpenseDate" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.3c6da502a0f2cbf81f0c65e94bc5972d5332a629" />
+  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
 </Properties>

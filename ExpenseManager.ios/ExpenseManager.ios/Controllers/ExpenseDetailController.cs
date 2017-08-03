@@ -21,8 +21,6 @@ namespace ExpenseManager.ios
         Expense _expense { get; set; }
         List<Category> _categories;
         NSData _recieptImageData;
-        double _longitude;
-        double _latitute;
         CLLocationManager _locationManager;
         bool _isFromCamara = false;
 
@@ -76,8 +74,7 @@ namespace ExpenseManager.ios
                 ExpenseDetail_Value.Text = _expense.Value.ToString();
                 ExpenseDetail_Description.Text = _expense.Description;
                 ExpenseDetail_Date.Date = _expense.ExpenseDate.ToNSDate();
-
-                if(_expense.Longitude != 0)
+                if(_expense.Latitude != 0 && _expense.Longitude != 0)
                     showLocationOnMap();
             }
             catch
@@ -117,9 +114,7 @@ namespace ExpenseManager.ios
                 _expense.Description = ExpenseDetail_Description.Text;
                 _expense.Value = Convert.ToInt16(ExpenseDetail_Value.Text);
                 _expense.ExpenseDate = ExpenseDetail_Date.Date.ToDateTime();
-                _expense.ReceiptImage = saveReciept();
-                _expense.Longitude = _longitude;
-                _expense.Latitude = _latitute;
+                _expense.ReceiptImage = _recieptImageData != null ? saveReciept() : null;
                 _expense.Upsert();
                 NavigationController.PopViewController(true);
             }
@@ -136,18 +131,25 @@ namespace ExpenseManager.ios
 
         string saveReciept()
         {
-            NSError err = null;
-            var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            var jpgFilename = System.IO.Path.Combine(documentsDirectory, $"{Guid.NewGuid().ToString()}.jpg");
-            if (_recieptImageData.Save(jpgFilename, false, out err))
+            try
             {
-                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "image taken and everything is fine");
-                return jpgFilename;
-            }
-            else
+                NSError err = null;
+                var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                var jpgFilename = System.IO.Path.Combine(documentsDirectory, $"{Guid.NewGuid().ToString()}.jpg");
+                if (_recieptImageData.Save(jpgFilename, false, out err))
+                {
+                    CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "image taken and everything is fine");
+                    return jpgFilename;
+                }
+                else
+                {
+                    CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController),
+                                                      $"image not saved because: {err.LocalizedDescription}");
+                    return null;
+                }
+            }catch (Exception ex)
             {
-                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController),
-                                                  $"image not taken because: {err.LocalizedDescription}");
+                CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController.saveReciept), ex.Message);
                 return null;
             }
          }
@@ -194,8 +196,8 @@ namespace ExpenseManager.ios
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController.LocMgr_LocationsUpdated),"location update event");
             if (e.Locations.Count() > 0)
             {
-                _longitude = e.Locations[0].Coordinate.Longitude;
-                _latitute = e.Locations[0].Coordinate.Latitude;
+                _expense.Longitude = e.Locations[0].Coordinate.Longitude;
+                _expense.Latitude = e.Locations[0].Coordinate.Latitude;
                 showLocationOnMap();
             }
 
@@ -206,7 +208,7 @@ namespace ExpenseManager.ios
         {
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController.showLocationOnMap));
             var annotation = new MKPointAnnotation();
-            var coordination = new CLLocationCoordinate2D(_latitute, _longitude);
+            var coordination = new CLLocationCoordinate2D(_expense.Latitude, _expense.Longitude);
             annotation.Coordinate = coordination;
             ExpenseDetail_Map.RemoveAnnotations((ExpenseDetail_Map.Annotations));
             ExpenseDetail_Map.AddAnnotation(annotation);

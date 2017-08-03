@@ -58,7 +58,9 @@
                             <outlet property="delegate" destination="127" id="130"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Categories" id="233" selectedImage="Assets/category_selected.png" image="Assets/category_unselected.png"/>
+                    <tabBarItem key="tabBarItem" id="233" selectedImage="Assets/CategorySelected.png" image="Assets/Category.png">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="133" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -90,7 +92,9 @@
                             <outlet property="delegate" destination="136" id="139"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" id="189" selectedImage="Assets/expense_selected.png" image="Assets/expense_unselected.png" title="Expenses"/>
+                    <tabBarItem key="tabBarItem" id="189" selectedImage="Assets/ExpensesSelected.png" image="Assets/Expenses.png">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <toolbarItems/>
                     <connections/>
@@ -656,7 +660,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" id="1251" title="Report"/>
+                    <tabBarItem key="tabBarItem" id="1251" image="Assets/Report.png" selectedImage="Assets/ReportSelected.png">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1220" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -730,7 +736,9 @@
                             <constraint id="1551" firstItem="1483" firstAttribute="top" secondItem="1254" secondAttribute="bottom" constant="103"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="1320"/>
+                    <tabBarItem key="tabBarItem" id="1320" selectedImage="Assets/SettingsSelected.png" image="Assets/Settings.png">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Settings_MonthPicker" destination="1483" id="name-outlet-1483"/>
@@ -748,12 +756,14 @@
     </simulatedMetricsContainer>
     <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
     <resources>
-        <image name="Assets/CategoryIcon.png" width="30" height="30"/>
-        <image name="Assets/ExpenseIcon.png" width="30" height="30"/>
-        <image name="Assets/category_selected.png" width="30" height="30"/>
-        <image name="Assets/category_unselected.png" width="30" height="30"/>
-        <image name="Assets/expense_selected.png" width="30" height="30"/>
-        <image name="Assets/expense_unselected.png" width="30" height="30"/>
         <image name="Assets/receipt.png" width="128" height="128"/>
+        <image name="Assets/Settings.png" width="30" height="30"/>
+        <image name="Assets/SettingsSelected.png" width="40" height="40"/>
+        <image name="Assets/Category.png" width="30" height="30"/>
+        <image name="Assets/CategorySelected.png" width="40" height="40"/>
+        <image name="Assets/Expenses.png" width="30" height="30"/>
+        <image name="Assets/ExpensesSelected.png" width="40" height="40"/>
+        <image name="Assets/Report.png" width="30" height="30"/>
+        <image name="Assets/ReportSelected.png" width="40" height="40"/>
     </resources>
 </document>
