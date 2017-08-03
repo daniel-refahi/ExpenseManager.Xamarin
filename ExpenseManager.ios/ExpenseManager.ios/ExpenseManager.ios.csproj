@@ -122,6 +122,9 @@
     <Reference Include="Syncfusion.SFChart.iOS">
       <HintPath>..\..\Syncfusion.SFChart.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfGauge.iOS">
+      <HintPath>..\..\Syncfusion.SfGauge.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -212,6 +215,8 @@
     <BundleResource Include="Assets\ReportSelected%402x.png" />
     <BundleResource Include="Assets\Settings%402x.png" />
     <BundleResource Include="Assets\SettingsSelected%402x.png" />
+    <BundleResource Include="Assets\Cancel%402x.png" />
+    <BundleResource Include="Assets\Save%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="ToastIOS">

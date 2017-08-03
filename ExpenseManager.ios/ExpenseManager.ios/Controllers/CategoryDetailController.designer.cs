@@ -20,6 +20,10 @@ namespace ExpenseManager.ios
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView CategoryDetail_Chart { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem CategoryDetail_Delete { get; set; }
 
         [Outlet]
@@ -47,6 +51,11 @@ namespace ExpenseManager.ios
             if (CategoryDetail_Cancel != null) {
                 CategoryDetail_Cancel.Dispose ();
                 CategoryDetail_Cancel = null;
+            }
+
+            if (CategoryDetail_Chart != null) {
+                CategoryDetail_Chart.Dispose ();
+                CategoryDetail_Chart = null;
             }
 
             if (CategoryDetail_Delete != null) {

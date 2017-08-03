@@ -37,3 +37,6 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/ReportSelected@2x.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/Settings@2x.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/SettingsSelected@2x.png
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/Cancel@2x.png
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/Save@2x.png
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/bin/iPhoneSimulator/Debug/Syncfusion.SfGauge.iOS.dll
