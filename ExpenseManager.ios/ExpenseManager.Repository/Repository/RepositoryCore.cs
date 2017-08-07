@@ -163,45 +163,106 @@ namespace ExpenseManager.Repository.Repository
 
         void Seed(SQLiteConnection db)
         {
-            var commute = new Category() { Name = "Commute", Plan = 200 };
+            var commute = new Category() { Name = "Commute", Plan = 650 };
             db.Insert(commute);
-            var rent = new Category() { Name = "Rent", Plan = 1200 };
+            var rent = new Category() { Name = "Rent", Plan = 1600 };
             db.Insert(rent);
-            var insurance = new Category() { Name = "Insurance", Plan = 450 };
+            var insurance = new Category() { Name = "Insurance", Plan = 250 };
             db.Insert(insurance);
             var groceries = new Category() { Name = "Groceries", Plan = 650 };
             db.Insert(groceries);
-            var games = new Category() { Name = "Games", Plan = 80 };
+            var games = new Category() { Name = "Games", Plan = 120 };
             db.Insert(games);
-            var clothes = new Category() { Name = "Clothes", Plan = 120 };
+            var clothes = new Category() { Name = "Clothes", Plan = 200 };
             db.Insert(clothes);
+			var eatingOut = new Category() { Name = "Eating Out", Plan = 250 };
+			db.Insert(eatingOut);
+			var bills = new Category() { Name = "Bills", Plan = 500 };
+            db.Insert(bills);
+			var toys = new Category() { Name = "Toys For Kids", Plan = 70 };
+            db.Insert(toys);
+			var liquor = new Category() { Name = "Liquor", Plan = 90 };
+			db.Insert(liquor);
+			var saving = new Category() { Name = "Saving", Plan = 600 };
+            db.Insert(saving);
 
             var random = new Random();
+            var now = DateTime.Now;
 
-            db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 50, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 50, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 50, Description = "Some description goes here." });
+            db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+            db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 34, Description = "Taking taxi to work" });
+            db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" }); 
+            db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 35, Description = "Taking taxi to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 40, Description = "Taking taxi to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
+			db.Insert(new Expense() { CategoryId = commute.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Taking bus to work" });
 
-            db.Insert(new Expense() { CategoryId = rent.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 1600, Description = "Some description goes here." });
 
-            db.Insert(new Expense() { CategoryId = insurance.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 250, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = insurance.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 300, Description = "Some description goes here." });
+            db.Insert(new Expense() { CategoryId = rent.Id, ExpenseDate = GetRandomDate(), Value = 1600, Description = "Paying rent" });
 
-            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 120, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 60, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 110, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 22, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 26, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 90, Description = "Some description goes here." });
+            db.Insert(new Expense() { CategoryId = insurance.Id, ExpenseDate = GetRandomDate(), Value = 120, Description = "Medical insurance" });
+            db.Insert(new Expense() { CategoryId = insurance.Id, ExpenseDate = GetRandomDate(), Value = 80, Description = "Car insurance" });
 
-            db.Insert(new Expense() { CategoryId = games.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 89, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = games.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 19, Description = "Some description goes here." });
+            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = GetRandomDate(), Value = 32, Description = "Buying groceries" });
+            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = GetRandomDate(), Value = 80, Description = "Buying some snacks for the party" });
+            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = GetRandomDate(), Value = 75, Description = "Buying groceries" });
+            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = GetRandomDate(), Value = 22, Description = "Buying groceries" });
+            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = GetRandomDate(), Value = 26, Description = "Milk, Bread, Eggs" });
+            db.Insert(new Expense() { CategoryId = groceries.Id, ExpenseDate = GetRandomDate(), Value = 90, Description = "Buying groceries" });
 
-            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 10, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 25, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 9, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 120, Description = "Some description goes here." });
-            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = DateTime.Now.AddDays(random.Next(-45, 0)), Value = 100, Description = "Some description goes here." });
+            db.Insert(new Expense() { CategoryId = games.Id, ExpenseDate = GetRandomDate(), Value = 69, Description = "Destiny 2" });
+            db.Insert(new Expense() { CategoryId = games.Id, ExpenseDate = GetRandomDate(), Value = 39, Description = "Diablo 3" });
+
+            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = GetRandomDate(), Value = 10, Description = "New sweater" });
+            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = GetRandomDate(), Value = 25, Description = "New shoes" });
+            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = GetRandomDate(), Value = 90, Description = "New coat" });
+            db.Insert(new Expense() { CategoryId = clothes.Id, ExpenseDate = GetRandomDate(), Value = 39, Description = "Some clothes" });
+
+            db.Insert(new Expense() { CategoryId = eatingOut.Id, ExpenseDate = GetRandomDate(), Value = 19, Description = "Mcdonalds" });
+            db.Insert(new Expense() { CategoryId = eatingOut.Id, ExpenseDate = GetRandomDate(), Value = 12, Description = "Friday night" });
+            db.Insert(new Expense() { CategoryId = eatingOut.Id, ExpenseDate = GetRandomDate(), Value = 45, Description = "Going out with friends" });
+            db.Insert(new Expense() { CategoryId = eatingOut.Id, ExpenseDate = GetRandomDate(), Value = 19, Description = "Lunch at Charlie's" });
+            db.Insert(new Expense() { CategoryId = eatingOut.Id, ExpenseDate = GetRandomDate(), Value = 21, Description = "Eating out" });
+            db.Insert(new Expense() { CategoryId = eatingOut.Id, ExpenseDate = GetRandomDate(), Value = 16, Description = "Mcdonalds" });
+            db.Insert(new Expense() { CategoryId = eatingOut.Id, ExpenseDate = GetRandomDate(), Value = 32, Description = "Breakfast at airport" });
+
+            db.Insert(new Expense() { CategoryId = bills.Id, ExpenseDate = GetRandomDate(), Value = 190, Description = "Electricity bill" });
+            db.Insert(new Expense() { CategoryId = bills.Id, ExpenseDate = GetRandomDate(), Value = 153, Description = "Gas bill" });
+            db.Insert(new Expense() { CategoryId = bills.Id, ExpenseDate = GetRandomDate(), Value = 65, Description = "Water bill" });
+
+            db.Insert(new Expense() { CategoryId = toys.Id, ExpenseDate = GetRandomDate(), Value = 39, Description = "New lego set" });
+            db.Insert(new Expense() { CategoryId = toys.Id, ExpenseDate = GetRandomDate(), Value = 110, Description = "New bike" });
+            db.Insert(new Expense() { CategoryId = toys.Id, ExpenseDate = GetRandomDate(), Value = 12, Description = "New toy car" });
+
+            db.Insert(new Expense() { CategoryId = liquor.Id, ExpenseDate = GetRandomDate(), Value = 12, Description = "Wine" });
+            db.Insert(new Expense() { CategoryId = liquor.Id, ExpenseDate = GetRandomDate(), Value = 20, Description = "Wine" });
+            db.Insert(new Expense() { CategoryId = liquor.Id, ExpenseDate = GetRandomDate(), Value = 25, Description = "Six pack beer" });
+            db.Insert(new Expense() { CategoryId = liquor.Id, ExpenseDate = GetRandomDate(), Value = 11, Description = "Wine" });
+            db.Insert(new Expense() { CategoryId = liquor.Id, ExpenseDate = GetRandomDate(), Value = 16, Description = "Wine" });
+
+            db.Insert(new Expense() { CategoryId = saving.Id, ExpenseDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 7), Value = 120, Description = "Week one saving" });
+            db.Insert(new Expense() { CategoryId = saving.Id, ExpenseDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 12), Value = 130, Description = "Week two saving" });
+            db.Insert(new Expense() { CategoryId = saving.Id, ExpenseDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 20), Value = 120, Description = "Week three saving" });
+            db.Insert(new Expense() { CategoryId = saving.Id, ExpenseDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 27), Value = 150, Description = "Week four saving" });
+        }
+
+        DateTime GetRandomDate()
+        {
+            var random = new Random();
+            return new DateTime(DateTime.Now.Year, DateTime.Now.Month, random.Next(1,28));
         }
     }
 }

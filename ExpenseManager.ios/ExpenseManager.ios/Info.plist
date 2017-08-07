@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>ExpenseManager</string>
+	<string>Expense Manager</string>
 	<key>CFBundleIdentifier</key>
 	<string>daniel.refahi.expensemanager</string>
 	<key>CFBundleShortVersionString</key>

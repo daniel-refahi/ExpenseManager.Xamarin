@@ -45,7 +45,8 @@ namespace ExpenseManager.ios.ListCells
 			};
 
 			editBtn = UIButton.FromType(UIButtonType.RoundedRect);
-			editBtn.SetTitle("Detail", UIControlState.Normal);
+			editBtn.TitleLabel.Font = UIFont.FromName("Cochin-BoldItalic", 26f);
+			editBtn.SetTitle("...", UIControlState.Normal);
 			//EditBtn.SetTitle("Disabled", UIControlState.Disabled);
 			//EditBtn.SetTitleColor(UIColor.LightGray, UIControlState.Disabled);
 			editBtn.TouchUpInside += EditBtnClicked;
@@ -69,7 +70,7 @@ namespace ExpenseManager.ios.ListCells
 			categoryNameLabel.Frame = new RectangleF(40, 15, 163, 30);
             totalExpensesLabel.Frame = new RectangleF(150, 17, 150, 30); 
             totalExpenses.Frame = new RectangleF(240, 18, 150, 30);
-			editBtn.Frame = new RectangleF((float)ContentView.Bounds.Width - 100, 17, 80, 30);
+			editBtn.Frame = new RectangleF((float)ContentView.Bounds.Width - 100, 12, 80, 30);
 		}
 
 

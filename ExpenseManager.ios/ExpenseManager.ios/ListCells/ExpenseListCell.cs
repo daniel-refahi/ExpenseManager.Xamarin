@@ -42,7 +42,8 @@ namespace ExpenseManager.ios.ListCells
 			};
 
 			EditBtn = UIButton.FromType(UIButtonType.RoundedRect);
-			EditBtn.SetTitle("Detail", UIControlState.Normal);
+            EditBtn.TitleLabel.Font = UIFont.FromName("Cochin-BoldItalic", 26f);
+            EditBtn.SetTitle("...", UIControlState.Normal);
 			//EditBtn.SetTitle("Disabled", UIControlState.Disabled);
 			//EditBtn.SetTitleColor(UIColor.LightGray, UIControlState.Disabled);
 			EditBtn.TouchUpInside += EditBtnClicked;
@@ -65,7 +66,7 @@ namespace ExpenseManager.ios.ListCells
 			//Avatar.Frame = new RectangleF(20, 5, 30, 40);
 			valueLable.Frame = new RectangleF(40, 15, 163, 30);
 			descriptionLable.Frame = new RectangleF((float)ContentView.Bounds.Width - 250, 17, 150, 30);
-			EditBtn.Frame = new RectangleF((float)ContentView.Bounds.Width - 100, 17, 80, 30);
+			EditBtn.Frame = new RectangleF((float)ContentView.Bounds.Width - 100, 12, 80, 30);
 		}
 
 
