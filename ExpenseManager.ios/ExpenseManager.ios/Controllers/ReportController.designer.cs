@@ -14,5 +14,8 @@ namespace ExpenseManager.ios
     [Register ("ReportController")]
     partial class ReportController
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }

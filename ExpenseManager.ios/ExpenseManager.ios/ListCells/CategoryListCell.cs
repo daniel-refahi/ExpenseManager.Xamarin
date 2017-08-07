@@ -45,7 +45,7 @@ namespace ExpenseManager.ios.ListCells
 			};
 
 			editBtn = UIButton.FromType(UIButtonType.RoundedRect);
-			editBtn.SetTitle("Edit", UIControlState.Normal);
+			editBtn.SetTitle("Detail", UIControlState.Normal);
 			//EditBtn.SetTitle("Disabled", UIControlState.Disabled);
 			//EditBtn.SetTitleColor(UIColor.LightGray, UIControlState.Disabled);
 			editBtn.TouchUpInside += EditBtnClicked;

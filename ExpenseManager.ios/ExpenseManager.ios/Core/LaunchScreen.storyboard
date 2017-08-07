@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <subviews>
@@ -25,6 +25,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint id="7" firstItem="3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin"/>
+                            <constraint id="8" firstItem="3" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin"/>
+                            <constraint id="9" firstItem="3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="108"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -35,4 +40,17 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina47"/>
     </simulatedMetricsContainer>
+    <resources>
+        <image name="Assets/receipt.png" width="128" height="128"/>
+        <image name="Assets/Category.png" width="30" height="30"/>
+        <image name="Assets/CategorySelected.png" width="40" height="40"/>
+        <image name="Assets/Expenses.png" width="30" height="30"/>
+        <image name="Assets/ExpensesSelected.png" width="40" height="40"/>
+        <image name="Assets/Report.png" width="30" height="30"/>
+        <image name="Assets/ReportSelected.png" width="40" height="40"/>
+        <image name="Assets/Settings.png" width="30" height="30"/>
+        <image name="Assets/SettingsSelected.png" width="40" height="40"/>
+        <image name="Assets/Cancel.png" width="30" height="30"/>
+        <image name="Assets/Save.png" width="30" height="30"/>
+    </resources>
 </document>

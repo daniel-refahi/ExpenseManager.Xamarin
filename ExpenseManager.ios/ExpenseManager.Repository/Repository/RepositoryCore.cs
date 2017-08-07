@@ -60,6 +60,8 @@ namespace ExpenseManager.Repository.Repository
                 Logger.Log(nameof(RepositoryCore), "SetUp db connection.");
                 DBConnectionString.DBPATH = dbPath;
                 DBConnectionString.PLATFORM = sqlitePlatform;
+                var settings = GetAppSettings();
+                SetCurrentMonth(settings.CurrentYear, settings.CurrentMonth);
             }
             catch (Exception ex)
             {

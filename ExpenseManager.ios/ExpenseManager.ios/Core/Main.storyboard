@@ -536,7 +536,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="954" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                                 <items>
                                     <barButtonItem id="958" systemItem="trash">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
@@ -557,10 +557,11 @@
                                     </barButtonItem>
                                 </items>
                                 <constraints>
-                                    <constraint id="1015" firstAttribute="width" constant="375"/>
+                                    <constraint id="2023" firstAttribute="width" constant="375"/>
+                                    <constraint id="2024" firstItem="954" firstAttribute="height" constant="40"/>
                                 </constraints>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1121" translatesAutoresizingMaskIntoConstraints="NO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1121" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                                 <rect key="frame" x="16" y="332" width="343" height="283"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -584,15 +585,7 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint id="1013" firstItem="859" firstAttribute="trailing" secondItem="954" secondAttribute="trailing"/>
-                            <constraint id="1014" firstItem="859" firstAttribute="bottom" secondItem="954" secondAttribute="bottom"/>
-                            <constraint id="1063" firstItem="859" firstAttribute="leadingMargin" secondItem="954" secondAttribute="leading" constant="16"/>
-                            <constraint id="1064" firstItem="954" firstAttribute="trailing" secondItem="859" secondAttribute="trailingMargin" constant="16"/>
-                            <constraint id="1065" firstItem="954" firstAttribute="bottom" secondItem="859" secondAttribute="bottom"/>
                             <constraint id="1077" firstItem="924" firstAttribute="leading" secondItem="859" secondAttribute="leadingMargin"/>
-                            <constraint id="1080" firstItem="859" firstAttribute="leadingMargin" secondItem="954" secondAttribute="leading" constant="16"/>
-                            <constraint id="1081" firstItem="954" firstAttribute="trailing" secondItem="859" secondAttribute="trailingMargin" constant="16"/>
-                            <constraint id="1082" firstItem="954" firstAttribute="bottom" secondItem="859" secondAttribute="bottom"/>
                             <constraint id="1088" firstItem="920" firstAttribute="top" secondItem="855" secondAttribute="bottom" constant="21"/>
                             <constraint id="1089" firstItem="920" firstAttribute="leading" secondItem="859" secondAttribute="leadingMargin"/>
                             <constraint id="1090" firstItem="920" firstAttribute="trailing" secondItem="859" secondAttribute="trailingMargin"/>
@@ -608,7 +601,8 @@
                             <constraint id="1969" firstItem="1121" firstAttribute="top" secondItem="1963" secondAttribute="bottom" constant="15"/>
                             <constraint id="1970" firstItem="1121" firstAttribute="trailing" secondItem="859" secondAttribute="trailingMargin"/>
                             <constraint id="1971" firstItem="1121" firstAttribute="leading" secondItem="859" secondAttribute="leadingMargin"/>
-                            <constraint id="1972" firstItem="954" firstAttribute="top" secondItem="1121" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2021" firstItem="859" firstAttribute="trailing" secondItem="954" secondAttribute="trailing"/>
+                            <constraint id="2022" firstItem="859" firstAttribute="bottom" secondItem="954" secondAttribute="bottom"/>
                         </constraints>
                     </view>
                     <connections>
