@@ -34,9 +34,7 @@ namespace ExpenseManager.ios
 			SFCategoryAxis primaryAxis = new SFCategoryAxis();
 			chart.PrimaryAxis = primaryAxis;
             chart.ColorModel.Palette = SFChartColorPalette.Custom;
-            chart.ColorModel.CustomColors =
-					NSArray.FromObjects(UIColor.FromRGB(0, 0, 77),
-										UIColor.FromRGB(128, 179, 255));
+            chart.ColorModel.CustomColors = NSArray.FromObjects(StaticValues.DarkBlue,StaticValues.LightBlue);
 
 			var dataModel = new ReportChartDataSource();
 			chart.DataSource = dataModel as SFChartDataSource;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using ExpenseManage.Common;
+using UIKit;
 
 namespace ExpenseManager.ios.Utilities
 {
@@ -29,5 +30,8 @@ namespace ExpenseManager.ios.Utilities
         public static readonly string ReportExpenseAverage = "Average Spent";
 
         public static readonly string SettingsNavigationTitle = "Settings";
+
+        public static readonly UIColor DarkBlue = UIColor.FromRGB(0, 0, 77);
+        public static readonly UIColor LightBlue = UIColor.FromRGB(128, 179, 255);
     }
 }

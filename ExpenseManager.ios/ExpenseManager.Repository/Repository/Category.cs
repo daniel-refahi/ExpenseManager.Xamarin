@@ -118,7 +118,7 @@ namespace ExpenseManager.Repository
 				throw new InvalidOperationException("Category name can't be empty.");
 			if (Name.Length > 100)
 				throw new InvalidOperationException("Category name can't be more than 100 character.");
-			if (db.Table<Category>().Where(c => c.Name == Name).FirstOrDefault() != null)
+			if (Id == -1 && db.Table<Category>().Where(c => c.Name == Name).FirstOrDefault() != null)
 				throw new InvalidOperationException("Category name already exists.");
         }
 

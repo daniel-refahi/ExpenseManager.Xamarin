@@ -9,6 +9,7 @@ using ExpenseManager.ios.ListSources;
 using Syncfusion.SfGauge.iOS;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace ExpenseManager.ios
 {
@@ -45,29 +46,30 @@ namespace ExpenseManager.ios
 
         void SetupChart()
         {
+            var totalExpenses = (nfloat)_category.GetExpenses().Sum(e => e.Value);
             var circularGauge = new SFCircularGauge();
             var scale = new SFCircularScale()
             {
                 StartValue = 0,
-                EndValue = 100,
+                EndValue = (nfloat)_category.Plan,
                 StartAngle = 40,
                 SweepAngle = 320,
                 RimWidth = 6,
-                Interval = 10,
+                Interval = (int)_category.Plan/6,
                 ShowTicks = true,
-                RimColor = UIColor.FromRGB(0, 0, 77),
+                RimColor = StaticValues.LightBlue,
                 MinorTicksPerInterval = 0,
                 LabelOffset = 0.1f,
                 MajorTickSettings = new SFTickSettings()
                 {
-                    Color = UIColor.FromRGB(267, 267, 267),
-                    Size = 7,
+                    Color = StaticValues.LightBlue,
+                    Size = 2,
                     Offset = 0.041f,
                     Width = 1.5f
                 },
                 MinorTickSettings = new SFTickSettings()
                 {
-                    Color = UIColor.FromRGB(267, 267, 267),
+                    Color = StaticValues.LightBlue,
                     Size = 8,
                     Offset = 0.5f
                 }
@@ -75,20 +77,20 @@ namespace ExpenseManager.ios
 
             var needlePointer = new SFNeedlePointer()
             {
-                Value = 70,
-                KnobColor = UIColor.FromRGB(128, 179, 255),
+                Value = totalExpenses,
+                KnobColor = StaticValues.DarkBlue,
                 KnobRadius = 12,
                 Width = 1,
                 LengthFactor = 0.7f,
-                Color = UIColor.Gray
+                Color = StaticValues.LightBlue
             };
             scale.Pointers.AddObjects(new List<SFNeedlePointer>() { needlePointer }.ToArray());
 
             var rangePointer = new SFRangePointer() 
             {
-                Value = 70,
+                Value = totalExpenses,
                 Width = 6,
-                Color = UIColor.FromRGB(169,749,722)
+                Color = StaticValues.DarkBlue
             };
             scale.Pointers.AddObjects(new List<SFRangePointer>(){rangePointer}.ToArray());
             circularGauge.Scales.AddObjects(new List<SFCircularScale>() { scale }.ToArray());

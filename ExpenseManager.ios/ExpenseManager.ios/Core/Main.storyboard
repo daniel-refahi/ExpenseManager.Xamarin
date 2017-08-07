@@ -540,13 +540,16 @@
                                 <items>
                                     <barButtonItem id="958" systemItem="trash">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
+                                        <connections>
+                                            <action selector="CategoryDetail_Delete_Activated:" destination="858" id="2009"/>
+                                        </connections>
                                     </barButtonItem>
-                                    <barButtonItem id="955" systemItem="fixedSpace" width="126"/>
+                                    <barButtonItem id="955" systemItem="flexibleSpace"/>
                                     <barButtonItem style="plain" id="959" image="Assets/Save.png">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
                                     </barButtonItem>
-                                    <barButtonItem width="85" style="plain" systemItem="fixedSpace" id="963"/>
-                                    <barButtonItem id="964" width="53" image="Assets/Cancel.png">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="963"/>
+                                    <barButtonItem id="964" width="0" image="Assets/Cancel.png">
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.2" green="0.2" blue="0.2" alpha="1"/>
                                         <connections>
                                             <action selector="CategoryDetail_Cancel_Activated:" destination="858" id="1418"/>

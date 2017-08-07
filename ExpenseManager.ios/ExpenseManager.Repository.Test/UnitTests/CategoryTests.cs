@@ -86,7 +86,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
                 Name = "some name",
                 Plan = 12
             };
-            category.Upsert();
+            invalidCategory.Upsert();
 		}
 
         [Test]
@@ -175,7 +175,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				Name = "some name",
 				Plan = 12
 			};
-            category.Upsert();
+            invalidCategory.Upsert();
 		}
 
 		[Test]
@@ -194,6 +194,27 @@ namespace ExpenseManager.Repository.Test.UnitTests
             category.Upsert();
 
             var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
+			var c = db.Get<Category>(category.Id);
+			Assert.AreEqual(c.Name, category.Name);
+			Assert.AreEqual(c.Plan, category.Plan);
+		}
+
+		[Test]
+		public void UpdateOnlyPlan_Valid()
+		{
+			DbSetup();
+			var category = new Category()
+			{
+				Name = "some name",
+				Plan = 10
+			};
+			category.Upsert();
+
+			category.Name = "some name";
+			category.Plan = 23;
+			category.Upsert();
+
+			var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
 			var c = db.Get<Category>(category.Id);
 			Assert.AreEqual(c.Name, category.Name);
 			Assert.AreEqual(c.Plan, category.Plan);

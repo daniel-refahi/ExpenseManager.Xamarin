@@ -38,7 +38,7 @@ namespace ExpenseManager.ios
             // Code to start the Xamarin Test Cloud Agent
             #if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
-#endif
+            #endif
 
             MobileCenter.Start("784c62e5-d8ec-4c2b-9d16-751016a6b84e",typeof(Analytics), typeof(Crashes));
 			Crashes.GetErrorAttachments = (ErrorReport report) =>
