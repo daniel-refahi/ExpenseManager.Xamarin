@@ -31,6 +31,7 @@ namespace ExpenseManager.ios
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            AddDoneButton();
             loadExpense();
             loadCategorySelector();
 
@@ -45,23 +46,30 @@ namespace ExpenseManager.ios
         {
             base.ViewDidAppear(animated);
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController.ViewDidAppear));
-            if (_expense.ReceiptImage != null)
+
+            if (_expense.ReceiptImage == null && !_isFromCamara)
+                ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
+            else
             {
                 //ExpenseDetail_RecieptBtn.SetTitle("Show Reciept", UIControlState.Normal);
                 try
                 {
                     if (_isFromCamara)
                         ExpenseDetail_Receipt.Image = new UIImage(_recieptImageData);
-                    else 
-                        ExpenseDetail_Receipt.Image = new UIImage(_expense.ReceiptImage);
+                    else
+                    {
+                        if(_expense.ReceiptImage == null)
+                            ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
+                        else 
+                            ExpenseDetail_Receipt.Image = new UIImage(_expense.ReceiptImage);
+                    }
                 }
                 catch
                 {
                     ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
                 }
             }
-            else
-                ExpenseDetail_Receipt.Image = new UIImage("Assets/receipt.png");
+                
             _isFromCamara = false;
         }
 
@@ -114,7 +122,7 @@ namespace ExpenseManager.ios
                 _expense.Description = ExpenseDetail_Description.Text;
                 _expense.Value = Convert.ToInt16(ExpenseDetail_Value.Text);
                 _expense.ExpenseDate = ExpenseDetail_Date.Date.ToDateTime();
-                _expense.ReceiptImage = _recieptImageData != null ? saveReciept() : null;
+                _expense.ReceiptImage = _recieptImageData != null ? saveReciept() : _expense.ReceiptImage;
                 _expense.Upsert();
                 NavigationController.PopViewController(true);
             }
@@ -186,7 +194,7 @@ namespace ExpenseManager.ios
             CoreUtilities.GetLogService().Log(nameof(ExpenseDetailController), "clicked on update location");
             _locationManager = new CLLocationManager();
 
-            _locationManager.RequestAlwaysAuthorization();
+            _locationManager.RequestWhenInUseAuthorization();
             _locationManager.StartUpdatingLocation();
             _locationManager.LocationsUpdated += LocMgr_LocationsUpdated;
         }
@@ -220,6 +228,23 @@ namespace ExpenseManager.ios
             region.Span.LongitudeDelta = 0.01;
 
             ExpenseDetail_Map.SetRegion(region, true);
+        }
+
+		void AddDoneButton()
+		{
+            var keyboardToolbar = new UIToolbar();
+            keyboardToolbar.SizeToFit();
+
+            var flexBarButton = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace,null);
+
+            var doneBtn = new UIBarButtonItem("Done",UIBarButtonItemStyle.Done, (sender, e) => 
+            {
+                ExpenseDetail_Description.EndEditing(true);
+                ExpenseDetail_Value.EndEditing(true);
+            });
+            keyboardToolbar.Items = new UIBarButtonItem[] { flexBarButton, doneBtn };
+            ExpenseDetail_Description.InputAccessoryView = keyboardToolbar;
+            ExpenseDetail_Value.InputAccessoryView = keyboardToolbar;
         }
     }
 }

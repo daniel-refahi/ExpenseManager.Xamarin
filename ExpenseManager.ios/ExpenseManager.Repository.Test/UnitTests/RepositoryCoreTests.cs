@@ -34,7 +34,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
                 File.Delete(_dbPath);
             
             var core = new RepositoryCore(new LogService());
-            core.CreateDataBase(_dbPath, new SQLitePlatformIOS());
+            core.CreateDataBase(_dbPath, new SQLitePlatformIOS(), true);
 
             Assert.IsTrue(File.Exists(_dbPath));
         }
@@ -46,7 +46,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				File.Delete(_dbPath);
 
 			var core = new RepositoryCore(new LogService());
-			core.CreateDataBase(_dbPath, new SQLitePlatformIOS());
+            core.CreateDataBase(_dbPath, new SQLitePlatformIOS(),true);
 
             var db = new SQLiteConnection(new SQLitePlatformIOS(), _dbPath);
             var categories = db.Table<Category>();

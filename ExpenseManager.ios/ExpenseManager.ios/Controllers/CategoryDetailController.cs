@@ -22,6 +22,7 @@ namespace ExpenseManager.ios
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+            AddDoneButton();
 
 			try
 			{
@@ -48,14 +49,15 @@ namespace ExpenseManager.ios
         {
             var totalExpenses = (nfloat)_category.GetExpenses().Sum(e => e.Value);
             var circularGauge = new SFCircularGauge();
+            var maxChartNumber = _category.Plan > 10 ? _category.Plan : 10;
             var scale = new SFCircularScale()
             {
                 StartValue = 0,
-                EndValue = (nfloat)_category.Plan,
+                EndValue = (nfloat)maxChartNumber,
                 StartAngle = 40,
                 SweepAngle = 320,
                 RimWidth = 6,
-                Interval = (int)_category.Plan/6,
+                Interval = (int)maxChartNumber/6,
                 ShowTicks = true,
                 RimColor = StaticValues.LightBlue,
                 MinorTicksPerInterval = 0,
@@ -137,5 +139,22 @@ namespace ExpenseManager.ios
         {
             NavigationController.PopViewController(true);
         }
+
+		void AddDoneButton()
+		{
+			var keyboardToolbar = new UIToolbar();
+			keyboardToolbar.SizeToFit();
+
+			var flexBarButton = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace, null);
+
+			var doneBtn = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (sender, e) =>
+			 {
+                CategoryDetail_Name.EndEditing(true);
+				CategoryDetail_Plan.EndEditing(true);
+			 });
+			keyboardToolbar.Items = new UIBarButtonItem[] { flexBarButton, doneBtn };
+			CategoryDetail_Name.InputAccessoryView = keyboardToolbar;
+            CategoryDetail_Plan.InputAccessoryView = keyboardToolbar;
+		}
     }
 }

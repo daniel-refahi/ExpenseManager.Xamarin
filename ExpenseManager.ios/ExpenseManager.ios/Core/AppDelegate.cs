@@ -50,12 +50,7 @@ namespace ExpenseManager.ios
 			};
 
             CoreUtilities.GetLogService().Log(nameof(AppDelegate.FinishedLaunching), "right after errors attached");
-			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "expensemanager.db3");
-            var repositoryCore = new RepositoryCore(CoreUtilities.GetLogService());
-            if (File.Exists(dbPath))
-                repositoryCore.SetUpDataBaseConnection(dbPath, new SQLitePlatformIOS());
-            else 
-                repositoryCore.CreateDataBase(dbPath, new SQLitePlatformIOS());
+            CoreUtilities.SetUpDatabase(false,true);
 
             return true;
         }

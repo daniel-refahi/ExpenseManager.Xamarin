@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ExpenseManager.ios.Utilities;
+using ExpenseManager.Repository;
 using ExpenseManager.Repository.Repository;
 using Foundation;
 using Syncfusion.SfChart.iOS;
@@ -13,30 +15,26 @@ namespace ExpenseManager.ios.ListSources
         NSMutableArray _expenseAverage;
         NSMutableArray _category;
         SFNumericalAxis _axis;
+        int numberOfDataPoints;
 
-		public ReportChartDataSource()
+        public ReportChartDataSource(List<Category> topCategories, double totalExpensesAverage)
 		{
 			_expenseAverage = new NSMutableArray();
 			_category = new NSMutableArray();
+            numberOfDataPoints = topCategories.Count;
 
 
-			var repository = new RepositoryCore(CoreUtilities.GetLogService());
-			var topCategories = repository.GetTopCategories();
-			var averageSpent = repository.GetExpenses().Average(e => e.Value);
-
-			AddDataPointsForChart(topCategories[0].Name, averageSpent, topCategories[0].GetExpenses().Sum(e => e.Value));
-			AddDataPointsForChart(topCategories[1].Name, averageSpent, topCategories[1].GetExpenses().Sum(e => e.Value));
-			AddDataPointsForChart(topCategories[2].Name, averageSpent, topCategories[2].GetExpenses().Sum(e => e.Value));
-			AddDataPointsForChart(topCategories[3].Name, averageSpent, topCategories[3].GetExpenses().Sum(e => e.Value));
-			AddDataPointsForChart(topCategories[4].Name, averageSpent, topCategories[4].GetExpenses().Sum(e => e.Value));
-
-
-
-			//AddDataPointsForChart("Jan", 45, 27);
-			//AddDataPointsForChart("Feb", 45, 28);
-			//AddDataPointsForChart("Mar", 45, 35);
-			//AddDataPointsForChart("Apr", 45, 44);
-			//AddDataPointsForChart("May", 45, 54);
+            if (topCategories.Count > 0)
+			    AddDataPointsForChart(topCategories[0].Name, totalExpensesAverage, topCategories[0].GetExpenses().Sum(e => e.Value));
+            if (topCategories.Count > 1)
+			    AddDataPointsForChart(topCategories[1].Name, totalExpensesAverage, topCategories[1].GetExpenses().Sum(e => e.Value));
+            if (topCategories.Count > 2)
+			    AddDataPointsForChart(topCategories[2].Name, totalExpensesAverage, topCategories[2].GetExpenses().Sum(e => e.Value));
+            if (topCategories.Count > 3)
+			    AddDataPointsForChart(topCategories[3].Name, totalExpensesAverage, topCategories[3].GetExpenses().Sum(e => e.Value));
+            if (topCategories.Count > 4)
+			    AddDataPointsForChart(topCategories[4].Name, totalExpensesAverage, topCategories[4].GetExpenses().Sum(e => e.Value));
+            
 		}
 
         void AddDataPointsForChart(String categoryName, Double expsenseAverage, Double categoryValue)
@@ -88,16 +86,13 @@ namespace ExpenseManager.ios.ListSources
 			{
 				return _expenseAverage.GetItem<SFChartDataPoint>((nuint)index);
 			}
-			else
-			{
-				return _category.GetItem<SFChartDataPoint>((nuint)index);
-			}
+			return _category.GetItem<SFChartDataPoint>((nuint)index);
 		}
 
 		[Export("chart:numberOfDataPointsForSeriesAtIndex:")]
 		public override nint GetNumberOfDataPoints(SFChart chart, nint index)
 		{
-			return 5;
+            return numberOfDataPoints;
 		}
     }
 }

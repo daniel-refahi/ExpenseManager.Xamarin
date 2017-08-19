@@ -55,7 +55,8 @@ namespace ExpenseManager.Repository
                     var expenses = db.Table<Expense>()
                                      .Where(e => e.CategoryId == Id && 
                                             e.ExpenseDate >= startDate && 
-                                            e.ExpenseDate < endDate);
+                                            e.ExpenseDate < endDate)
+                                     .OrderByDescending(e => e.ExpenseDate);
 
                     return expenses == null ? new List<Expense>() : expenses.ToList();
                 }

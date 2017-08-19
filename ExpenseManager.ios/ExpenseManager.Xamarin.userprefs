@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{D776F50A-7701-4423-8E85-214308DEE282}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/ListCells/ExpenseListCell.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExpenseManager.ios/ListSources/ReportChartDataSource.cs">
     <Files>
       <File FileName="ExpenseManager.ios/Core/Main.storyboard" />
-      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="257" Column="145" />
-      <File FileName="ExpenseManager.ios/ListCells/CategoryListCell.cs" Line="48" Column="25" />
-      <File FileName="ExpenseManager.ios/ListCells/ExpenseListCell.cs" Line="1" Column="1" />
+      <File FileName="ExpenseManager.Repository/Repository/RepositoryCore.cs" Line="37" Column="1" />
+      <File FileName="ExpenseManager.ios/Core/AppDelegate.cs" Line="53" Column="47" />
+      <File FileName="ExpenseManager.ios/Controllers/ReportController.cs" Line="39" Column="45" />
+      <File FileName="ExpenseManager.ios/ListSources/ReportChartDataSource.cs" Line="17" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.ItemProperties.ExpenseManager.Repository.Test PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -21,5 +22,5 @@
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios.UITests PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.3c6da502a0f2cbf81f0c65e94bc5972d5332a629" />
+  <MonoDevelop.Ide.ItemProperties.ExpenseManager.ios PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B0D1FE7C-B30F-488E-8A0D-E0F58FE2C44D" />
 </Properties>

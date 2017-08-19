@@ -6,6 +6,7 @@ using Syncfusion.SfChart.iOS;
 using ExpenseManager.ios.ListSources;
 using System.Drawing;
 using ExpenseManager.ios.Utilities;
+using ExpenseManager.Repository.Repository;
 
 namespace ExpenseManager.ios
 {
@@ -36,11 +37,20 @@ namespace ExpenseManager.ios
             chart.ColorModel.Palette = SFChartColorPalette.Custom;
             chart.ColorModel.CustomColors = NSArray.FromObjects(StaticValues.DarkBlue,StaticValues.LightBlue);
 
-			var dataModel = new ReportChartDataSource();
-			chart.DataSource = dataModel as SFChartDataSource;
 
-            this.View.AddSubview(chart);
-            chart.Frame = new RectangleF(10,70,(float)View.Bounds.Width - 10,(float)View.Bounds.Height - 160);
+			var repository = new RepositoryCore(CoreUtilities.GetLogService());
+			var topCategories = repository.GetTopCategories();
+			var totalExpense = repository.GetExpenses();
+			var averageSpent = totalExpense.Count == 0 ? 0 : totalExpense.Average(e => e.Value);
+
+            if (topCategories.Count > 0)
+            {
+                var dataModel = new ReportChartDataSource(topCategories,averageSpent);
+                chart.DataSource = dataModel as SFChartDataSource;
+
+                this.View.AddSubview(chart);
+                chart.Frame = new RectangleF(10, 70, (float)View.Bounds.Width - 10, (float)View.Bounds.Height - 160);
+            }
 		}
     }
 }

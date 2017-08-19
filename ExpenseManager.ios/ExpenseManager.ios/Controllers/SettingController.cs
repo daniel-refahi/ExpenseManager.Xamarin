@@ -25,6 +25,8 @@ namespace ExpenseManager.ios
 
             handleMonthSelector();
             handleYearSelector();
+
+            Settings_DeleteAllDataBtn.TouchUpInside+= Settings_DeleteAllDataBtn_TouchUpInside;
 		}
 
         void MonthSelectorSource_SelectedChanged(object sender, EventArgs e)
@@ -68,5 +70,10 @@ namespace ExpenseManager.ios
             _appSettings.CurrentYear = ((SettingEventArgument)e).SelectedSettins;
             _appSettings.Upsert();
         }
+
+        void Settings_DeleteAllDataBtn_TouchUpInside(object sender, EventArgs e)
+        {
+            CoreUtilities.SetUpDatabase(true,false);
+		}
     }
 }

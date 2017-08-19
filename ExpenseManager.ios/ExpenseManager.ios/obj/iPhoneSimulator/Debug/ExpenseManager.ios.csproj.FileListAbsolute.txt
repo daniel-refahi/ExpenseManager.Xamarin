@@ -28,7 +28,6 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/ibtool/_BundleResourceWithLogicalName.items
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/actool/_PartialAppManifest.items
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/actool/_BundleResourceWithLogicalName.items
-/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/receipt.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/Category@2x.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/CategorySelected@2x.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/Expenses@2x.png
@@ -40,3 +39,4 @@
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/Cancel@2x.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/Save@2x.png
 /Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/
+/Users/daniel.refahi/Documents/GitHub/ExpenseManager.Xamarin/ExpenseManager.ios/ExpenseManager.ios/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/optimized/Assets/receipt@2x.png

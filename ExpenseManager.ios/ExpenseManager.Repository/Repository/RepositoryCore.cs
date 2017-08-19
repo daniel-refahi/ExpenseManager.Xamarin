@@ -30,7 +30,7 @@ namespace ExpenseManager.Repository.Repository
             CurrentYear = year;
         }
 
-        public SQLiteConnection CreateDataBase(string dbPath, ISQLitePlatform sqlitePlatform)
+        public SQLiteConnection CreateDataBase(string dbPath, ISQLitePlatform sqlitePlatform, bool withSeeding)
         {
             try
             {
@@ -42,7 +42,8 @@ namespace ExpenseManager.Repository.Repository
                 db.CreateTable<Expense>();
                 db.CreateTable<Setting>();
                 Logger.Log(nameof(RepositoryCore), "Before seeding db.");
-                Seed(db);
+                if(withSeeding)
+                    Seed(db);
                 Logger.Log(nameof(RepositoryCore), "Seeding db done.");
                 return db;
             }
@@ -83,6 +84,7 @@ namespace ExpenseManager.Repository.Repository
                     var expenses = db.Table<Expense>()
 									 .Where(e => e.ExpenseDate >= startDate &&
 											     e.ExpenseDate < endDate)
+                                     .OrderByDescending(e => e.ExpenseDate)
                                      .ToList();
 
                     Logger.Log(nameof(RepositoryCore), "Get Expenses done.");

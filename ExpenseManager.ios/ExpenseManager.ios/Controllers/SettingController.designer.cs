@@ -16,6 +16,10 @@ namespace ExpenseManager.ios
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton Settings_DeleteAllDataBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIPickerView Settings_MonthPicker { get; set; }
 
         [Outlet]
@@ -24,6 +28,11 @@ namespace ExpenseManager.ios
 
         void ReleaseDesignerOutlets ()
         {
+            if (Settings_DeleteAllDataBtn != null) {
+                Settings_DeleteAllDataBtn.Dispose ();
+                Settings_DeleteAllDataBtn = null;
+            }
+
             if (Settings_MonthPicker != null) {
                 Settings_MonthPicker.Dispose ();
                 Settings_MonthPicker = null;

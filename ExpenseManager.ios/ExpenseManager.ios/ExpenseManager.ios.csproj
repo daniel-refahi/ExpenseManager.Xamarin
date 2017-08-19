@@ -207,7 +207,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Assets\receipt.png" />
     <BundleResource Include="Assets\Category%402x.png" />
     <BundleResource Include="Assets\CategorySelected%402x.png" />
     <BundleResource Include="Assets\Expenses%402x.png" />
@@ -218,6 +217,7 @@
     <BundleResource Include="Assets\SettingsSelected%402x.png" />
     <BundleResource Include="Assets\Cancel%402x.png" />
     <BundleResource Include="Assets\Save%402x.png" />
+    <BundleResource Include="Assets\receipt%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="ToastIOS">

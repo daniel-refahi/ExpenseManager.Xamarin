@@ -20,7 +20,7 @@ namespace ExpenseManager.Repository.Test.UnitTests
 				File.Delete(dbPath);
 
             _repository = new RepositoryCore(new LogService());
-            _db = _repository.CreateDataBase(dbPath, new SQLitePlatformIOS());
+            _db = _repository.CreateDataBase(dbPath, new SQLitePlatformIOS(),true);
 		}
 
 		[Test]

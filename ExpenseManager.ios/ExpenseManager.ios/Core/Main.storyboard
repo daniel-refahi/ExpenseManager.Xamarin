@@ -131,15 +131,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description...">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Description..." clearButtonMode="always">
                                 <rect key="frame" x="20" y="75" width="137" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="473" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Expense Value...">
                                 <rect key="frame" x="19" y="113" width="150" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="1816"/>
@@ -373,7 +373,6 @@
                             <constraint id="1910" firstItem="467" firstAttribute="trailingMargin" secondItem="1648" secondAttribute="trailing" constant="35">
                                 <variation key="heightClass=regular-widthClass=compact" constant="1"/>
                             </constraint>
-                            <constraint id="1911" firstItem="716" firstAttribute="top" secondItem="1648" secondAttribute="bottom" constant="59"/>
                             <constraint id="1912" firstItem="1600" firstAttribute="leading" secondItem="467" secondAttribute="leadingMargin" constant="12">
                                 <variation key="heightClass=regular-widthClass=compact" constant="3"/>
                             </constraint>
@@ -386,10 +385,10 @@
                             <constraint id="1915" firstItem="1649" firstAttribute="top" secondItem="1648" secondAttribute="bottom" constant="8">
                                 <variation key="heightClass=regular-widthClass=compact" constant="5"/>
                             </constraint>
-                            <constraint id="1942" firstItem="716" firstAttribute="bottom" secondItem="1637" secondAttribute="bottom" constant="184">
-                                <variation key="heightClass=regular-widthClass=compact" constant="100"/>
-                            </constraint>
                             <constraint id="1943" firstItem="716" firstAttribute="bottom" secondItem="1648" secondAttribute="bottom" constant="99"/>
+                            <constraint id="2073" firstItem="716" firstAttribute="bottom" secondItem="1637" secondAttribute="bottom" constant="115">
+                                <variation key="heightClass=regular-widthClass=compact" constant="99"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -420,13 +419,12 @@
                                 <exclude reference="1908"/>
                                 <exclude reference="1909"/>
                                 <exclude reference="1910"/>
-                                <exclude reference="1911"/>
                                 <exclude reference="1912"/>
                                 <exclude reference="1913"/>
                                 <exclude reference="1914"/>
                                 <exclude reference="1915"/>
-                                <exclude reference="1942"/>
                                 <exclude reference="1943"/>
+                                <exclude reference="2073"/>
                             </mask>
                             <mask key="subviews">
                                 <exclude reference="1600"/>
@@ -467,13 +465,12 @@
                                 <include reference="1908"/>
                                 <include reference="1909"/>
                                 <include reference="1910"/>
-                                <include reference="1911"/>
                                 <include reference="1912"/>
                                 <include reference="1913"/>
                                 <include reference="1914"/>
                                 <include reference="1915"/>
-                                <include reference="1942"/>
                                 <include reference="1943"/>
+                                <include reference="2073"/>
                             </mask>
                             <mask key="subviews">
                                 <include reference="1600"/>
@@ -518,10 +515,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="920" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Category's Name...">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="920" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Category's Name..." clearButtonMode="always">
                                 <rect key="frame" x="16" y="85" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <rect key="contentStretch" x="0" y="0.0" width="1" height="1"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="924" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Your Plan..." misplaced="YES">
@@ -716,6 +713,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2104" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="164" y="577" width="46" height="30"/>
+                                <state key="normal" title="Delete All Data">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint id="1526" firstItem="1487" firstAttribute="top" secondItem="1254" secondAttribute="bottom" constant="16"/>
@@ -743,7 +746,34 @@
                             <constraint id="1549" firstItem="1483" firstAttribute="trailing" secondItem="1258" secondAttribute="trailingMargin"/>
                             <constraint id="1550" firstItem="1483" firstAttribute="leading" secondItem="1258" secondAttribute="leadingMargin"/>
                             <constraint id="1551" firstItem="1483" firstAttribute="top" secondItem="1254" secondAttribute="bottom" constant="103"/>
+                            <constraint id="2105" firstItem="1258" firstAttribute="trailingMargin" secondItem="2104" secondAttribute="trailing" constant="149">
+                                <variation key="heightClass=regular-widthClass=compact" constant="4"/>
+                            </constraint>
+                            <constraint id="2106" firstItem="1258" firstAttribute="bottom" secondItem="2104" secondAttribute="bottom" constant="60"/>
+                            <constraint id="2107" firstItem="2104" firstAttribute="leading" secondItem="1258" secondAttribute="leadingMargin" constant="148">
+                                <variation key="heightClass=regular-widthClass=compact" constant="4"/>
+                            </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="2104"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2105"/>
+                                <exclude reference="2106"/>
+                                <exclude reference="2107"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="2104"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="2105"/>
+                                <include reference="2106"/>
+                                <include reference="2107"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" id="1320" selectedImage="Assets/SettingsSelected.png" image="Assets/Settings.png">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -752,6 +782,7 @@
                     <connections>
                         <outlet property="Settings_MonthPicker" destination="1483" id="name-outlet-1483"/>
                         <outlet property="Settings_YearPicker" destination="1484" id="name-outlet-1484"/>
+                        <outlet property="Settings_DeleteAllDataBtn" destination="2104" id="name-outlet-2104"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1259" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -765,7 +796,7 @@
     </simulatedMetricsContainer>
     <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.50196078431372548" alpha="1"/>
     <resources>
-        <image name="Assets/receipt.png" width="128" height="128"/>
+        <image name="Assets/receipt.png" width="64" height="64"/>
         <image name="Assets/Settings.png" width="30" height="30"/>
         <image name="Assets/SettingsSelected.png" width="40" height="40"/>
         <image name="Assets/Category.png" width="30" height="30"/>
