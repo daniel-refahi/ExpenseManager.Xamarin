@@ -68,9 +68,9 @@ namespace ExpenseManager.ios.ListCells
 			base.LayoutSubviews();
 			//Avatar.Frame = new RectangleF(20, 5, 30, 40);
 			categoryNameLabel.Frame = new RectangleF(40, 15, 163, 30);
-            totalExpensesLabel.Frame = new RectangleF(150, 17, 150, 30); 
-            totalExpenses.Frame = new RectangleF(240, 18, 150, 30);
-			editBtn.Frame = new RectangleF((float)ContentView.Bounds.Width - 100, 12, 80, 30);
+            totalExpensesLabel.Frame = new RectangleF(180, 17, 150, 30); 
+            totalExpenses.Frame = new RectangleF(260, 18, 150, 30);
+			editBtn.Frame = new RectangleF((float)ContentView.Bounds.Width - 80, 12, 80, 30);
 		}
 
 

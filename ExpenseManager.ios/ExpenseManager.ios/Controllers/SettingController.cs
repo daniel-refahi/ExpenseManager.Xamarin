@@ -73,7 +73,13 @@ namespace ExpenseManager.ios
 
         void Settings_DeleteAllDataBtn_TouchUpInside(object sender, EventArgs e)
         {
-            CoreUtilities.SetUpDatabase(true,false);
+			var okCancelAlertController = 
+                UIAlertController.Create("Delete All Data", "Are you sure?", UIAlertControllerStyle.Alert);
+            
+            okCancelAlertController.AddAction(UIAlertAction.Create("I'm Sure", UIAlertActionStyle.Default, alert => CoreUtilities.SetUpDatabase(true, false)));
+			okCancelAlertController.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, alert => Console.WriteLine("Cancel was clicked")));
+
+			PresentViewController(okCancelAlertController, true, null);
 		}
     }
 }

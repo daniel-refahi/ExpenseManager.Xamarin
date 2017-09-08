@@ -112,8 +112,36 @@ namespace ExpenseManager.ios
 
         void CategoryDetail_Delete_Clicked(object sender, EventArgs e)
         {
-			_category.Delete();
-			NavigationController.PopViewController(true);
+            
+			UIAlertController actionSheetAlert = 
+                UIAlertController.Create("Delete Category", "Please select an action", UIAlertControllerStyle.ActionSheet);
+            
+			actionSheetAlert
+                .AddAction(UIAlertAction
+                           .Create("Delete the category with all its expenses", UIAlertActionStyle.Default, (action) => 
+                            {
+								  _category.Delete();
+								  NavigationController.PopViewController(true);
+							}));
+            actionSheetAlert
+                .AddAction(UIAlertAction
+                           .Create("Delete just the expenses in this category", UIAlertActionStyle.Default, (action) => 
+                            {							
+                                _category.DeleteAllExpenses();
+								NavigationController.PopViewController(true);
+							}));			
+			actionSheetAlert.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (action) => Console.WriteLine("Cancel button pressed.")));
+
+			// Required for iPad - You must specify a source for the Action Sheet since it is
+			// displayed as a popover
+			UIPopoverPresentationController presentationPopover = actionSheetAlert.PopoverPresentationController;
+			if (presentationPopover != null)
+			{
+				presentationPopover.SourceView = View;
+				presentationPopover.PermittedArrowDirections = UIPopoverArrowDirection.Up;
+			}
+
+			PresentViewController(actionSheetAlert, true, null);
         }
 
         void CategoryDetail_Save_Clicked(object sender, EventArgs e)

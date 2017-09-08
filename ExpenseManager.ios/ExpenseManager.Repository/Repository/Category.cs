@@ -111,6 +111,23 @@ namespace ExpenseManager.Repository
             }
         }
 
+		public void DeleteAllExpenses()
+		{
+			try
+			{
+				RepositoryCore.Logger.Log(nameof(Category.DeleteAllExpenses), ToString());
+				foreach (var expense in GetExpenses())
+				{
+					expense.Delete();
+				}
+			}
+			catch (Exception ex)
+			{
+                RepositoryCore.Logger.Log(nameof(Category.DeleteAllExpenses), ex.Message, LogType.Exception);
+				throw ex;
+			}
+		}
+
         void Validate(SQLiteConnection db)
         {
 			if (Plan < 0)
