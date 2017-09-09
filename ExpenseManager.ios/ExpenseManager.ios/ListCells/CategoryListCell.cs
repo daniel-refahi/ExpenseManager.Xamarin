@@ -9,8 +9,6 @@ namespace ExpenseManager.ios.ListCells
         UILabel categoryNameLabel;
         UILabel totalExpenses;
         UILabel totalExpensesLabel;
-		//UIImageView Avatar;
-        UIButton editBtn;
 
 		CategoriesController parent;
 		int categoryId;
@@ -19,9 +17,6 @@ namespace ExpenseManager.ios.ListCells
 			SelectionStyle = UITableViewCellSelectionStyle.Default;
             this.parent = parent;
 
-			// setting background color of each cell 
-			//ContentView.BackgroundColor = UIColor.FromRGB(0, 114, 253);
-			//Avatar = new UIImageView();
 			categoryNameLabel = new UILabel()
 			{
 				Font = UIFont.FromName("Cochin-BoldItalic", 18f),
@@ -44,48 +39,33 @@ namespace ExpenseManager.ios.ListCells
                 Text = "Total Expenses:"
 			};
 
-			editBtn = UIButton.FromType(UIButtonType.RoundedRect);
-			editBtn.TitleLabel.Font = UIFont.FromName("Cochin-BoldItalic", 26f);
-			editBtn.SetTitle("...", UIControlState.Normal);
-			//EditBtn.SetTitle("Disabled", UIControlState.Disabled);
-			//EditBtn.SetTitleColor(UIColor.LightGray, UIControlState.Disabled);
-			editBtn.TouchUpInside += EditBtnClicked;
+            SetEvents();
 
 			ContentView.Add(categoryNameLabel);
             ContentView.Add(totalExpenses);
             ContentView.Add(totalExpensesLabel);
-			//ContentView.Add(Avatar);
-			ContentView.Add(editBtn);
 		}
 
-		void EditBtnClicked(object sender, EventArgs e)
-		{
-            parent.EditCategoryClicked(categoryId, this);
-		}
+        void SetEvents()
+        {
+			var categoryNameGesture = new UITapGestureRecognizer(() =>
+			{
+				parent.EditCategoryClicked(categoryId, this);
+			});
+            this.UserInteractionEnabled = true;
+            this.AddGestureRecognizer(categoryNameGesture);
+        }
 
 		public override void LayoutSubviews()
 		{
 			base.LayoutSubviews();
-			//Avatar.Frame = new RectangleF(20, 5, 30, 40);
 			categoryNameLabel.Frame = new RectangleF(40, 15, 163, 30);
-            totalExpensesLabel.Frame = new RectangleF(180, 17, 150, 30); 
-            totalExpenses.Frame = new RectangleF(260, 18, 150, 30);
-			editBtn.Frame = new RectangleF((float)ContentView.Bounds.Width - 80, 12, 80, 30);
+            totalExpensesLabel.Frame = new RectangleF((float)ContentView.Bounds.Width - 150, 16, 150, 30); 
+            totalExpenses.Frame = new RectangleF((float)ContentView.Bounds.Width - 65, 17, 150, 30);
 		}
-
-
-
-		//public void UpdateCell(string name, int salary, UIImage avatar, int employeeId)
-		//{
-		//  ImageView.Image = avatar;
-		//  NameLable.Text = name;
-		//  SalarayLable.Text = salary.ToString("C0");
-		//  EmployeeId = employeeId;
-		//}
 
         public void UpdateCell(int categoryId, string categoryName, double totalExpenses)
 		{
-			//ImageView.Image = avatar;
             this.categoryId = categoryId;
             categoryNameLabel.Text = categoryName;
             this.totalExpenses.Text = totalExpenses.ToString("C0");
